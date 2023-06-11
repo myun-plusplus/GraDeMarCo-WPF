@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraDeMarCoWPF.Views"
         mc:Ignorable="d"
-        Title="ImageWindow" Height="450" Width="800"
+        Title="画像" Height="320" Width="320"
         Closing="Window_Closing">
     <Grid>
-        
+        <Image/>
     </Grid>
-
 </Window>
