@@ -8,6 +8,8 @@
         Title="画像" Height="320" Width="320"
         Closing="Window_Closing">
     <Grid>
-        <Image/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Image Source="D:\Projects\GrainDetector\sample1.jpg" Stretch="None"/>
+        </ScrollViewer>
     </Grid>
 </Window>
