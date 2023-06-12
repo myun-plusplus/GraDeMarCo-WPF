@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="GraDeMarCoWPF.Views.ImageAreaReservingPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GraDeMarCoWPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="0" d:DesignWidth="0">
+    <UserControl.Resources>
+        <Style x:Key="HeadlineLabel" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="Height" Value="26"/>
+                <Setter Property="Margin" Value="3" />
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="ImageSizeBox" TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="Width" Value="36"/>
+                <Setter Property="Height" Value="26"/>
+                <Setter Property="Margin" Value="3"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="NormalButton" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Width" Value="58"/>
+                <Setter Property="Height" Value="22"/>
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <Thickness Left="3" Right="3" Top="5" Bottom="5"/>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="NormalCheckBox" TargetType="CheckBox">
+            <Style.Setters>
+                <Setter Property="Height" Value="26"/>
+                <Setter Property="Margin" Value="3" />
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="NormalComboBox" TargetType="ComboBox">
+            <Style.Setters>
+                <Setter Property="Height" Value="26"/>
+                <Setter Property="Margin" Value="3" />
+            </Style.Setters>
+        </Style>
+        <Style x:Key="NormalLabel" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="Height" Value="26"/>
+                <Setter Property="Margin" Value="3" />
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="NormalToggleButton" TargetType="ToggleButton">
+            <Style.Setters>
+                <Setter Property="Width" Value="58"/>
+                <Setter Property="Height" Value="22"/>
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <Thickness Left="3" Right="3" Top="5" Bottom="5"/>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="SelectColorButton" TargetType="Rectangle">
+            <Style.Setters>
+                <Setter Property="Fill" Value="Transparent"/>
+                <Setter Property="Width" Value="48"/>
+                <Setter Property="Height" Value="26"/>
+                <Setter Property="Margin" Value="3" />
+                <Setter Property="Stroke" Value="Black"/>
+                <Setter Property="Opacity" Value="0.5"/>
+            </Style.Setters>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
+            <StackPanel Orientation="Vertical">
+                <Label Content="画像範囲選択" Style="{DynamicResource HeadlineLabel}"/>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Content="範囲選択" Style="{DynamicResource NormalToggleButton}"/>
+                    <Button Content="最大範囲" Style="{DynamicResource NormalButton}"/>
+                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="X範囲:" Style="{DynamicResource NormalLabel}"/>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                        <Label Content="-" Style="{DynamicResource NormalLabel}"/>
+                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                    </StackPanel>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Y範囲:" Style="{DynamicResource NormalLabel}"/>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                        <Label Content="-" Style="{DynamicResource NormalLabel}"/>
+                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

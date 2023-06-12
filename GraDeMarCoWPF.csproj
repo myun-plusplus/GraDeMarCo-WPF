@@ -57,6 +57,48 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\DotCountingPanel.xaml.cs">
+      <DependentUpon>DotCountingPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DotDrawingPanel.xaml.cs">
+      <DependentUpon>DotDrawingPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GrainDetectingPanel.xaml.cs">
+      <DependentUpon>GrainDetectingPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageBinarizingPanel.xaml.cs">
+      <DependentUpon>ImageBinarizingPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageFilteringPanel.xaml.cs">
+      <DependentUpon>ImageFilteringPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanimetricCircleDrawingPanel.xaml.cs">
+      <DependentUpon>PlanimetricCircleDrawingPanel.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\DotCountingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DotDrawingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GrainDetectingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImageAreaReservingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImageBinarizingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImageFilteringPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ImageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -73,6 +115,9 @@
     <Compile Include="Models\OpenWindowService.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\ImageAreaReservingPanel.xaml.cs">
+      <DependentUpon>ImageAreaReservingPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ImageWindow.xaml.cs">
       <DependentUpon>ImageWindow.xaml</DependentUpon>
     </Compile>
@@ -80,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PlanimetricCircleDrawingPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
