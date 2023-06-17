@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraDeMarCoWPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -20,15 +21,39 @@ namespace GraDeMarCoWPF.Views
     /// </summary>
     public partial class ImageWindow : Window
     {
-        public ImageWindow()
+        private ImageViewModel viewModel;
+
+        public ImageWindow(ImageViewModel viewModel)
         {
             InitializeComponent();
+            this.DataContext = viewModel;
+            this.viewModel = viewModel;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Hide();
             e.Cancel = true;
+        }
+
+        private void Window_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            //if (Keyboard.Modifiers == ModifierKeys.Control)
+            //{
+            //    if (e.Delta > 0 && viewModel.ZoomInCommand.CanExecute(null))
+            //    {
+            //        viewModel.ZoomInCommand.Execute(null);
+            //    }
+            //    else if (e.Delta < 0 && viewModel.ZoomOutCommand.CanExecute(null))
+            //    {
+            //        viewModel.ZoomOutCommand.Execute(null);
+            //    }
+            //}
+        }
+
+        private void MyPictureBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            viewModel.TestClickCommand.Execute(e);
         }
     }
 }

@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +58,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\DrawImageOnRender.cs" />
+    <Compile Include="Commands\TestClick.cs" />
+    <Compile Include="Models\BitmapPixels.cs" />
+    <Compile Include="Models\GetName.cs" />
+    <Compile Include="Models\ImageData.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\DotCountingPanel.xaml.cs">
       <DependentUpon>DotCountingPanel.xaml</DependentUpon>
     </Compile>
@@ -71,6 +79,12 @@
     </Compile>
     <Compile Include="Views\ImageFilteringPanel.xaml.cs">
       <DependentUpon>ImageFilteringPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyPictureBox.xaml.cs">
+      <DependentUpon>MyPictureBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyRenderBox.xaml.cs">
+      <DependentUpon>MyRenderBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PlanimetricCircleDrawingPanel.xaml.cs">
       <DependentUpon>PlanimetricCircleDrawingPanel.xaml</DependentUpon>
@@ -125,6 +139,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MyPictureBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MyRenderBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PlanimetricCircleDrawingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

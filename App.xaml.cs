@@ -1,4 +1,5 @@
-﻿using GraDeMarCoWPF.ViewModels;
+﻿using GraDeMarCo;
+using GraDeMarCoWPF.ViewModels;
 using GraDeMarCoWPF.Views;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,11 @@ namespace GraDeMarCoWPF
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ImageWindow imageWindow = new ImageWindow ();
+            var imageData = new ImageData();
+
+            var imageViewModel = new ImageViewModel();
+
+            ImageWindow imageWindow = new ImageWindow(imageViewModel);
             MainWindow mainWindow = new MainWindow (imageWindow);
             mainWindow.Show ();
         }

@@ -12,7 +12,11 @@
     <Window.DataContext>
         <ObjectDataProvider ObjectType="vm:MainViewModel">
             <ObjectDataProvider.ConstructorParameters>
-                <v:ImageWindow/>
+                <ObjectDataProvider ObjectType="v:ImageWindow">
+                    <ObjectDataProvider.ConstructorParameters>
+                        <vm:ImageViewModel/>
+                    </ObjectDataProvider.ConstructorParameters>
+                </ObjectDataProvider>
             </ObjectDataProvider.ConstructorParameters>
         </ObjectDataProvider>
     </Window.DataContext>

@@ -4,12 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraDeMarCoWPF.Views"
+        xmlns:vm="clr-namespace:GraDeMarCoWPF.ViewModels"
         mc:Ignorable="d"
         Title="画像" Height="320" Width="320"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        PreviewMouseWheel="Window_PreviewMouseWheel">
+    <Window.DataContext>
+        <vm:ImageViewModel/>
+    </Window.DataContext>
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <Image Source="D:\Projects\GrainDetector\sample1.jpg" Stretch="None"/>
+            <Grid PreviewMouseDown="MyPictureBox_MouseDown">
+                <local:MyPictureBox Source="{Binding DisplayedImage}" ZoomScale="{Binding ZoomScale}" Panel.ZIndex="0"/>
+                <local:MyRenderBox Panel.ZIndex="1"/>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Window>
