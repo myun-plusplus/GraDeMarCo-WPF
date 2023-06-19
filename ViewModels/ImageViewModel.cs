@@ -1,11 +1,8 @@
-﻿using GraDeMarCo;
-using GraDeMarCoWPF.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GraDeMarCoWPF.Commands;
+using GraDeMarCoWPF.Models;
+using System.ComponentModel;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace GraDeMarCoWPF.ViewModels
@@ -35,6 +32,32 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 _zoomScale = value;
                 NotifyPropertyChanged(GetName.Of(() => ZoomScale));
+
+                if (DisplayedImage != null)
+                {
+                    ImageWidth = DisplayedImage.Width * value;
+                    ImageHeight = DisplayedImage.Height * value;
+                }
+            }
+        }
+
+        public double ImageWidth
+        {
+            get { return _imageWidth; }
+            set
+            {
+                _imageWidth = value;
+                NotifyPropertyChanged(GetName.Of(() => ImageWidth));
+            }
+        }
+
+        public double ImageHeight
+        {
+            get { return _imageHeight; }
+            set
+            {
+                _imageHeight = value;
+                NotifyPropertyChanged(GetName.Of(() => ImageHeight));
             }
         }
 
@@ -44,17 +67,34 @@ namespace GraDeMarCoWPF.ViewModels
         public ICommand TestClickCommand { get; private set; }
 
         private WriteableBitmap _displayedImage;
+        private WriteableBitmap _dummyImage;
         private double _zoomScale;
+        private double _imageWidth;
+        private double _imageHeight;
 
-        private ImageData imageData;
+        private ImageDisplay imageDisplay;
 
-        public ImageViewModel(/*ImageData imageData*/)
+        public ImageViewModel()
         {
-            //this.imageData = imageData;
-            this.TestClickCommand = new TestClick(this);
+            this.imageDisplay = Workspace.Instance.ImageDisplay;
+            this.imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
 
-            //this.ZoomInCommand = CreateCommand(_ => { ZoomScale *= 2.0; }, _ => ZoomScale < 8.0);
-            //this.ZoomOutCommand = CreateCommand(_ => { ZoomScale *= 0.5; }, _ => ZoomScale > 0.125);
+            this.ZoomInCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 2.0; }, _ => this.imageDisplay.ZoomScale < 8.0);
+            this.ZoomOutCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 0.5; }, _ => this.imageDisplay.ZoomScale > 0.125);
+
+            this.TestClickCommand = new TestClick(this);
+        }
+
+        private void imageDisplay_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == GetName.Of(() => imageDisplay.DisplayedImage))
+            {
+                this.DisplayedImage = imageDisplay.DisplayedImage;
+            }
+            else if (e.PropertyName == GetName.Of(() => imageDisplay.ZoomScale))
+            {
+                this.ZoomScale = imageDisplay.ZoomScale;
+            }
         }
     }
 }

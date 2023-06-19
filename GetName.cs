@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace GraDeMarCo
+namespace GraDeMarCoWPF
 {
     public static class GetName
     {

@@ -14,31 +14,11 @@
 
         private Workspace()
         {
-            ModelA = new ModelA();
-            ModelB = new ModelB(ModelA);
+            ImageData = new ImageData();
+            ImageDisplay = new ImageDisplay(ImageData);
         }
 
-        public ModelA ModelA { get; private set; }
-        public ModelB ModelB { get; private set; }
-    }
-
-    public class ModelA
-    {
-        public string a { get; set; }
-
-        public ModelA()
-        {
-
-        }
-    }
-
-    public class ModelB
-    {
-        private ModelA a;
-
-        public ModelB(ModelA a)
-        {
-            this.a = a;
-        }
+        public ImageData ImageData { get; private set; }
+        public ImageDisplay ImageDisplay { get; private set; }
     }
 }

@@ -7,13 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Image Source="{Binding Source, RelativeSource={RelativeSource AncestorType=local:MyPictureBox}}" Stretch="None">
+        <Image x:Name="image" Source="{Binding Source, RelativeSource={RelativeSource AncestorType=local:MyPictureBox}}"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None">
             <Image.LayoutTransform>
                 <ScaleTransform
                             ScaleX="{Binding ZoomScale, RelativeSource={RelativeSource AncestorType=local:MyPictureBox}}"
-                            ScaleY="{Binding ZoomScale, RelativeSource={RelativeSource AncestorType=local:MyPictureBox}}"
-                            CenterX="0.5"
-                            CenterY="0.5"/>
+                            ScaleY="{Binding ZoomScale, RelativeSource={RelativeSource AncestorType=local:MyPictureBox}}"/>
             </Image.LayoutTransform>
         </Image>
     </Grid>

@@ -61,8 +61,10 @@
     <Compile Include="Commands\DrawImageOnRender.cs" />
     <Compile Include="Commands\TestClick.cs" />
     <Compile Include="Models\BitmapPixels.cs" />
-    <Compile Include="Models\GetName.cs" />
+    <Compile Include="GetName.cs" />
     <Compile Include="Models\ImageData.cs" />
+    <Compile Include="Models\ImageDisplay.cs" />
+    <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\DotCountingPanel.xaml.cs">
@@ -79,6 +81,13 @@
     </Compile>
     <Compile Include="Views\ImageFilteringPanel.xaml.cs">
       <DependentUpon>ImageFilteringPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageWindow.xaml.cs">
+      <DependentUpon>ImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\MyPictureBox.xaml.cs">
       <DependentUpon>MyPictureBox.xaml</DependentUpon>
@@ -113,39 +122,32 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ImageWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\OpenImageWindow.cs" />
     <Compile Include="Models\OpenWindowService.cs" />
-    <Compile Include="ViewModels\BindableBase.cs" />
+    <Compile Include="Models\BindableBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\ImageAreaReservingPanel.xaml.cs">
       <DependentUpon>ImageAreaReservingPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ImageWindow.xaml.cs">
-      <DependentUpon>ImageWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Views\MyPictureBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\ImageWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\MyPictureBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\MyRenderBox.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\PlanimetricCircleDrawingPanel.xaml">
       <SubType>Designer</SubType>

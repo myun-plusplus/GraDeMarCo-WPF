@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace GraDeMarCoWPF.ViewModels
+namespace GraDeMarCoWPF.Models
 {
     public class BindableBase : INotifyPropertyChanged
     {

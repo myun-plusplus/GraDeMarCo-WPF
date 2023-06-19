@@ -12,11 +12,7 @@
     <Window.DataContext>
         <ObjectDataProvider ObjectType="vm:MainViewModel">
             <ObjectDataProvider.ConstructorParameters>
-                <ObjectDataProvider ObjectType="v:ImageWindow">
-                    <ObjectDataProvider.ConstructorParameters>
-                        <vm:ImageViewModel/>
-                    </ObjectDataProvider.ConstructorParameters>
-                </ObjectDataProvider>
+                <v:ImageWindow/>
             </ObjectDataProvider.ConstructorParameters>
         </ObjectDataProvider>
     </Window.DataContext>
@@ -37,12 +33,12 @@
                 <MenuItem Header="終了(_X)"/>
             </MenuItem>
             <MenuItem Header="画像(_I)">
-                <MenuItem Header="画像を開く(_O)" Command="{Binding OpenImageWindowCommand}"/>
+                <MenuItem Header="画像を開く(_O)" Command="{Binding OpenImage}"/>
                 <MenuItem Header="画像を保存する(_S)"/>
             </MenuItem>
             <MenuItem Header="表示(_V)">
-                <MenuItem Header="拡大(_I)"/>
-                <MenuItem Header="縮小(_O)"/>
+                <MenuItem Header="拡大(_I)" Command="{Binding ZoomInCommand}"/>
+                <MenuItem Header="縮小(_O)" Command="{Binding ZoomOutCommand}"/>
             </MenuItem>
         </Menu>
         <TabControl Height="425">
