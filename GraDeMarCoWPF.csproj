@@ -66,6 +66,7 @@
     <Compile Include="Models\ImageData.cs" />
     <Compile Include="Models\ImageDisplay.cs" />
     <Compile Include="Models\Workspace.cs" />
+    <Compile Include="ViewModels\ImageAreaSelectingViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\DotCountingPanel.xaml.cs">
@@ -111,7 +112,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ImageAreaReservingPanel.xaml">
+    <Page Include="Views\ImageAreaSelectingPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,8 +132,8 @@
     <Compile Include="Models\OpenWindowService.cs" />
     <Compile Include="Models\BindableBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="Views\ImageAreaReservingPanel.xaml.cs">
-      <DependentUpon>ImageAreaReservingPanel.xaml</DependentUpon>
+    <Compile Include="Views\ImageAreaSelectingPanel.xaml.cs">
+      <DependentUpon>ImageAreaSelectingPanel.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\ImageWindow.xaml">
       <SubType>Designer</SubType>

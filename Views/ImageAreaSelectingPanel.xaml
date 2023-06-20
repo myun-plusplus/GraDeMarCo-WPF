@@ -1,18 +1,29 @@
-﻿<UserControl x:Class="GraDeMarCoWPF.Views.ImageAreaReservingPanel"
+﻿<UserControl x:Class="GraDeMarCoWPF.Views.ImageAreaSelectingPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GraDeMarCoWPF.Views"
+             xmlns:vm="clr-namespace:GraDeMarCoWPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="0" d:DesignWidth="0">
+    <UserControl.DataContext>
+        <vm:ImageAreaSelectingViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
                 <Label Content="画像範囲選択" Style="{DynamicResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Content="範囲選択" Style="{DynamicResource NormalToggleButton}"/>
-                    <Button Content="最大範囲" Style="{DynamicResource NormalButton}"/>
+                    <ToggleButton
+                        Command="{Binding AreaReserveEnabled}"
+                        CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                        Content="範囲選択"
+                        Style="{DynamicResource NormalToggleButton}"/>
+                    <Button
+                        Command="{Binding SelectMaxAreaCommand}"
+                        Content="最大範囲"
+                        Style="{DynamicResource NormalButton}"/>
                 </StackPanel>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -25,15 +36,23 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="X範囲:" Style="{DynamicResource NormalLabel}"/>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                        <TextBox
+                            Text="{Binding LowerX, UpdateSourceTrigger=PropertyChanged}"                            
+                            Style="{DynamicResource ImageSizeBox}"/>
                         <Label Content="-" Style="{DynamicResource NormalLabel}"/>
-                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                        <TextBox
+                            Text="{Binding UpperX, UpdateSourceTrigger=PropertyChanged}"                            
+                            Style="{DynamicResource ImageSizeBox}"/>
                     </StackPanel>
                     <Label Grid.Row="1" Grid.Column="0" Content="Y範囲:" Style="{DynamicResource NormalLabel}"/>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                        <TextBox
+                            Text="{Binding LowerY, UpdateSourceTrigger=PropertyChanged}"                            
+                            Style="{DynamicResource ImageSizeBox}"/>
                         <Label Content="-" Style="{DynamicResource NormalLabel}"/>
-                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                        <TextBox
+                            Text="{Binding UpperY, UpdateSourceTrigger=PropertyChanged}"                            
+                            Style="{DynamicResource ImageSizeBox}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

@@ -44,7 +44,7 @@
         <TabControl Height="425">
             <TabItem Header="画像範囲･円選択">
                 <StackPanel Orientation="Vertical">
-                    <v:ImageAreaReservingPanel/>
+                    <v:ImageAreaSelectingPanel/>
                     <v:PlanimetricCircleDrawingPanel/>
                 </StackPanel>
             </TabItem>
