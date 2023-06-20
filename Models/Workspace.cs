@@ -16,9 +16,11 @@
         {
             ImageData = new ImageData();
             ImageDisplay = new ImageDisplay(ImageData);
+            ImageArea = new ImageArea();
         }
 
         public ImageData ImageData { get; private set; }
         public ImageDisplay ImageDisplay { get; private set; }
+        public ImageArea ImageArea { get; private set; }
     }
 }
