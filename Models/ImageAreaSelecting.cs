@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Windows;
+﻿using System.Windows;
 
 namespace GraDeMarCoWPF.Models
 {
@@ -60,8 +59,9 @@ namespace GraDeMarCoWPF.Models
         private Point _firstLocation;
         private Point _secondLocation;
 
-        public ImageAreaSelecting(ImageArea imageArea)
+        public ImageAreaSelecting(ImageDisplay imageDisplay, ImageArea imageArea)
         {
+            this.imageDisplay = imageDisplay;
             this.imageArea = imageArea;
         }
 
