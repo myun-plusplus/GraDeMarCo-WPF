@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Imaging;
+﻿using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace GraDeMarCoWPF.Models
 {
@@ -40,6 +41,11 @@ namespace GraDeMarCoWPF.Models
         public void UpdateImage()
         {
             DisplayedImage = imageData.OriginalImage.Clone();
+        }
+
+        public Point GetAbsoluteLocation(Point location)
+        {
+            return new Point((int)(location.X * ZoomScale), (int)(location.Y * ZoomScale));
         }
     }
 }
