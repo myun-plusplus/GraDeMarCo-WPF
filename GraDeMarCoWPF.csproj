@@ -63,6 +63,8 @@
     <Compile Include="Commands\TestClick.cs" />
     <Compile Include="Models\BitmapPixels.cs" />
     <Compile Include="GetName.cs" />
+    <Compile Include="Models\ImageArea.cs" />
+    <Compile Include="Models\ImageAreaSelecting.cs" />
     <Compile Include="Models\ImageData.cs" />
     <Compile Include="Models\ImageDisplay.cs" />
     <Compile Include="Models\Workspace.cs" />
