@@ -1,4 +1,6 @@
-﻿namespace GraDeMarCoWPF.Models
+﻿using System.Windows;
+
+namespace GraDeMarCoWPF.Models
 {
     public class ImageArea : BindableBase
     {
@@ -38,6 +40,14 @@
             {
                 _upperY = value;
                 NotifyPropertyChanged(GetName.Of(() => UpperY));
+            }
+        }
+
+        public Rect Area
+        {
+            get
+            {
+                return new Rect(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY);
             }
         }
 
