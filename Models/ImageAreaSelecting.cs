@@ -5,6 +5,7 @@ namespace GraDeMarCoWPF.Models
 {
     public class ImageAreaSelecting
     {
+        private ImageDisplay imageDisplay;
         private ImageArea imageArea;
 
         public Rect Area
@@ -30,7 +31,9 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _firstLocation = value;
-                var rect = new Rect(_firstLocation, _secondLocation);
+                var rect = new Rect(
+                    imageDisplay.GetAbsoluteLocation(_firstLocation),
+                    imageDisplay.GetAbsoluteLocation(_secondLocation));
                 imageArea.LowerX = (int)rect.TopLeft.X;
                 imageArea.LowerY = (int)rect.TopLeft.Y;
                 imageArea.UpperX = (int)rect.BottomRight.X;
@@ -44,7 +47,9 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _secondLocation = value;
-                var rect = new Rect(_firstLocation, _secondLocation);
+                var rect = new Rect(
+                    imageDisplay.GetAbsoluteLocation(_firstLocation),
+                    imageDisplay.GetAbsoluteLocation(_secondLocation));
                 imageArea.LowerX = (int)rect.TopLeft.X;
                 imageArea.LowerY = (int)rect.TopLeft.Y;
                 imageArea.UpperX = (int)rect.BottomRight.X;
