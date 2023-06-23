@@ -4,11 +4,11 @@ namespace GraDeMarCoWPF.Models
 {
     public interface IToggleFunction
     {
-        void Start();
-        void Stop();
+        void StartFunction();
+        void StopFunction();
     }
 
-    public interface IDrawingOnRender
+    public interface IDrawingOnRenderEvent
     {
         void DrawOnRender(DrawingContext drawingContext);
     }

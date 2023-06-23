@@ -1,8 +1,9 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
 {
-    public class ImageAreaSelecting
+    public class ImageAreaSelecting : IToggleFunction, IDrawingOnRenderEvent, IDrawingOnImageSource
     {
         private ImageDisplay imageDisplay;
         private ImageArea imageArea;
@@ -65,12 +66,12 @@ namespace GraDeMarCoWPF.Models
             this.imageArea = imageArea;
         }
 
-        public void StartSelecting()
+        public void StartFunction()
         {
             state = _State.NoneSelected;
         }
 
-        public void StopSelecting()
+        public void StopFunction()
         {
             state = _State.NotActive;
         }
@@ -104,6 +105,16 @@ namespace GraDeMarCoWPF.Models
             {
                 secondLocation = location;
             }
+        }
+
+        public void DrawOnRender(DrawingContext drawingContext)
+        {
+
+        }
+
+        public void DrawOnImageSource(ImageSource imageSource)
+        {
+
         }
     }
 }
