@@ -7,6 +7,7 @@ namespace GraDeMarCoWPF.Models
     {
         private ImageDisplay imageDisplay;
         private ImageArea imageArea;
+        private OutlineDrawingTool drawingTool;
 
         public Rect Area
         {
@@ -31,9 +32,7 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _firstLocation = value;
-                var rect = new Rect(
-                    imageDisplay.GetAbsoluteLocation(_firstLocation),
-                    imageDisplay.GetAbsoluteLocation(_secondLocation));
+                var rect = new Rect(firstLocation, secondLocation);
                 imageArea.LowerX = (int)rect.TopLeft.X;
                 imageArea.LowerY = (int)rect.TopLeft.Y;
                 imageArea.UpperX = (int)rect.BottomRight.X;
@@ -47,9 +46,7 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _secondLocation = value;
-                var rect = new Rect(
-                    imageDisplay.GetAbsoluteLocation(_firstLocation),
-                    imageDisplay.GetAbsoluteLocation(_secondLocation));
+                var rect = new Rect(firstLocation, secondLocation);
                 imageArea.LowerX = (int)rect.TopLeft.X;
                 imageArea.LowerY = (int)rect.TopLeft.Y;
                 imageArea.UpperX = (int)rect.BottomRight.X;
@@ -60,10 +57,13 @@ namespace GraDeMarCoWPF.Models
         private Point _firstLocation;
         private Point _secondLocation;
 
-        public ImageAreaSelecting(ImageDisplay imageDisplay, ImageArea imageArea)
+        public ImageAreaSelecting(ImageDisplay imageDisplay, ImageArea imageArea, OutlineDrawingTool drawingTool)
         {
             this.imageDisplay = imageDisplay;
             this.imageArea = imageArea;
+            this.drawingTool = drawingTool;
+
+            this.drawingTool.Color = Colors.Green;
         }
 
         public void StartFunction()
@@ -85,13 +85,13 @@ namespace GraDeMarCoWPF.Models
             else if (state == _State.NoneSelected)
             {
                 state = _State.FirstLocationSelected;
-                firstLocation = location;
-                secondLocation = location;
+                firstLocation = imageDisplay.GetRelaiveLocation(location);
+                secondLocation = firstLocation;
             }
             else if (state == _State.FirstLocationSelected)
             {
                 state = _State.AreaSelected;
-                secondLocation = location;
+                secondLocation = imageDisplay.GetRelaiveLocation(location);
             }
             else
             {
@@ -103,13 +103,16 @@ namespace GraDeMarCoWPF.Models
         {
             if (state == _State.FirstLocationSelected)
             {
-                secondLocation = location;
+                secondLocation = imageDisplay.GetRelaiveLocation(location);
             }
         }
 
         public void DrawOnRender(DrawingContext drawingContext)
         {
-
+            if (state == _State.FirstLocationSelected || state == _State.AreaSelected)
+            {
+                drawingContext.DrawRectangle(null, drawingTool.Pen, Area);
+            }
         }
 
         public void DrawOnImageSource(ImageSource imageSource)

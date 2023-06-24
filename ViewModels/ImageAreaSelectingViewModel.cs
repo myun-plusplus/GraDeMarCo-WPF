@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using GraDeMarCoWPF.Models;
+using System.Windows.Input;
 
 namespace GraDeMarCoWPF.ViewModels
 {
@@ -11,6 +12,15 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 _areaSelectEnabled = value;
                 NotifyPropertyChanged(GetName.Of(() => AreaReserveEnabled));
+
+                if (value)
+                {
+                    this.imageAreaSelecting.StartFunction();
+                }
+                else
+                {
+                    this.imageAreaSelecting.StopFunction();
+                }
             }
         }
 
@@ -53,8 +63,9 @@ namespace GraDeMarCoWPF.ViewModels
             }
         }
 
-        public ICommand ToggleAreaSelectModeCommand;
-        public ICommand SelectMaxAreaCommand;
+        public ICommand SelectMaxAreaCommand { get; private set; }
+
+        private ImageAreaSelecting imageAreaSelecting;
 
         private bool _areaSelectEnabled;
         private int _lowerX;
@@ -64,7 +75,7 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ImageAreaSelectingViewModel()
         {
-
+            this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
         }
     }
 }

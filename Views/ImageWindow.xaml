@@ -14,7 +14,9 @@
     </Window.DataContext>
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-            <Grid PreviewMouseDown="MyPictureBox_MouseDown">
+            <Grid
+                PreviewMouseDown="MyPictureBox_MouseDown"
+                PreviewMouseMove="MyPictureBox_MouseMove">
                 <local:MyPictureBox
                     x:Name="myPictureBox"
                     Source="{Binding DisplayedImage, Mode=OneWay}"

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using GraDeMarCoWPF.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -9,6 +10,11 @@ namespace GraDeMarCoWPF.Views
     /// </summary>
     public partial class MyRenderBox : UserControl
     {
+        private ImageViewModel viewModel
+        {
+            get { return this.DataContext as ImageViewModel; }
+        }
+
         public static readonly DependencyProperty ZoomScaleProperty = DependencyProperty.Register("RenderZoomScale", typeof(double), typeof(MyRenderBox));
         
         public double RenderZoomScale
@@ -38,6 +44,9 @@ namespace GraDeMarCoWPF.Views
             drawingContext.PushTransform(scaleTransform);
 
             drawingContext.DrawEllipse(new SolidColorBrush(Colors.Transparent), new Pen(new SolidColorBrush(Colors.Blue), 1.0), new Point(100, 100), 50, 50);
+            drawingContext.DrawEllipse(new SolidColorBrush(Colors.Red), new Pen(new SolidColorBrush(Colors.Red), 0.0), new Point(200, 100), 5.0, 5.0);
+
+            viewModel.DisplayImageAreaCommand.Execute(drawingContext);
 
             drawingContext.Pop();
         }

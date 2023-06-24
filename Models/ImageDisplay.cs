@@ -47,5 +47,10 @@ namespace GraDeMarCoWPF.Models
         {
             return new Point((int)(location.X * ZoomScale), (int)(location.Y * ZoomScale));
         }
+
+        public Point GetRelaiveLocation(Point location)
+        {
+            return new Point((int)(location.X / ZoomScale), (int)(location.Y / ZoomScale));
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using GraDeMarCoWPF.Commands;
 using GraDeMarCoWPF.Models;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -63,8 +64,16 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
+        public ICommand DisplayImageAreaCommand { get; private set; }
+        public ICommand LeftClickCommand { get; private set; }
+        public ICommand RightClickCommand { get; private set; }
+        public ICommand MouseMoveCommand { get; private set; }
+
 
         public ICommand TestClickCommand { get; private set; }
+
+        private ImageDisplay imageDisplay;
+        private ImageAreaSelecting imageAreaSelecting;
 
         private WriteableBitmap _displayedImage;
         private WriteableBitmap _dummyImage;
@@ -72,15 +81,20 @@ namespace GraDeMarCoWPF.ViewModels
         private double _imageWidth;
         private double _imageHeight;
 
-        private ImageDisplay imageDisplay;
-
         public ImageViewModel()
         {
             this.imageDisplay = Workspace.Instance.ImageDisplay;
             this.imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
+            this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
 
             this.ZoomInCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 2.0; }, _ => this.imageDisplay.ZoomScale < 8.0);
             this.ZoomOutCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 0.5; }, _ => this.imageDisplay.ZoomScale > 0.125);
+            DisplayImageAreaCommand = CreateCommand(drawingContext =>
+            {
+                this.imageAreaSelecting.DrawOnRender(drawingContext as DrawingContext);
+            });
+            this.LeftClickCommand = CreateCommand(location => this.imageAreaSelecting.Click((Point)location));
+            this.MouseMoveCommand = CreateCommand(location => this.imageAreaSelecting.MouseMove((Point)location));
 
             this.TestClickCommand = new TestClick(this);
         }

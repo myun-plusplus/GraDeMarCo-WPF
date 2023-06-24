@@ -16,10 +16,10 @@
                 <Label Content="画像範囲選択" Style="{DynamicResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton
-                        Command="{Binding AreaReserveEnabled}"
-                        CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                        IsChecked="{Binding AreaReserveEnabled}"
                         Content="範囲選択"
                         Style="{DynamicResource NormalToggleButton}"/>
+                    <!--CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"-->
                     <Button
                         Command="{Binding SelectMaxAreaCommand}"
                         Content="最大範囲"

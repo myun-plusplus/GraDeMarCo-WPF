@@ -19,6 +19,7 @@ namespace GraDeMarCoWPF.Views
         {
             InitializeComponent();
             this.DataContext = new ImageViewModel();
+            this.myRenderBox.DataContext = this.DataContext;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -46,7 +47,20 @@ namespace GraDeMarCoWPF.Views
 
         private void MyPictureBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            viewModel.TestClickCommand.Execute(e);
+            //viewModel.TestClickCommand.Execute(e);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                viewModel.LeftClickCommand.Execute(e.GetPosition(this));
+
+                this.myRenderBox.InvalidateVisual();
+            }
+        }
+
+        private void MyPictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            viewModel.MouseMoveCommand.Execute(e.GetPosition(this));
+
+            this.myRenderBox.InvalidateVisual();
         }
     }
 }
