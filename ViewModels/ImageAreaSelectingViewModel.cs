@@ -1,4 +1,5 @@
 ﻿using GraDeMarCoWPF.Models;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace GraDeMarCoWPF.ViewModels
@@ -26,56 +27,61 @@ namespace GraDeMarCoWPF.ViewModels
 
         public int LowerX
         {
-            get { return _lowerX; }
+            get { return imageArea.LowerX; }
             set
             {
-                _lowerX = value;
+                imageArea.LowerX = value;
                 NotifyPropertyChanged(GetName.Of(() => LowerX));
             }
         }
 
         public int UpperX
         {
-            get { return _upperX; }
+            get { return imageArea.UpperX; }
             set
             {
-                _upperX = value;
+                imageArea.UpperX = value;
                 NotifyPropertyChanged(GetName.Of(() => UpperX));
             }
         }
         public int LowerY
         {
-            get { return _lowerY; }
+            get { return imageArea.LowerY; }
             set
             {
-                _lowerY = value;
+                imageArea.LowerY = value;
                 NotifyPropertyChanged(GetName.Of(() => LowerY));
             }
         }
 
         public int UpperY
         {
-            get { return _upperY; }
+            get { return imageArea.UpperY; }
             set
             {
-                _upperY = value;
+                imageArea.UpperY = value;
                 NotifyPropertyChanged(GetName.Of(() => UpperY));
             }
         }
 
         public ICommand SelectMaxAreaCommand { get; private set; }
 
+        private ImageArea imageArea;
         private ImageAreaSelecting imageAreaSelecting;
 
         private bool _areaSelectEnabled;
-        private int _lowerX;
-        private int _upperX;
-        private int _lowerY;
-        private int _upperY;
 
         public ImageAreaSelectingViewModel()
         {
+            this.imageArea = Workspace.Instance.ImageArea;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
+
+            this.imageArea.PropertyChanged += imageArea_PropertyChanged;
+        }
+
+        private void imageArea_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            NotifyPropertyChanged(e.PropertyName);
         }
     }
 }
