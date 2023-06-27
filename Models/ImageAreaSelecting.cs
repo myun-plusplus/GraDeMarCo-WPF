@@ -32,7 +32,9 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _firstLocation = value;
-                var rect = new Rect(firstLocation, secondLocation);
+                var rect = new Rect(
+                    imageDisplay.GetAbsoluteLocation(firstLocation),
+                    imageDisplay.GetAbsoluteLocation(secondLocation));
                 imageArea.LowerX = (int)rect.TopLeft.X;
                 imageArea.LowerY = (int)rect.TopLeft.Y;
                 imageArea.UpperX = (int)rect.BottomRight.X;
@@ -46,7 +48,9 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _secondLocation = value;
-                var rect = new Rect(firstLocation, secondLocation);
+                var rect = new Rect(
+                    imageDisplay.GetAbsoluteLocation(firstLocation),
+                    imageDisplay.GetAbsoluteLocation(secondLocation));
                 imageArea.LowerX = (int)rect.TopLeft.X;
                 imageArea.LowerY = (int)rect.TopLeft.Y;
                 imageArea.UpperX = (int)rect.BottomRight.X;

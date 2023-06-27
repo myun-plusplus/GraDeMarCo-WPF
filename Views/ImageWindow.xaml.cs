@@ -47,10 +47,9 @@ namespace GraDeMarCoWPF.Views
 
         private void MyPictureBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //viewModel.TestClickCommand.Execute(e);
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                viewModel.LeftClickCommand.Execute(e.GetPosition(this));
+                viewModel.LeftClickCommand.Execute(e.GetPosition(myPictureBox));
 
                 this.myRenderBox.InvalidateVisual();
             }
@@ -58,7 +57,7 @@ namespace GraDeMarCoWPF.Views
 
         private void MyPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            viewModel.MouseMoveCommand.Execute(e.GetPosition(this));
+            viewModel.MouseMoveCommand.Execute(e.GetPosition(myPictureBox));
 
             this.myRenderBox.InvalidateVisual();
         }

@@ -45,7 +45,9 @@ namespace GraDeMarCoWPF.Models
 
         public Point GetAbsoluteLocation(Point location)
         {
-            return new Point((int)(location.X * ZoomScale), (int)(location.Y * ZoomScale));
+            return new Point(
+                (int)(location.X * DisplayedImage.PixelWidth / DisplayedImage.Width),
+                (int)(location.Y * DisplayedImage.PixelHeight / DisplayedImage.Height));
         }
 
         public Point GetRelaiveLocation(Point location)

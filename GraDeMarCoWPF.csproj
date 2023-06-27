@@ -61,7 +61,6 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\TestClick.cs" />
     <Compile Include="GetName.cs" />
-    <Compile Include="Models\DrawingOnRender.cs" />
     <Compile Include="Models\DrawingTool.cs" />
     <Compile Include="Models\ImageArea.cs" />
     <Compile Include="Models\ImageAreaSelecting.cs" />
