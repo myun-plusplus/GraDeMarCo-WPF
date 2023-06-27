@@ -14,6 +14,8 @@ namespace GraDeMarCoWPF.ViewModels
         public ICommand OpenImageWindowCommand { get; private set; }
         public ICommand OpenImage { get; private set; }
 
+        public ICommand SaveWorkspace { get; private set; }
+
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
 
@@ -31,6 +33,11 @@ namespace GraDeMarCoWPF.ViewModels
                 imageDisplay.UpdateImage();
                 imageDisplay.ZoomScale = 1.0;
                 OpenImageWindowCommand.Execute(null);
+            });
+            SaveWorkspace = CreateCommand(_ =>
+            {
+                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
+                Workspace.Instance.Save(filePath);
             });
             this.ZoomInCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 2.0; }, _ => this.imageDisplay.ZoomScale < 8.0);
             this.ZoomOutCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 0.5; }, _ => this.imageDisplay.ZoomScale > 0.125);

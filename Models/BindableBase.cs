@@ -3,8 +3,10 @@ using System.ComponentModel;
 
 namespace GraDeMarCoWPF.Models
 {
+    [Serializable]
     public class BindableBase : INotifyPropertyChanged
     {
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(String propertyName)

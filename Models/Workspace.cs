@@ -1,5 +1,10 @@
-﻿namespace GraDeMarCoWPF.Models
+﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace GraDeMarCoWPF.Models
 {
+    [Serializable]
     public class Workspace
     {
         public static Workspace Instance
@@ -12,12 +17,6 @@
 
         private static Workspace _instance = new Workspace();
 
-        public ImageData ImageData { get; private set; }
-        public ImageDisplay ImageDisplay { get; private set; }
-        public ImageArea ImageArea { get; private set; }
-        public OutlineDrawingTool ImageAreaDrawingTool { get; private set; }
-        public ImageAreaSelecting ImageAreaSelecting { get; private set; }
-
         private Workspace()
         {
             ImageData = new ImageData();
@@ -25,6 +24,38 @@
             ImageArea = new ImageArea();
             ImageAreaDrawingTool = new OutlineDrawingTool();
             ImageAreaSelecting = new ImageAreaSelecting(ImageDisplay, ImageArea, ImageAreaDrawingTool);
+        }
+
+        [NonSerialized]
+        public ImageData ImageData;
+
+        [NonSerialized]
+        public ImageDisplay ImageDisplay;
+
+        public ImageArea ImageArea;
+
+        [NonSerialized]
+        public OutlineDrawingTool ImageAreaDrawingTool;
+
+        [NonSerialized]
+        public ImageAreaSelecting ImageAreaSelecting;
+
+        public void Save(string filePath)
+        {
+            byte[] data;
+
+            var formatter = new BinaryFormatter();
+            using (var ms = new MemoryStream())
+            {
+                formatter.Serialize(ms, this);
+                data = new byte[ms.Length];
+                data = ms.GetBuffer();
+            }
+
+            using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                fs.Write(data, 0, data.Length);
+            }
         }
     }
 }

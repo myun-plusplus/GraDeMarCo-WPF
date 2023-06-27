@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace GraDeMarCoWPF.Models
 {
+    [Serializable]
     public class ImageArea : BindableBase
     {
         public int LowerX
