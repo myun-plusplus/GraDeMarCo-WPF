@@ -14,12 +14,11 @@ namespace GraDeMarCoWPF.ViewModels
         {
             get
             {
-                return _displayedImage;
+                return imageDisplay.DisplayedImage;
             }
             set
             {
-                _displayedImage = value;
-                NotifyPropertyChanged(GetName.Of(() => DisplayedImage));
+                imageDisplay.DisplayedImage = value;
             }
         }
 
@@ -27,38 +26,41 @@ namespace GraDeMarCoWPF.ViewModels
         {
             get
             {
-                return _zoomScale;
+                return imageDisplay.ZoomScale;
             }
             set
             {
-                _zoomScale = value;
-                NotifyPropertyChanged(GetName.Of(() => ZoomScale));
-
-                if (DisplayedImage != null)
-                {
-                    ImageWidth = DisplayedImage.Width * value;
-                    ImageHeight = DisplayedImage.Height * value;
-                }
+                imageDisplay.ZoomScale = value;
             }
         }
 
         public double ImageWidth
         {
-            get { return _imageWidth; }
-            set
+            get
             {
-                _imageWidth = value;
-                NotifyPropertyChanged(GetName.Of(() => ImageWidth));
+                if (DisplayedImage != null)
+                {
+                    return DisplayedImage.Width * ZoomScale;
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
 
         public double ImageHeight
         {
-            get { return _imageHeight; }
-            set
+            get
             {
-                _imageHeight = value;
-                NotifyPropertyChanged(GetName.Of(() => ImageHeight));
+                if (DisplayedImage != null)
+                {
+                    return DisplayedImage.Height * ZoomScale;
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
 
@@ -75,40 +77,30 @@ namespace GraDeMarCoWPF.ViewModels
         private ImageDisplay imageDisplay;
         private ImageAreaSelecting imageAreaSelecting;
 
-        private WriteableBitmap _displayedImage;
-        private WriteableBitmap _dummyImage;
-        private double _zoomScale;
-        private double _imageWidth;
-        private double _imageHeight;
-
         public ImageViewModel()
         {
             this.imageDisplay = Workspace.Instance.ImageDisplay;
-            this.imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
 
-            this.ZoomInCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 2.0; }, _ => this.imageDisplay.ZoomScale < 8.0);
-            this.ZoomOutCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 0.5; }, _ => this.imageDisplay.ZoomScale > 0.125);
+            imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
+
+            ZoomInCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 2.0; }, _ => this.imageDisplay.ZoomScale < 8.0);
+            ZoomOutCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 0.5; }, _ => this.imageDisplay.ZoomScale > 0.125);
             DisplayImageAreaCommand = CreateCommand(drawingContext =>
             {
-                this.imageAreaSelecting.DrawOnRender(drawingContext as DrawingContext);
+                imageAreaSelecting.DrawOnRender(drawingContext as DrawingContext);
             });
-            this.LeftClickCommand = CreateCommand(location => this.imageAreaSelecting.Click((Point)location));
-            this.MouseMoveCommand = CreateCommand(location => this.imageAreaSelecting.MouseMove((Point)location));
+            LeftClickCommand = CreateCommand(location => this.imageAreaSelecting.Click((Point)location));
+            MouseMoveCommand = CreateCommand(location => this.imageAreaSelecting.MouseMove((Point)location));
 
-            this.TestClickCommand = new TestClick(this);
+            TestClickCommand = new TestClick(this);
         }
 
         private void imageDisplay_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == GetName.Of(() => imageDisplay.DisplayedImage))
-            {
-                this.DisplayedImage = imageDisplay.DisplayedImage;
-            }
-            else if (e.PropertyName == GetName.Of(() => imageDisplay.ZoomScale))
-            {
-                this.ZoomScale = imageDisplay.ZoomScale;
-            }
+            NotifyPropertyChanged(e.PropertyName);
+            NotifyPropertyChanged(GetName.Of(() => ImageWidth));
+            NotifyPropertyChanged(GetName.Of(() => ImageHeight));
         }
     }
 }
