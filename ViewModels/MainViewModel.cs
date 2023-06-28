@@ -8,6 +8,7 @@ namespace GraDeMarCoWPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private AppData appData;
         private ImageData imageData;
         private ImageDisplay imageDisplay;
 
@@ -25,9 +26,20 @@ namespace GraDeMarCoWPF.ViewModels
 
         public MainViewModel(ImageWindow imageWindow)
         {
+            this.appData = Workspace.Instance.AppData;
             this.imageData = Workspace.Instance.ImageData;
             this.imageDisplay = Workspace.Instance.ImageDisplay;
 
+            OpenWorkspaceCommand = CreateCommand(_ =>
+            {
+                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
+                Workspace.Instance.Load(filePath);
+            }, _ => appData.CanOpenWorkspace());
+            SaveWorkspace = CreateCommand(_ =>
+            {
+                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
+                Workspace.Instance.Save(filePath);
+            }, _ => appData.CanSaveWorkspace());
             this.OpenImageFileCommand = CreateCommand(_ => { imageData.OpenImageFile(null); });
             this.OpenImageWindowCommand = new OpenImageWindow(new OpenSubWindowService(imageWindow));
             this.OpenImage = CreateCommand(_ => {
@@ -35,19 +47,13 @@ namespace GraDeMarCoWPF.ViewModels
                 imageDisplay.UpdateImage();
                 imageDisplay.ZoomScale = 1.0;
                 OpenImageWindowCommand.Execute(null);
-            });
-            OpenWorkspaceCommand = CreateCommand(_ =>
-            {
-                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
-                Workspace.Instance.Load(filePath);
-            });
-            SaveWorkspace = CreateCommand(_ =>
-            {
-                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
-                Workspace.Instance.Save(filePath);
-            });
-            this.ZoomInCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 2.0; }, _ => this.imageDisplay.ZoomScale < 8.0);
-            this.ZoomOutCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 0.5; }, _ => this.imageDisplay.ZoomScale > 0.125);
+            }, _ => appData.CanOpenImage());
+            this.ZoomInCommand = CreateCommand(
+                _ => { this.imageDisplay.ZoomScale *= 2.0; },
+                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);
+            this.ZoomOutCommand = CreateCommand(
+                _ => { this.imageDisplay.ZoomScale *= 0.5; },
+                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
         }
     }
 }
