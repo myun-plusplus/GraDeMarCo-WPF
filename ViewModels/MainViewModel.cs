@@ -1,6 +1,7 @@
 ﻿using GraDeMarCoWPF.Commands;
 using GraDeMarCoWPF.Models;
 using GraDeMarCoWPF.Views;
+using System.Net;
 using System.Windows.Input;
 
 namespace GraDeMarCoWPF.ViewModels
@@ -10,11 +11,12 @@ namespace GraDeMarCoWPF.ViewModels
         private ImageData imageData;
         private ImageDisplay imageDisplay;
 
+        public ICommand OpenWorkspaceCommand { get; private set; }
+        public ICommand SaveWorkspace { get; private set; }
+
         public ICommand OpenImageFileCommand { get; private set; }
         public ICommand OpenImageWindowCommand { get; private set; }
         public ICommand OpenImage { get; private set; }
-
-        public ICommand SaveWorkspace { get; private set; }
 
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
@@ -33,6 +35,11 @@ namespace GraDeMarCoWPF.ViewModels
                 imageDisplay.UpdateImage();
                 imageDisplay.ZoomScale = 1.0;
                 OpenImageWindowCommand.Execute(null);
+            });
+            OpenWorkspaceCommand = CreateCommand(_ =>
+            {
+                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
+                Workspace.Instance.Load(filePath);
             });
             SaveWorkspace = CreateCommand(_ =>
             {

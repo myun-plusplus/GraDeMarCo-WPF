@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace GraDeMarCoWPF.Models
@@ -56,6 +57,45 @@ namespace GraDeMarCoWPF.Models
             {
                 fs.Write(data, 0, data.Length);
             }
+        }
+        public void Load(string filePath)
+        {
+            var fileInfo = new FileInfo(filePath);
+            var formatter = new BinaryFormatter();
+            Workspace workspace;
+
+            byte[] data = new byte[fileInfo.Length];
+            using (var stream = fileInfo.OpenRead())
+            {
+                stream.Read(data, 0, data.Length);
+            }
+
+            using (var ms = new MemoryStream())
+            {
+                ms.Write(data, 0, data.Length);
+                ms.Seek(0, SeekOrigin.Begin);
+                workspace = (Workspace)formatter.Deserialize(ms);
+            }
+
+            Copy(workspace.ImageArea, this.ImageArea);
+        }
+
+        private static void Copy<T>(T source, T destination)
+        {
+            var type = typeof(T);
+            foreach (var sourceProperty in type.GetProperties())
+            {
+                var targetProperty = type.GetProperty(sourceProperty.Name);
+                if (targetProperty.GetSetMethod() != null)
+                {
+                    targetProperty.SetValue(destination, sourceProperty.GetValue(source));
+                }
+            }
+            //foreach (var sourceField in type.GetFields())
+            //{
+            //    var targetField = type.GetField(sourceField.Name);
+            //    targetField.SetValue(destination, sourceField.GetValue(source));
+            //}
         }
     }
 }
