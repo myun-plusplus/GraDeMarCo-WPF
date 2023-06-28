@@ -20,12 +20,15 @@ namespace GraDeMarCoWPF.Models
 
         private Workspace()
         {
+            AppData = new AppData();
             ImageData = new ImageData();
             ImageDisplay = new ImageDisplay(ImageData);
             ImageArea = new ImageArea();
             ImageAreaDrawingTool = new OutlineDrawingTool();
             ImageAreaSelecting = new ImageAreaSelecting(ImageDisplay, ImageArea, ImageAreaDrawingTool);
         }
+
+        public AppData AppData;
 
         [NonSerialized]
         public ImageData ImageData;
@@ -77,6 +80,7 @@ namespace GraDeMarCoWPF.Models
                 workspace = (Workspace)formatter.Deserialize(ms);
             }
 
+            Copy(workspace.AppData, this.AppData);
             Copy(workspace.ImageArea, this.ImageArea);
         }
 
