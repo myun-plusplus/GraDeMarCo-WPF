@@ -6,10 +6,8 @@
              xmlns:local="clr-namespace:GraDeMarCoWPF.Views"
              xmlns:vm="clr-namespace:GraDeMarCoWPF.ViewModels"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vm:ImageAreaSelectingViewModel}"
              d:DesignHeight="0" d:DesignWidth="0">
-    <UserControl.DataContext>
-        <vm:ImageAreaSelectingViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">

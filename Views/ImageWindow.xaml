@@ -8,10 +8,8 @@
         mc:Ignorable="d"
         Title="画像" Height="320" Width="320"
         Closing="Window_Closing"
-        PreviewMouseWheel="Window_PreviewMouseWheel">
-    <Window.DataContext>
-        <vm:ImageViewModel/>
-    </Window.DataContext>
+        PreviewMouseWheel="Window_PreviewMouseWheel"
+        d:DataContext="{d:DesignInstance vm:ImageViewModel}">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
             <Grid

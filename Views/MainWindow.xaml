@@ -8,14 +8,8 @@
         xmlns:v="clr-namespace:GraDeMarCoWPF.Views"
         xmlns:vm="clr-namespace:GraDeMarCoWPF.ViewModels"
         mc:Ignorable="d"
-        Title="GraDeMarCo" Width="370" Height="550">
-    <Window.DataContext>
-        <ObjectDataProvider ObjectType="vm:MainViewModel">
-            <ObjectDataProvider.ConstructorParameters>
-                <v:ImageWindow/>
-            </ObjectDataProvider.ConstructorParameters>
-        </ObjectDataProvider>
-    </Window.DataContext>
+        Title="GraDeMarCo" Width="370" Height="550"
+        d:DataContext="{d:DesignInstance vm:MainViewModel}">
     <Window.InputBindings>
         <KeyBinding Key="N" Modifiers="Ctrl"/>
         <KeyBinding Key="O" Modifiers="Ctrl"/>
