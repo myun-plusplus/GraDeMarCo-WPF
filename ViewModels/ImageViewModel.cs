@@ -74,24 +74,34 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand TestClickCommand { get; private set; }
 
+        private AppData appData;
         private ImageDisplay imageDisplay;
         private ImageAreaSelecting imageAreaSelecting;
 
         public ImageViewModel()
         {
+            this.appData = Workspace.Instance.AppData;
             this.imageDisplay = Workspace.Instance.ImageDisplay;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
 
             imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
 
-            ZoomInCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 2.0; }, _ => this.imageDisplay.ZoomScale < 8.0);
-            ZoomOutCommand = CreateCommand(_ => { this.imageDisplay.ZoomScale *= 0.5; }, _ => this.imageDisplay.ZoomScale > 0.125);
+            this.ZoomInCommand = CreateCommand(
+                _ => { this.imageDisplay.ZoomScale *= 2.0; },
+                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);
+            this.ZoomOutCommand = CreateCommand(
+                _ => { this.imageDisplay.ZoomScale *= 0.5; },
+                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
             DisplayImageAreaCommand = CreateCommand(drawingContext =>
             {
                 imageAreaSelecting.DrawOnRender(drawingContext as DrawingContext);
             });
-            LeftClickCommand = CreateCommand(location => this.imageAreaSelecting.Click((Point)location));
-            MouseMoveCommand = CreateCommand(location => this.imageAreaSelecting.MouseMove((Point)location));
+            LeftClickCommand = CreateCommand(
+                location => this.imageAreaSelecting.Click((Point)location),
+                _ => appData.IsClickEnabled());
+            MouseMoveCommand = CreateCommand(
+                location => this.imageAreaSelecting.MouseMove((Point)location),
+                _ => appData.IsMouseMoveEnabled());
 
             TestClickCommand = new TestClick(this);
         }

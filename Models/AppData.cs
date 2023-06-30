@@ -59,6 +59,16 @@ namespace GraDeMarCoWPF.Models
             return CurrentState != AppState.NoData;
         }
 
+        public bool IsClickEnabled()
+        {
+            return CurrentState != AppState.NoData || CurrentState != AppState.Inactive;
+        }
+
+        public bool IsMouseMoveEnabled()
+        {
+            return CurrentState == AppState.ImageAreaSelecting;
+        }
+
         [NonSerialized]
         private AppState _currentState;
         [NonSerialized]
