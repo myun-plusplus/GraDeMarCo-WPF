@@ -12,6 +12,8 @@ namespace GraDeMarCoWPF.Views
         {
             InitializeComponent();
             this.DataContext = new MainViewModel(imageWindow);
+
+            this.SourceInitialized += (s, e) => { imageWindow.Owner = this; };
         }
     }
 }
