@@ -7,7 +7,8 @@ namespace GraDeMarCoWPF.Models
         None,
         WorkspacePrepared,
         ImageOpened,
-        ImageAreaSelecting
+        ImageAreaSelecting,
+        PlanimetricCircleDrawing
     }
 
     [Serializable]
