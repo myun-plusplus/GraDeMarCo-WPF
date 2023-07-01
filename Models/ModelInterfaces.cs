@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System.Windows;
+using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
 {
@@ -16,5 +17,11 @@ namespace GraDeMarCoWPF.Models
     public interface IDrawingOnImageSource
     {
         void DrawOnImageSource(ImageSource imageSource);
+    }
+
+    public interface IImageAreaSelecting : IToggleFunction, IDrawingOnRenderEvent, IDrawingOnImageSource
+    {
+        void Click(Point location);
+        void MouseMove(Point location);
     }
 }

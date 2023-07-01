@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
 {
-    public class ImageAreaSelecting : IToggleFunction, IDrawingOnRenderEvent, IDrawingOnImageSource
+    public class ImageAreaSelecting : IImageAreaSelecting
     {
         private ImageDisplay imageDisplay;
         private ImageArea imageArea;
