@@ -24,4 +24,9 @@ namespace GraDeMarCoWPF.Models
         void Click(Point location);
         void MouseMove(Point location);
     }
+    public interface IPlanimetricCircleDrawing : IToggleFunction, IDrawingOnRenderEvent, IDrawingOnImageSource
+    {
+        void Click(Point location);
+        void MouseMove(Point location);
+    }
 }
