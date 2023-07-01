@@ -4,8 +4,9 @@ namespace GraDeMarCoWPF.Models
 {
     public enum AppState
     {
-        NoData,
-        Inactive,
+        None,
+        WorkspacePrepared,
+        ImageOpened,
         ImageAreaSelecting
     }
 
@@ -41,27 +42,29 @@ namespace GraDeMarCoWPF.Models
 
         public bool CanOpenWorkspace()
         {
-            return CurrentState == AppState.NoData || CurrentState == AppState.Inactive;
+            return CurrentState == AppState.None ||
+                CurrentState == AppState.WorkspacePrepared ||
+                CurrentState == AppState.ImageOpened;
         }
 
         public bool CanSaveWorkspace()
         {
-            return CurrentState == AppState.Inactive;
+            return CurrentState == AppState.WorkspacePrepared || CurrentState == AppState.ImageOpened;
         }
 
         public bool CanOpenImage()
         {
-            return CurrentState == AppState.NoData || CurrentState == AppState.Inactive;
+            return CurrentState == AppState.None || CurrentState == AppState.WorkspacePrepared;
         }
 
         public bool CanZoomInOut()
         {
-            return CurrentState != AppState.NoData;
+            return CurrentState != AppState.None && CurrentState != AppState.WorkspacePrepared;
         }
 
         public bool IsClickEnabled()
         {
-            return CurrentState != AppState.NoData || CurrentState != AppState.Inactive;
+            return CurrentState == AppState.ImageAreaSelecting;
         }
 
         public bool IsMouseMoveEnabled()
