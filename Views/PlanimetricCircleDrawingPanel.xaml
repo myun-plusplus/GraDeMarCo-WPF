@@ -11,7 +11,10 @@
             <StackPanel Orientation="Vertical">
                 <Label Content="Planimetric円選択" Style="{DynamicResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Content="円選択" Style="{DynamicResource NormalToggleButton}"/>
+                    <ToggleButton
+                        IsChecked="{Binding AreaReserveEnabled}"
+                        Content="円選択"
+                        Style="{DynamicResource NormalToggleButton}"/>
                     <Button Content="最大円" Style="{DynamicResource NormalButton}"/>
                 </StackPanel>
                 <Grid>
@@ -31,21 +34,21 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Content="左上X:" Style="{DynamicResource NormalLabel}"/>
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                            <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                            <TextBox Text="{Binding LowerX}" Style="{DynamicResource ImageSizeBox}"/>
                         </StackPanel>
                         <Label Grid.Row="1" Grid.Column="0" Content="左上Y:" Style="{DynamicResource NormalLabel}"/>
                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                            <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                            <TextBox Text="{Binding LowerY}" Style="{DynamicResource ImageSizeBox}"/>
                         </StackPanel>
                         <Label Grid.Row="2" Grid.Column="0" Content="円直径:" Style="{DynamicResource NormalLabel}"/>
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                            <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                            <TextBox Text="{Binding Diameter}" Style="{DynamicResource ImageSizeBox}"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="円の色:" Style="{DynamicResource NormalLabel}"/>
-                            <Rectangle Fill="Transparent" Style="{DynamicResource SelectColorButton}"/>
+                            <Rectangle Fill="{Binding Color}" Style="{DynamicResource SelectColorButton}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
