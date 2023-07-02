@@ -15,11 +15,6 @@ namespace GraDeMarCoWPF.Models
     [Serializable]
     public class AppData
     {
-        public AppData()
-        {
-
-        }
-
         public AppState CurrentState
         {
             get { return _currentState; }

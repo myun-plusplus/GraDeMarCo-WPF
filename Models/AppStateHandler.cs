@@ -38,9 +38,42 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
+        public void MouseMove(Point location)
+        {
+            switch (appData.CurrentState)
+            {
+                case AppState.None:
+                    break;
+                case AppState.WorkspacePrepared:
+                    break;
+                case AppState.ImageOpened:
+                    break;
+                case AppState.ImageAreaSelecting:
+                    imageAreaSelecting.MouseMove(location);
+                    break;
+                case AppState.PlanimetricCircleDrawing:
+                    planimetricCircleDrawing.MouseMove(location);
+                    break;
+            }
+        }
+
         public void LeftClick(Point location)
         {
-
+            switch (appData.CurrentState)
+            {
+                case AppState.None:
+                    break;
+                case AppState.WorkspacePrepared:
+                    break;
+                case AppState.ImageOpened:
+                    break;
+                case AppState.ImageAreaSelecting:
+                    imageAreaSelecting.Click(location);
+                    break;
+                case AppState.PlanimetricCircleDrawing:
+                    planimetricCircleDrawing.Click(location);
+                    break;
+            }
         }
     }
 }
