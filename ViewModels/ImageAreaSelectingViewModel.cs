@@ -6,6 +6,10 @@ namespace GraDeMarCoWPF.ViewModels
 {
     public class ImageAreaSelectingViewModel : ViewModelBase
     {
+        private AppData appData;
+        private ImageArea imageArea;
+        private ImageAreaSelecting imageAreaSelecting;
+
         public bool AreaReserveEnabled
         {
             get { return _areaSelectEnabled; }
@@ -16,10 +20,12 @@ namespace GraDeMarCoWPF.ViewModels
 
                 if (value)
                 {
+                    appData.CurrentState = AppState.ImageAreaSelecting;
                     this.imageAreaSelecting.StartFunction();
                 }
                 else
                 {
+                    appData.CurrentState = AppState.ImageOpened;
                     this.imageAreaSelecting.StopFunction();
                 }
             }
@@ -66,22 +72,20 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand SelectMaxAreaCommand { get; private set; }
 
-        private ImageArea imageArea;
-        private ImageAreaSelecting imageAreaSelecting;
-
-        private bool _areaSelectEnabled;
-
         public ImageAreaSelectingViewModel()
         {
+            this.appData = Workspace.Instance.AppData;
             this.imageArea = Workspace.Instance.ImageArea;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
 
-            this.imageArea.PropertyChanged += imageArea_PropertyChanged;
+            imageArea.PropertyChanged += imageArea_PropertyChanged;
         }
 
         private void imageArea_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             NotifyPropertyChanged(e.PropertyName);
         }
+
+        private bool _areaSelectEnabled;
     }
 }

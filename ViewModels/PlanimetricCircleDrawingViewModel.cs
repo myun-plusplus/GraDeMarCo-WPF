@@ -6,6 +6,11 @@ namespace GraDeMarCoWPF.ViewModels
 {
     public class PlanimetricCircleDrawingViewModel : ViewModelBase
     {
+        private AppData appData;
+        private PlanimetricCircle planimetricCircle;
+        private OutlineDrawingTool planimetricCircleDrawingTool;
+        private PlanimetricCircleDrawing planimetricCircleDrawing;
+
         public bool CircleDrawEnabled
         {
             get { return _circleDrawEnabled; }
@@ -16,10 +21,12 @@ namespace GraDeMarCoWPF.ViewModels
 
                 if (value)
                 {
+                    appData.CurrentState = AppState.PlanimetricCircleDrawing;
                     planimetricCircleDrawing.StartFunction();
                 }
                 else
                 {
+                    appData.CurrentState = AppState.ImageOpened;
                     planimetricCircleDrawing.StopFunction();
                 }
             }
@@ -65,20 +72,19 @@ namespace GraDeMarCoWPF.ViewModels
             }
         }
 
-        private PlanimetricCircle planimetricCircle;
-        private OutlineDrawingTool planimetricCircleDrawingTool;
-        private PlanimetricCircleDrawing planimetricCircleDrawing;
-
         private bool _circleDrawEnabled;
 
         public PlanimetricCircleDrawingViewModel()
         {
+            this.appData = Workspace.Instance.AppData;
             this.planimetricCircle = Workspace.Instance.PlanimetricCircle;
             this.planimetricCircleDrawingTool = Workspace.Instance.PlanimetricCircleDrawingTool;
             this.planimetricCircleDrawing = Workspace.Instance.PlanimetricCircleDrawing;
 
             planimetricCircle.PropertyChanged += imageArea_PropertyChanged;
             planimetricCircleDrawingTool.PropertyChanged += imageArea_PropertyChanged;
+
+            planimetricCircleDrawingTool.Color = Colors.Blue;
         }
 
         private void imageArea_PropertyChanged(object sender, PropertyChangedEventArgs e)
