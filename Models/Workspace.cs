@@ -26,6 +26,9 @@ namespace GraDeMarCoWPF.Models
             ImageArea = new ImageArea();
             ImageAreaDrawingTool = new OutlineDrawingTool();
             ImageAreaSelecting = new ImageAreaSelecting(ImageDisplay, ImageArea, ImageAreaDrawingTool);
+            PlanimetricCircle = new PlanimetricCircle();
+            PlanimetricCircleDrawingTool = new OutlineDrawingTool();
+            PlanimetricCircleDrawing = new PlanimetricCircleDrawing(ImageDisplay, PlanimetricCircle, PlanimetricCircleDrawingTool);
         }
 
         public AppData AppData;
@@ -43,6 +46,14 @@ namespace GraDeMarCoWPF.Models
 
         [NonSerialized]
         public ImageAreaSelecting ImageAreaSelecting;
+
+        public PlanimetricCircle PlanimetricCircle;
+
+        [NonSerialized]
+        public OutlineDrawingTool PlanimetricCircleDrawingTool;
+
+        [NonSerialized]
+        public PlanimetricCircleDrawing PlanimetricCircleDrawing;
 
         public void Save(string filePath)
         {

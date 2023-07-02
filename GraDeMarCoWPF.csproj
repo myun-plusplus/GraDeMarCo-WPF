@@ -68,9 +68,12 @@
     <Compile Include="Models\ImageData.cs" />
     <Compile Include="Models\ImageDisplay.cs" />
     <Compile Include="Models\ModelInterfaces.cs" />
+    <Compile Include="Models\PlanimetricCircle.cs" />
+    <Compile Include="Models\PlanimetricCircleDrawing.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\ImageAreaSelectingViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModels\PlanimetricCircleDrawingViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\DotCountingPanel.xaml.cs">
       <DependentUpon>DotCountingPanel.xaml</DependentUpon>
