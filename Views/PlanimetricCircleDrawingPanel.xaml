@@ -12,7 +12,7 @@
                 <Label Content="Planimetric円選択" Style="{DynamicResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton
-                        IsChecked="{Binding AreaReserveEnabled}"
+                        IsChecked="{Binding CircleDrawEnabled}"
                         Content="円選択"
                         Style="{DynamicResource NormalToggleButton}"/>
                     <Button Content="最大円" Style="{DynamicResource NormalButton}"/>
