@@ -10,6 +10,11 @@ namespace GraDeMarCoWPF.ViewModels
 {
     public class ImageViewModel : ViewModelBase
     {
+        private AppData appData;
+        private ImageDisplay imageDisplay;
+        private ImageAreaSelecting imageAreaSelecting;
+        private AppStateHandler appStateHandler;
+
         public WriteableBitmap DisplayedImage
         {
             get
@@ -74,15 +79,12 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand TestClickCommand { get; private set; }
 
-        private AppData appData;
-        private ImageDisplay imageDisplay;
-        private ImageAreaSelecting imageAreaSelecting;
-
         public ImageViewModel()
         {
             this.appData = Workspace.Instance.AppData;
             this.imageDisplay = Workspace.Instance.ImageDisplay;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
+            this.appStateHandler = Workspace.Instance.AppStateHandler;
 
             imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
 
@@ -92,15 +94,13 @@ namespace GraDeMarCoWPF.ViewModels
             this.ZoomOutCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 0.5; },
                 _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
-            DrawOnRenderCommand = CreateCommand(drawingContext =>
-            {
-                appData.DrawOnRender(drawingContext as DrawingContext);
-            });
+            DrawOnRenderCommand = CreateCommand(
+                drawingContext => appStateHandler.DrawOnRender(drawingContext as DrawingContext));
             LeftClickCommand = CreateCommand(
-                location => this.imageAreaSelecting.Click((Point)location),
+                location => appStateHandler.LeftClick((Point)location),
                 _ => appData.IsClickEnabled());
             MouseMoveCommand = CreateCommand(
-                location => this.imageAreaSelecting.MouseMove((Point)location),
+                location => appStateHandler.MouseMove((Point)location),
                 _ => appData.IsMouseMoveEnabled());
 
             TestClickCommand = new TestClick(this);
