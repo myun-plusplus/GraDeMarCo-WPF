@@ -46,7 +46,7 @@ namespace GraDeMarCoWPF.Views
             drawingContext.DrawEllipse(new SolidColorBrush(Colors.Transparent), new Pen(new SolidColorBrush(Colors.Blue), 1.0), new Point(100, 100), 50, 50);
             drawingContext.DrawEllipse(new SolidColorBrush(Colors.Red), new Pen(new SolidColorBrush(Colors.Red), 0.0), new Point(200, 100), 5.0, 5.0);
 
-            viewModel.DisplayImageAreaCommand.Execute(drawingContext);
+            viewModel.DrawOnRenderCommand.Execute(drawingContext);
 
             drawingContext.Pop();
         }

@@ -66,7 +66,7 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
-        public ICommand DisplayImageAreaCommand { get; private set; }
+        public ICommand DrawOnRenderCommand { get; private set; }
         public ICommand LeftClickCommand { get; private set; }
         public ICommand RightClickCommand { get; private set; }
         public ICommand MouseMoveCommand { get; private set; }
@@ -92,9 +92,9 @@ namespace GraDeMarCoWPF.ViewModels
             this.ZoomOutCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 0.5; },
                 _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
-            DisplayImageAreaCommand = CreateCommand(drawingContext =>
+            DrawOnRenderCommand = CreateCommand(drawingContext =>
             {
-                imageAreaSelecting.DrawOnRender(drawingContext as DrawingContext);
+                appData.DrawOnRender(drawingContext as DrawingContext);
             });
             LeftClickCommand = CreateCommand(
                 location => this.imageAreaSelecting.Click((Point)location),
