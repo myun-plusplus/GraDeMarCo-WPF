@@ -15,15 +15,9 @@ namespace GraDeMarCoWPF.Models
     [Serializable]
     public class AppData
     {
-        private ImageAreaSelecting imageAreaSelecting;
-        private PlanimetricCircleDrawing planetricCircleDrawing;
-
-        public AppData(
-            ImageAreaSelecting imageAreaSelecting,
-            PlanimetricCircleDrawing planetricCircleDrawing)
+        public AppData()
         {
-            this.imageAreaSelecting = imageAreaSelecting;
-            this.planetricCircleDrawing = planetricCircleDrawing;
+
         }
 
         public AppState CurrentState
@@ -83,25 +77,6 @@ namespace GraDeMarCoWPF.Models
         public bool IsMouseMoveEnabled()
         {
             return CurrentState == AppState.ImageAreaSelecting;
-        }
-
-        public void DrawOnRender(DrawingContext drawingContext)
-        {
-            switch (CurrentState)
-            {
-                case AppState.None:
-                    break;
-                case AppState.WorkspacePrepared:
-                    break;
-                case AppState.ImageOpened:
-                    break;
-                case AppState.ImageAreaSelecting:
-                    imageAreaSelecting.DrawOnRender(drawingContext);
-                    break;
-                case AppState.PlanimetricCircleDrawing:
-                    planetricCircleDrawing.DrawOnRender(drawingContext);
-                    break;
-            }
         }
 
         [NonSerialized]
