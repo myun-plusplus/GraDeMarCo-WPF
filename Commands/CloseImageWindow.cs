@@ -11,9 +11,9 @@ namespace GraDeMarCoWPF.Commands
     public class CloseImageWindow : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private IOpenWindowService _service;
+        private IWindowService _service;
 
-        public CloseImageWindow(IOpenWindowService imageWindowOpen)
+        public CloseImageWindow(IWindowService imageWindowOpen)
         {
             _service = imageWindowOpen;
         }
@@ -25,7 +25,7 @@ namespace GraDeMarCoWPF.Commands
 
         public void Execute(object parameter)
         {
-            _service.OpenWindow();
+            _service.Close();
         }
     }
 }
