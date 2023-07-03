@@ -22,7 +22,7 @@ namespace GraDeMarCoWPF.ViewModels
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
 
-        private IOpenWindowService _openWindowService;
+        private IWindowService _openWindowService;
 
         public MainViewModel(ImageWindow imageWindow)
         {
@@ -41,7 +41,7 @@ namespace GraDeMarCoWPF.ViewModels
                 Workspace.Instance.Save(filePath);
             }, _ => appData.CanSaveWorkspace());
             this.OpenImageFileCommand = CreateCommand(_ => { imageData.OpenImageFile(null); });
-            this.OpenImageWindowCommand = new OpenImageWindow(new OpenSubWindowService(imageWindow));
+            this.OpenImageWindowCommand = new OpenImageWindow(new SubWindowService(imageWindow));
             this.OpenImage = CreateCommand(_ => {
                 OpenImageFileCommand.Execute(null);
                 imageDisplay.UpdateImage();

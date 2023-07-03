@@ -1,8 +1,9 @@
 ﻿namespace GraDeMarCoWPF.Models
 {
-    public interface IOpenWindowService
+    public interface IWindowService
     {
-        void OpenWindow();
+        void Open();
+        void Close();
     }
 
 }

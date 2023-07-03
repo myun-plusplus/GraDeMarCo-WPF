@@ -71,6 +71,7 @@
     <Compile Include="Models\ModelInterfaces.cs" />
     <Compile Include="Models\PlanimetricCircle.cs" />
     <Compile Include="Models\PlanimetricCircleDrawing.cs" />
+    <Compile Include="Models\ServiceInterface.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\ImageAreaSelectingViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />

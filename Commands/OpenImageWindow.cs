@@ -7,9 +7,9 @@ namespace GraDeMarCoWPF.Commands
     public class OpenImageWindow : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private IOpenWindowService _service;
+        private IWindowService _service;
 
-        public OpenImageWindow(IOpenWindowService imageWindowOpen)
+        public OpenImageWindow(IWindowService imageWindowOpen)
         {
             _service = imageWindowOpen;
         }
@@ -21,7 +21,7 @@ namespace GraDeMarCoWPF.Commands
 
         public void Execute(object parameter)
         {
-            _service.OpenWindow();
+            _service.Open();
         }
     }
 }

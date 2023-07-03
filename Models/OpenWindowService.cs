@@ -5,18 +5,23 @@ using System.Windows;
 
 namespace GraDeMarCoWPF.Models
 {
-    class OpenSubWindowService : IOpenWindowService
+    class SubWindowService : IWindowService
     {
-        Window subwindow;
+        Window subWindow;
 
-        public OpenSubWindowService(Window subWindow)
+        public SubWindowService(Window subWindow)
         {
-            this.subwindow = subWindow;
+            this.subWindow = subWindow;
         }
 
-        public void OpenWindow()
+        public void Open()
         {
-            subwindow.Show();
+            subWindow.Show();
+        }
+
+        public void Close()
+        {
+            subWindow.Hide();
         }
     }
 }
