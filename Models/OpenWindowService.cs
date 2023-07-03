@@ -5,11 +5,6 @@ using System.Windows;
 
 namespace GraDeMarCoWPF.Models
 {
-    public interface IOpenWindowService
-    {
-        void OpenWindow();
-    }
-
     class OpenSubWindowService : IOpenWindowService
     {
         Window subwindow;
