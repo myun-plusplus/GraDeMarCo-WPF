@@ -72,7 +72,10 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand SelectMaxAreaCommand { get; private set; }
 
-        public ImageAreaSelectingViewModel()
+        public ImageAreaSelectingViewModel(
+            AppData appData,
+            ImageArea imageArea,
+            ImageAreaSelecting imageAreaSelecting)
         {
             this.appData = Workspace.Instance.AppData;
             this.imageArea = Workspace.Instance.ImageArea;

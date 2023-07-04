@@ -11,7 +11,6 @@ namespace GraDeMarCoWPF.Views
         public PlanimetricCircleDrawingPanel()
         {
             InitializeComponent();
-            this.DataContext = new PlanimetricCircleDrawingViewModel();
         }
     }
 }

@@ -79,29 +79,33 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand TestClickCommand { get; private set; }
 
-        public ImageViewModel()
+        public ImageViewModel(
+            AppData appData,
+            ImageDisplay imageDisplay,
+            ImageAreaSelecting imageAreaSelecting,
+            AppStateHandler appStateHandler)
         {
             this.appData = Workspace.Instance.AppData;
             this.imageDisplay = Workspace.Instance.ImageDisplay;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
             this.appStateHandler = Workspace.Instance.AppStateHandler;
 
-            imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
+            this.imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
 
             this.ZoomInCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 2.0; },
-                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);
+                _ => this.appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);
             this.ZoomOutCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 0.5; },
-                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
+                _ => this.appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
             DrawOnRenderCommand = CreateCommand(
                 drawingContext => appStateHandler.DrawOnRender(drawingContext as DrawingContext));
             LeftClickCommand = CreateCommand(
                 location => appStateHandler.LeftClick((Point)location),
-                _ => appData.IsClickEnabled());
+                _ => this.appData.IsClickEnabled());
             MouseMoveCommand = CreateCommand(
                 location => appStateHandler.MouseMove((Point)location),
-                _ => appData.IsMouseMoveEnabled());
+                _ => this.appData.IsMouseMoveEnabled());
 
             TestClickCommand = new TestClick(this);
         }

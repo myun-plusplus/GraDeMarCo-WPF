@@ -38,8 +38,10 @@
         <TabControl Height="425">
             <TabItem Header="画像範囲･円選択">
                 <StackPanel Orientation="Vertical">
-                    <v:ImageAreaSelectingPanel/>
-                    <v:PlanimetricCircleDrawingPanel/>
+                    <v:ImageAreaSelectingPanel
+                        DataContext="{Binding imageAreaSelectingViewModel, Mode=OneTime}"/>
+                    <v:PlanimetricCircleDrawingPanel
+                        DataContext="{Binding PlanimetricCircleDrawingViewModel, Mode=OneTime}"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="粒検出" HorizontalAlignment="Right" Width="48" Height="20" VerticalAlignment="Center">

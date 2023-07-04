@@ -11,6 +11,9 @@ namespace GraDeMarCoWPF.ViewModels
         private AppData appData;
         private ImageData imageData;
         private ImageDisplay imageDisplay;
+        public ImageAreaSelectingViewModel imageAreaSelectingViewModel { get; set; }
+        public PlanimetricCircleDrawingViewModel PlanimetricCircleDrawingViewModel { get; set; }
+
 
         public ICommand OpenWorkspaceCommand { get; private set; }
         public ICommand SaveWorkspace { get; private set; }
@@ -22,38 +25,47 @@ namespace GraDeMarCoWPF.ViewModels
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
 
-        private IWindowService _openWindowService;
+        private IWindowService imageWindowService;
 
-        public MainViewModel(ImageWindow imageWindow)
+        public MainViewModel(
+            ImageAreaSelectingViewModel imageAreaSelectingViewModel,
+            PlanimetricCircleDrawingViewModel planimetricCircleDrawingViewModel,
+            IWindowService imageWindowService,
+            AppData appData,
+            ImageData imageData,
+            ImageDisplay imageDisplay)
         {
-            this.appData = Workspace.Instance.AppData;
-            this.imageData = Workspace.Instance.ImageData;
-            this.imageDisplay = Workspace.Instance.ImageDisplay;
+            this.imageAreaSelectingViewModel = imageAreaSelectingViewModel;
+            this.PlanimetricCircleDrawingViewModel = planimetricCircleDrawingViewModel;
+            this.imageWindowService = imageWindowService;
+            this.appData = appData;
+            this.imageData = imageData;
+            this.imageDisplay = imageDisplay;
 
             OpenWorkspaceCommand = CreateCommand(_ =>
             {
                 string filePath = @"D:\Projects\GrainDetector\sample1.dat";
                 Workspace.Instance.Load(filePath);
-            }, _ => appData.CanOpenWorkspace());
+            }, _ => this.appData.CanOpenWorkspace());
             SaveWorkspace = CreateCommand(_ =>
             {
                 string filePath = @"D:\Projects\GrainDetector\sample1.dat";
                 Workspace.Instance.Save(filePath);
-            }, _ => appData.CanSaveWorkspace());
-            this.OpenImageFileCommand = CreateCommand(_ => { imageData.OpenImageFile(null); });
-            this.OpenImageWindowCommand = new OpenImageWindow(new SubWindowService(imageWindow));
+            }, _ => this.appData.CanSaveWorkspace());
+            this.OpenImageFileCommand = CreateCommand(_ => { this.imageData.OpenImageFile(null); });
+            this.OpenImageWindowCommand = new OpenImageWindow(imageWindowService);
             this.OpenImage = CreateCommand(_ => {
                 OpenImageFileCommand.Execute(null);
-                imageDisplay.UpdateImage();
-                imageDisplay.ZoomScale = 1.0;
+                this.imageDisplay.UpdateImage();
+                this.imageDisplay.ZoomScale = 1.0;
                 OpenImageWindowCommand.Execute(null);
-            }, _ => appData.CanOpenImage());
+            }, _ => this.appData.CanOpenImage());
             this.ZoomInCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 2.0; },
-                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);
+                _ => this.appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);
             this.ZoomOutCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 0.5; },
-                _ => appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
+                _ => this.appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
         }
     }
 }

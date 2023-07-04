@@ -11,7 +11,6 @@ namespace GraDeMarCoWPF.Views
         public ImageAreaSelectingPanel()
         {
             InitializeComponent();
-            this.DataContext = new ImageAreaSelectingViewModel();
         }
     }
 }

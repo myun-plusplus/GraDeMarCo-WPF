@@ -18,8 +18,7 @@ namespace GraDeMarCoWPF.Views
         public ImageWindow()
         {
             InitializeComponent();
-            this.DataContext = new ImageViewModel();
-            this.myRenderBox.DataContext = this.DataContext;
+            //this.myRenderBox.DataContext = this.DataContext;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)

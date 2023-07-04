@@ -8,12 +8,9 @@ namespace GraDeMarCoWPF.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(ImageWindow imageWindow)
+        public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel(imageWindow);
-
-            this.SourceInitialized += (s, e) => { imageWindow.Owner = this; };
         }
     }
 }

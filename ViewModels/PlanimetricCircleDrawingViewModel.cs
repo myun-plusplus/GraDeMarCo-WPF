@@ -74,7 +74,11 @@ namespace GraDeMarCoWPF.ViewModels
 
         private bool _circleDrawEnabled;
 
-        public PlanimetricCircleDrawingViewModel()
+        public PlanimetricCircleDrawingViewModel(
+            AppData appData,
+            PlanimetricCircle planimetricCircle,
+            OutlineDrawingTool planimetricCircleDrawingTool,
+            PlanimetricCircleDrawing planimetricCircleDrawing)
         {
             this.appData = Workspace.Instance.AppData;
             this.planimetricCircle = Workspace.Instance.PlanimetricCircle;
