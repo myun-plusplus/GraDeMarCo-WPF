@@ -28,6 +28,8 @@ namespace GraDeMarCoWPF
 
             var appStateHandler = Workspace.Instance.AppStateHandler;
 
+            var colorDialogService = new ColorDialogService();
+
             // ViewModels
             var imageViewModel = new ImageViewModel(
                 appData,
@@ -39,6 +41,7 @@ namespace GraDeMarCoWPF
                 imageArea,
                 imageAreaSelecting);
             var planimetricCircleDrawingViewModel = new PlanimetricCircleDrawingViewModel(
+                colorDialogService,
                 appData,
                 planimetricCircle,
                 planimetricCircleDrawingTool,
