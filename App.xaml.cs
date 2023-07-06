@@ -43,6 +43,7 @@ namespace GraDeMarCoWPF
             var planimetricCircleDrawingViewModel = new PlanimetricCircleDrawingViewModel(
                 colorDialogService,
                 appData,
+                imageArea,
                 planimetricCircle,
                 planimetricCircleDrawingTool,
                 planimetricCircleDrawing);

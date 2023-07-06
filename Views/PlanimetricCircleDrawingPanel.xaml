@@ -15,7 +15,10 @@
                         IsChecked="{Binding CircleDrawEnabled}"
                         Content="円選択"
                         Style="{DynamicResource NormalToggleButton}"/>
-                    <Button Content="最大円" Style="{DynamicResource NormalButton}"/>
+                    <Button
+                        Command="{Binding DrawMaxCircleCommand}"
+                        Content="最大円"
+                        Style="{DynamicResource NormalButton}"/>
                 </StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>

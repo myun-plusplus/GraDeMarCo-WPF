@@ -70,12 +70,14 @@ namespace GraDeMarCoWPF.ViewModels
         }
 
         public ICommand SelectColorCommand { get; private set; }
+        public ICommand DrawMaxCircleCommand { get; private set; }
 
         private bool _circleDrawEnabled;
 
         public PlanimetricCircleDrawingViewModel(
             IColorDialogService colorDialogService,
             AppData appData,
+            ImageArea imageArea,
             PlanimetricCircle planimetricCircle,
             OutlineDrawingTool planimetricCircleDrawingTool,
             PlanimetricCircleDrawing planimetricCircleDrawing)
@@ -86,6 +88,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.planimetricCircleDrawing = Workspace.Instance.PlanimetricCircleDrawing;
 
             SelectColorCommand = new SelectColor(this.planimetricCircleDrawingTool, colorDialogService);
+            DrawMaxCircleCommand = new DrawMaxCircle(appData, imageArea, planimetricCircle);
 
             planimetricCircle.PropertyChanged += imageArea_PropertyChanged;
             planimetricCircleDrawingTool.PropertyChanged += imageArea_PropertyChanged;
