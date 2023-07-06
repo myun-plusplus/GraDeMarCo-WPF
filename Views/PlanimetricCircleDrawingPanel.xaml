@@ -9,16 +9,16 @@
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
-                <Label Content="Planimetric円選択" Style="{DynamicResource HeadlineLabel}"/>
+                <Label Content="Planimetric円選択" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton
                         IsChecked="{Binding CircleDrawEnabled}"
                         Content="円選択"
-                        Style="{DynamicResource NormalToggleButton}"/>
+                        Style="{StaticResource NormalToggleButton}"/>
                     <Button
                         Command="{Binding DrawMaxCircleCommand}"
                         Content="最大円"
-                        Style="{DynamicResource NormalButton}"/>
+                        Style="{StaticResource NormalButton}"/>
                 </StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -35,26 +35,26 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Content="左上X:" Style="{DynamicResource NormalLabel}"/>
+                        <Label Grid.Row="0" Grid.Column="0" Content="左上X:" Style="{StaticResource NormalLabel}"/>
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                            <TextBox Text="{Binding LowerX}" Style="{DynamicResource ImageSizeBox}"/>
+                            <TextBox Text="{Binding LowerX}" Style="{StaticResource ImageSizeBox}"/>
                         </StackPanel>
-                        <Label Grid.Row="1" Grid.Column="0" Content="左上Y:" Style="{DynamicResource NormalLabel}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="左上Y:" Style="{StaticResource NormalLabel}"/>
                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                            <TextBox Text="{Binding LowerY}" Style="{DynamicResource ImageSizeBox}"/>
+                            <TextBox Text="{Binding LowerY}" Style="{StaticResource ImageSizeBox}"/>
                         </StackPanel>
-                        <Label Grid.Row="2" Grid.Column="0" Content="円直径:" Style="{DynamicResource NormalLabel}"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content="円直径:" Style="{StaticResource NormalLabel}"/>
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                            <TextBox Text="{Binding Diameter}" Style="{DynamicResource ImageSizeBox}"/>
+                            <TextBox Text="{Binding Diameter}" Style="{StaticResource ImageSizeBox}"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="円の色:" Style="{DynamicResource NormalLabel}"/>
+                            <Label Content="円の色:" Style="{StaticResource NormalLabel}"/>
                             <Button
                                 Command="{Binding SelectColorCommand}"
                                 Background="{Binding Color}"
-                                Style="{DynamicResource SelectColorButton_tmp}"/>
+                                Style="{StaticResource SelectColorButton_tmp}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
