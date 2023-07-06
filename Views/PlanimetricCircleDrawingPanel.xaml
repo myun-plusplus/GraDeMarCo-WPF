@@ -48,7 +48,10 @@
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="円の色:" Style="{DynamicResource NormalLabel}"/>
-                            <Rectangle Fill="{Binding Color}" Style="{DynamicResource SelectColorButton}"/>
+                            <Button
+                                Command="{Binding SelectColorCommand}"
+                                Background="{Binding Color}"
+                                Style="{DynamicResource SelectColorButton_tmp}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
