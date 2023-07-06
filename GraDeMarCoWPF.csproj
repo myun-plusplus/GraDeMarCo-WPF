@@ -63,6 +63,7 @@
     <Compile Include="Commands\DrawMaxCircle.cs" />
     <Compile Include="Commands\SelectColor.cs" />
     <Compile Include="Commands\TestClick.cs" />
+    <Compile Include="Commands\TogglePlanimetricCircleDrawing.cs" />
     <Compile Include="GetName.cs" />
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\AppStateHandler.cs" />

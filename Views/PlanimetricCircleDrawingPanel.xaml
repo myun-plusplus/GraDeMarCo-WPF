@@ -13,6 +13,8 @@
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton
                         IsChecked="{Binding CircleDrawEnabled}"
+                        Command="{Binding TogglePlanimetricCircleDrawingCommand}"
+                        CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
                         Content="円選択"
                         Style="{StaticResource NormalToggleButton}"/>
                     <Button

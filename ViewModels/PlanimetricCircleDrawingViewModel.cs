@@ -24,12 +24,10 @@ namespace GraDeMarCoWPF.ViewModels
                 if (value)
                 {
                     appData.CurrentState = AppState.PlanimetricCircleDrawing;
-                    planimetricCircleDrawing.StartFunction();
                 }
                 else
                 {
                     appData.CurrentState = AppState.ImageOpened;
-                    planimetricCircleDrawing.StopFunction();
                 }
             }
         }
@@ -69,8 +67,9 @@ namespace GraDeMarCoWPF.ViewModels
             get { return new SolidColorBrush(planimetricCircleDrawingTool.Color); }
         }
 
-        public ICommand SelectColorCommand { get; private set; }
+        public ICommand TogglePlanimetricCircleDrawingCommand { get; private set; }
         public ICommand DrawMaxCircleCommand { get; private set; }
+        public ICommand SelectColorCommand { get; private set; }
 
         private bool _circleDrawEnabled;
 
@@ -87,6 +86,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.planimetricCircleDrawingTool = Workspace.Instance.PlanimetricCircleDrawingTool;
             this.planimetricCircleDrawing = Workspace.Instance.PlanimetricCircleDrawing;
 
+            TogglePlanimetricCircleDrawingCommand = new TogglePlanimetricCircleDrawing(appData, planimetricCircleDrawing);
             SelectColorCommand = new SelectColor(this.planimetricCircleDrawingTool, colorDialogService);
             DrawMaxCircleCommand = new DrawMaxCircle(appData, imageArea, planimetricCircle);
 
