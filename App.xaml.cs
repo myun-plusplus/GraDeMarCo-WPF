@@ -29,6 +29,9 @@ namespace GraDeMarCoWPF
 
             var appStateHandler = Workspace.Instance.AppStateHandler;
 
+            var openWorkspaceDialogService = new OpenFileDialogService(
+                "開くワークスペースを選択してください",
+                 "DATファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*");
             var colorDialogService = new ColorDialogService();
 
             // ViewModels
@@ -60,10 +63,11 @@ namespace GraDeMarCoWPF
             var mainViewModel = new MainViewModel(
                 imageAreaSelectingViewModel,
                 planimetricCircleDrawingViewModel,
-                imageWindowService,
                 appData,
                 imageData,
-                imageDisplay);
+                imageDisplay,
+                imageWindowService,
+                openWorkspaceDialogService);
 
             var mainWindow = new MainWindow()
             {

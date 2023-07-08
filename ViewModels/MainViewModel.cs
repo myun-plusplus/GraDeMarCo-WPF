@@ -27,10 +27,11 @@ namespace GraDeMarCoWPF.ViewModels
         public MainViewModel(
             ImageAreaSelectingViewModel imageAreaSelectingViewModel,
             PlanimetricCircleDrawingViewModel planimetricCircleDrawingViewModel,
-            IWindowService imageWindowService,
             AppData appData,
             ImageData imageData,
-            ImageDisplay imageDisplay)
+            ImageDisplay imageDisplay,
+            IWindowService imageWindowService,
+            IOpenFileDialogService openWorkspaceDialogService)
         {
             this.imageAreaSelectingViewModel = imageAreaSelectingViewModel;
             this.PlanimetricCircleDrawingViewModel = planimetricCircleDrawingViewModel;
@@ -40,7 +41,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.imageDisplay = imageDisplay;
 
             CreateWorkspace = new CreateWorkspace(appData);
-            OpenWorkspace = new OpenWorkspace(appData);
+            OpenWorkspace = new OpenWorkspace(appData, openWorkspaceDialogService);
             SaveWorkspace = new SaveWorkspace(appData);
             OpenImage = new OpenImage(appData, imageData, imageDisplay, imageWindowService);
 

@@ -1,6 +1,8 @@
 ﻿using GraDeMarCoWPF.Models;
+using GraDeMarCoWPF.Services;
 using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace GraDeMarCoWPF.Commands
@@ -10,10 +12,13 @@ namespace GraDeMarCoWPF.Commands
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
+        IOpenFileDialogService openFileDialogService;
 
-        public OpenWorkspace(AppData appData)
+        public OpenWorkspace(AppData appData, IOpenFileDialogService openFileDialogService)
         {
             this.appData = appData;
+            this.openFileDialogService = openFileDialogService;
+
             appData.PropertyChanged += appData_PropertyChanged;
         }
 
@@ -24,9 +29,12 @@ namespace GraDeMarCoWPF.Commands
 
         public void Execute(object parameter)
         {
-            appData.CurrentState = AppState.WorkspacePrepared;
-            appData.WorkspacePath = @"D:\Projects\GrainDetector\sample1.dat";
-            Workspace.Instance.Load(appData.WorkspacePath);
+            if (openFileDialogService.ShowDialog() ?? false)
+            {
+                appData.CurrentState = AppState.WorkspacePrepared;
+                appData.WorkspacePath = openFileDialogService.Filename;
+                Workspace.Instance.Load(appData.WorkspacePath);
+            }
         }
 
         private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
