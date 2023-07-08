@@ -31,9 +31,9 @@ namespace GraDeMarCoWPF.Commands
         public void Execute(object parameter)
         {
             imageArea.LowerX = 0;
-            imageArea.UpperX = (int)imageData.OriginalImage.Width - 1;
+            imageArea.UpperX = (int)imageData.OriginalImage.PixelWidth - 1;
             imageArea.LowerY = 0;
-            imageArea.UpperY = (int)imageData.OriginalImage.Height - 1;
+            imageArea.UpperY = (int)imageData.OriginalImage.PixelHeight - 1;
         }
 
         private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
