@@ -123,9 +123,11 @@ namespace GraDeMarCoWPF.Models
 
             Copy(workspace.AppData, this.AppData);
             Copy(workspace.ImageArea, this.ImageArea);
+            Copy(workspace.PlanimetricCircle, this.PlanimetricCircle);
 
             AppData.NotifyAllPropertyChanged();
             ImageArea.NotifyAllPropertyChanged();
+            PlanimetricCircle.NotifyAllPropertyChanged();
         }
 
         private static void Copy<T>(T source, T destination)
