@@ -1,5 +1,6 @@
 ﻿using GraDeMarCoWPF.Models;
 using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace GraDeMarCoWPF.Commands
@@ -13,6 +14,7 @@ namespace GraDeMarCoWPF.Commands
         public CreateWorkspace(AppData appData)
         {
             this.appData = appData;
+            appData.PropertyChanged += appData_PropertyChanged;
         }   
 
         public bool CanExecute(object parameter)
@@ -24,6 +26,14 @@ namespace GraDeMarCoWPF.Commands
         {
             appData.CurrentState = AppState.WorkspacePrepared;
             Workspace.Instance.Initialize();
+        }
+
+        private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (CanExecuteChanged != null)
+            {
+                CanExecuteChanged(this, new EventArgs());
+            }
         }
     }
 }
