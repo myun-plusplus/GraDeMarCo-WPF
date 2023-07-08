@@ -31,6 +31,7 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _workspacePath = value;
+                NotifyPropertyChanged(GetName.Of(() => WorkspacePath));
             }
         }
 
@@ -55,6 +56,12 @@ namespace GraDeMarCoWPF.Models
             return CurrentState == AppState.None ||
                 CurrentState == AppState.WorkspacePrepared ||
                 CurrentState == AppState.ImageOpened;
+        }
+
+        public bool CanOverwriteWorkspace()
+        {
+            return WorkspacePath != "" &&
+                (CurrentState == AppState.WorkspacePrepared || CurrentState == AppState.ImageOpened);
         }
 
         public bool CanSaveWorkspace()

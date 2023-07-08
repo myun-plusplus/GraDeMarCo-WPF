@@ -21,7 +21,7 @@
             <MenuItem Header="ファイル(_F)">
                 <MenuItem Header="新規(_N)" Command="{Binding CreateWorkspace}"/>
                 <MenuItem Header="開く(_O)" Command="{Binding OpenWorkspace}"/>
-                <MenuItem Header="上書き保存(_S)"/>
+                <MenuItem Header="上書き保存(_S)" Command="{Binding OverwriteWorkspace}"/>
                 <MenuItem Header="名前を付けて保存(_A)" Command="{Binding SaveAsWorkspace}"/>
                 <Separator/>
                 <MenuItem Header="終了(_X)"/>

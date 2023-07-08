@@ -15,6 +15,7 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand CreateWorkspace { get; private set; }
         public ICommand OpenWorkspace { get; private set; }
+        public ICommand OverwriteWorkspace { get; private set; }
         public ICommand SaveAsWorkspace { get; private set; }
 
         public ICommand OpenImage { get; private set; }
@@ -43,6 +44,7 @@ namespace GraDeMarCoWPF.ViewModels
 
             CreateWorkspace = new CreateWorkspace(appData);
             OpenWorkspace = new OpenWorkspace(appData, openWorkspaceDialogService);
+            OverwriteWorkspace = new OverwriteWorkspace(appData);
             SaveAsWorkspace = new SaveAsWorkspace(appData, saveFileDialogService);
             OpenImage = new OpenImage(appData, imageData, imageDisplay, imageWindowService);
 
