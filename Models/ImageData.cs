@@ -11,7 +11,10 @@ namespace GraDeMarCoWPF.Models
             get { return _originalImage; }
             set
             {
-                _originalImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
+                if (value != null)
+                {
+                    _originalImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
+                }
             }
         }
 

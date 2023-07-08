@@ -14,7 +14,7 @@ namespace GraDeMarCoWPF.ViewModels
         public ImageAreaSelectingViewModel imageAreaSelectingViewModel { get; set; }
         public PlanimetricCircleDrawingViewModel PlanimetricCircleDrawingViewModel { get; set; }
 
-
+        public ICommand CreateWorkspace { get; private set; }
         public ICommand OpenWorkspaceCommand { get; private set; }
         public ICommand SaveWorkspace { get; private set; }
 
@@ -42,6 +42,14 @@ namespace GraDeMarCoWPF.ViewModels
             this.imageData = imageData;
             this.imageDisplay = imageDisplay;
 
+            CreateWorkspace = CreateCommand(
+                _ =>
+                {
+                    appData.CurrentState = AppState.WorkspacePrepared;
+                    Workspace.Instance.Initialize();
+                },
+                _ => appData.CandCreateWorkspace()
+            );
             OpenWorkspaceCommand = CreateCommand(_ =>
             {
                 string filePath = @"D:\Projects\GrainDetector\sample1.dat";

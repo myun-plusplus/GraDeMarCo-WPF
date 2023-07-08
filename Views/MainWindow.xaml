@@ -19,7 +19,7 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="ファイル(_F)">
-                <MenuItem Header="新規(_N)"/>
+                <MenuItem Header="新規(_N)" Command="{Binding CreateWorkspace}"/>
                 <MenuItem Header="開く(_O)" Command="{Binding OpenWorkspaceCommand}"/>
                 <MenuItem Header="上書き保存(_S)"/>
                 <MenuItem Header="名前を付けて保存(_A)" Command="{Binding SaveWorkspace}"/>
