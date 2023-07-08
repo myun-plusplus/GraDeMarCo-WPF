@@ -18,17 +18,6 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 _areaSelectEnabled = value;
                 NotifyPropertyChanged(GetName.Of(() => AreaReserveEnabled));
-
-                if (value)
-                {
-                    appData.CurrentState = AppState.ImageAreaSelecting;
-                    this.imageAreaSelecting.StartFunction();
-                }
-                else
-                {
-                    appData.CurrentState = AppState.ImageOpened;
-                    this.imageAreaSelecting.StopFunction();
-                }
             }
         }
 
@@ -80,9 +69,9 @@ namespace GraDeMarCoWPF.ViewModels
             ImageArea imageArea,
             ImageAreaSelecting imageAreaSelecting)
         {
-            this.appData = Workspace.Instance.AppData;
-            this.imageArea = Workspace.Instance.ImageArea;
-            this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
+            this.appData = appData;
+            this.imageArea = imageArea;
+            this.imageAreaSelecting = imageAreaSelecting;
 
             ToggleImageAreaSelecting = new ToggleImageAreaSelecting(appData, imageAreaSelecting);
             SelectMaxArea = new SelectMaxArea(appData, imageData, imageArea);
