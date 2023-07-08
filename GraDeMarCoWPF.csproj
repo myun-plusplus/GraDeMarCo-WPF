@@ -64,7 +64,7 @@
     <Compile Include="Commands\DrawMaxCircle.cs" />
     <Compile Include="Commands\OpenImage.cs" />
     <Compile Include="Commands\OpenWorkspace.cs" />
-    <Compile Include="Commands\SaveWorkspace.cs" />
+    <Compile Include="Commands\SaveAsWorkspace.cs" />
     <Compile Include="Commands\SelectColor.cs" />
     <Compile Include="Commands\SelectMaxArea.cs" />
     <Compile Include="Commands\TestClick.cs" />

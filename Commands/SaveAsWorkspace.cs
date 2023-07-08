@@ -6,14 +6,14 @@ using System.Windows.Input;
 
 namespace GraDeMarCoWPF.Commands
 {
-    public class SaveWorkspace : ICommand
+    public class SaveAsWorkspace : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
         private ISaveFileDialogService saveFileDialogService;
 
-        public SaveWorkspace(AppData appData, ISaveFileDialogService saveFileDialogService)
+        public SaveAsWorkspace(AppData appData, ISaveFileDialogService saveFileDialogService)
         {
             this.appData = appData;
             this.saveFileDialogService = saveFileDialogService;
