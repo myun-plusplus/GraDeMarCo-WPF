@@ -42,7 +42,7 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
-        public bool CandCreateWorkspace()
+        public bool CanCreateWorkspace()
         {
             return CurrentState == AppState.None ||
                 CurrentState == AppState.WorkspacePrepared ||

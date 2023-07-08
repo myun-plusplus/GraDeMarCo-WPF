@@ -15,7 +15,7 @@ namespace GraDeMarCoWPF.ViewModels
         public PlanimetricCircleDrawingViewModel PlanimetricCircleDrawingViewModel { get; set; }
 
         public ICommand CreateWorkspace { get; private set; }
-        public ICommand OpenWorkspaceCommand { get; private set; }
+        public ICommand OpenWorkspace { get; private set; }
         public ICommand SaveWorkspace { get; private set; }
 
         public ICommand OpenImageFileCommand { get; private set; }
@@ -42,29 +42,9 @@ namespace GraDeMarCoWPF.ViewModels
             this.imageData = imageData;
             this.imageDisplay = imageDisplay;
 
-            CreateWorkspace = CreateCommand(
-                _ =>
-                {
-                    appData.CurrentState = AppState.WorkspacePrepared;
-                    Workspace.Instance.Initialize();
-                },
-                _ => appData.CandCreateWorkspace()
-            );
-            OpenWorkspaceCommand = CreateCommand(
-                _ =>
-                {
-                    appData.CurrentState = AppState.WorkspacePrepared;
-                    string filePath = @"D:\Projects\GrainDetector\sample1.dat";
-                    Workspace.Instance.Load(filePath);
-                },
-                _ => this.appData.CanOpenWorkspace());
-            SaveWorkspace = CreateCommand(
-                _ =>
-                {
-                    string filePath = @"D:\Projects\GrainDetector\sample1.dat";
-                    Workspace.Instance.Save(filePath);
-                },
-                _ => this.appData.CanSaveWorkspace());
+            CreateWorkspace = new CreateWorkspace(appData);
+            OpenWorkspace = new OpenWorkspace(appData);
+            SaveWorkspace = new SaveWorkspace(appData);
             this.OpenImageFileCommand = CreateCommand(_ => { this.imageData.OpenImageFile(null); });
             this.OpenImageWindowCommand = new OpenImageWindow(imageWindowService);
             this.OpenImage = CreateCommand(_ => {

@@ -59,9 +59,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\CreateWorkspace.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DrawMaxCircle.cs" />
     <Compile Include="Commands\OpenImageWindow.cs" />
+    <Compile Include="Commands\OpenWorkspace.cs" />
+    <Compile Include="Commands\SaveWorkspace.cs" />
     <Compile Include="Commands\SelectColor.cs" />
     <Compile Include="Commands\TestClick.cs" />
     <Compile Include="Commands\TogglePlanimetricCircleDrawing.cs" />
