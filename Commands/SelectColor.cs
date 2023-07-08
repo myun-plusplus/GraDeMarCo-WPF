@@ -1,5 +1,6 @@
 ﻿using GraDeMarCoWPF.Models;
 using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace GraDeMarCoWPF.Commands
@@ -8,20 +9,26 @@ namespace GraDeMarCoWPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
+        private AppData appData;
         private OutlineDrawingTool drawingTool;
         private IColorDialogService colorDialogService;
 
         public SelectColor(
+            AppData appData,
             OutlineDrawingTool drawingTool,
             IColorDialogService colorDialogService)
         {
+            this.appData = appData;
             this.drawingTool = drawingTool;
             this.colorDialogService = colorDialogService;
+
+            appData.PropertyChanged += this.appData_PropertyChanged;
         }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return appData.CurrentState == AppState.ImageOpened ||
+                appData.CurrentState == AppState.PlanimetricCircleDrawing;
         }
 
         public void Execute(object parameter)
@@ -30,6 +37,14 @@ namespace GraDeMarCoWPF.Commands
             if (dialogResult ?? false)
             {
                 drawingTool.Color = colorDialogService.Color;
+            }
+        }
+
+        private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (CanExecuteChanged != null)
+            {
+                CanExecuteChanged(this, new EventArgs());
             }
         }
     }

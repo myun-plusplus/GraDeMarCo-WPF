@@ -67,9 +67,9 @@ namespace GraDeMarCoWPF.ViewModels
             get { return new SolidColorBrush(planimetricCircleDrawingTool.Color); }
         }
 
-        public ICommand TogglePlanimetricCircleDrawingCommand { get; private set; }
-        public ICommand DrawMaxCircleCommand { get; private set; }
-        public ICommand SelectColorCommand { get; private set; }
+        public ICommand TogglePlanimetricCircleDrawing { get; private set; }
+        public ICommand DrawMaxCircle { get; private set; }
+        public ICommand SelectColor { get; private set; }
 
         private bool _circleDrawEnabled;
 
@@ -86,9 +86,9 @@ namespace GraDeMarCoWPF.ViewModels
             this.planimetricCircleDrawingTool = Workspace.Instance.PlanimetricCircleDrawingTool;
             this.planimetricCircleDrawing = Workspace.Instance.PlanimetricCircleDrawing;
 
-            TogglePlanimetricCircleDrawingCommand = new TogglePlanimetricCircleDrawing(appData, planimetricCircleDrawing);
-            SelectColorCommand = new SelectColor(this.planimetricCircleDrawingTool, colorDialogService);
-            DrawMaxCircleCommand = new DrawMaxCircle(appData, imageArea, planimetricCircle);
+            TogglePlanimetricCircleDrawing = new TogglePlanimetricCircleDrawing(appData, planimetricCircleDrawing);
+            SelectColor = new SelectColor(appData, planimetricCircleDrawingTool, colorDialogService);
+            DrawMaxCircle = new DrawMaxCircle(appData, imageArea, planimetricCircle);
 
             planimetricCircle.PropertyChanged += imageArea_PropertyChanged;
             planimetricCircleDrawingTool.PropertyChanged += imageArea_PropertyChanged;

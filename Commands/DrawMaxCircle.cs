@@ -1,5 +1,6 @@
 ﻿using GraDeMarCoWPF.Models;
 using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace GraDeMarCoWPF.Commands
@@ -17,6 +18,8 @@ namespace GraDeMarCoWPF.Commands
             this.appData = appData;
             this.imageArea = imageArea;
             this.planimetricCircle = planimetricCircle;
+
+            appData.PropertyChanged += this.appData_PropertyChanged;
         }
 
         public bool CanExecute(object parameter)
@@ -33,6 +36,14 @@ namespace GraDeMarCoWPF.Commands
             planimetricCircle.LowerX = centerX - radius;
             planimetricCircle.LowerY = centerY - radius;
             planimetricCircle.Diameter = 2 * radius;
+        }
+
+        private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (CanExecuteChanged != null)
+            {
+                CanExecuteChanged(this, new EventArgs());
+            }
         }
     }
 }
