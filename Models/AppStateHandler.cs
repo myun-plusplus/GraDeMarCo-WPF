@@ -6,13 +6,13 @@ namespace GraDeMarCoWPF.Models
     public class AppStateHandler
     {
         private AppData appData;
-        private ImageAreaSelecting imageAreaSelecting;
-        private PlanimetricCircleDrawing planimetricCircleDrawing;
+        private IImageAreaSelecting imageAreaSelecting;
+        private IPlanimetricCircleDrawing planimetricCircleDrawing;
 
 
         public AppStateHandler(AppData appData,
-            ImageAreaSelecting imageAreaSelecting,
-            PlanimetricCircleDrawing planetricCircleDrawing)
+            IImageAreaSelecting imageAreaSelecting,
+            IPlanimetricCircleDrawing planetricCircleDrawing)
         {
             this.appData = appData;
             this.imageAreaSelecting = imageAreaSelecting;

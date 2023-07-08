@@ -10,11 +10,11 @@ namespace GraDeMarCoWPF.Commands
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
-        private PlanimetricCircleDrawing planimetricCircleDrawing;
+        private IPlanimetricCircleDrawing planimetricCircleDrawing;
 
         public TogglePlanimetricCircleDrawing(
             AppData appData,
-            PlanimetricCircleDrawing planimetricCircleDrawing)
+            IPlanimetricCircleDrawing planimetricCircleDrawing)
         {
             this.appData = appData;
             this.planimetricCircleDrawing = planimetricCircleDrawing;

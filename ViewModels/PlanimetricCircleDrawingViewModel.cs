@@ -12,7 +12,7 @@ namespace GraDeMarCoWPF.ViewModels
         private AppData appData;
         private PlanimetricCircle planimetricCircle;
         private OutlineDrawingTool planimetricCircleDrawingTool;
-        private PlanimetricCircleDrawing planimetricCircleDrawing;
+        private IPlanimetricCircleDrawing planimetricCircleDrawing;
 
         public bool CircleDrawEnabled
         {
@@ -80,7 +80,7 @@ namespace GraDeMarCoWPF.ViewModels
             ImageArea imageArea,
             PlanimetricCircle planimetricCircle,
             OutlineDrawingTool planimetricCircleDrawingTool,
-            PlanimetricCircleDrawing planimetricCircleDrawing)
+            IPlanimetricCircleDrawing planimetricCircleDrawing)
         {
             this.appData = Workspace.Instance.AppData;
             this.planimetricCircle = Workspace.Instance.PlanimetricCircle;

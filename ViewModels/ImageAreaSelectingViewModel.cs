@@ -9,7 +9,7 @@ namespace GraDeMarCoWPF.ViewModels
     {
         private AppData appData;
         private ImageArea imageArea;
-        private ImageAreaSelecting imageAreaSelecting;
+        private IImageAreaSelecting imageAreaSelecting;
 
         public bool AreaReserveEnabled
         {
@@ -67,7 +67,7 @@ namespace GraDeMarCoWPF.ViewModels
             AppData appData,
             ImageData imageData,
             ImageArea imageArea,
-            ImageAreaSelecting imageAreaSelecting)
+            IImageAreaSelecting imageAreaSelecting)
         {
             this.appData = appData;
             this.imageArea = imageArea;

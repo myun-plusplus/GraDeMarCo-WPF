@@ -10,11 +10,11 @@ namespace GraDeMarCoWPF.Commands
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
-        private ImageAreaSelecting imageAreaSelecting;
+        private IImageAreaSelecting imageAreaSelecting;
 
         public ToggleImageAreaSelecting(
             AppData appData,
-            ImageAreaSelecting imageAreaSelecting)
+            IImageAreaSelecting imageAreaSelecting)
         {
             this.appData = appData;
             this.imageAreaSelecting = imageAreaSelecting;
