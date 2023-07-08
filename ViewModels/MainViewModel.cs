@@ -33,7 +33,8 @@ namespace GraDeMarCoWPF.ViewModels
             ImageDisplay imageDisplay,
             IWindowService imageWindowService,
             IOpenFileDialogService openWorkspaceDialogService,
-            ISaveFileDialogService saveFileDialogService)
+            ISaveFileDialogService saveFileDialogService,
+            IOpenFileDialogService openImageFileDialogService)
         {
             this.imageAreaSelectingViewModel = imageAreaSelectingViewModel;
             this.PlanimetricCircleDrawingViewModel = planimetricCircleDrawingViewModel;
@@ -46,7 +47,7 @@ namespace GraDeMarCoWPF.ViewModels
             OpenWorkspace = new OpenWorkspace(appData, openWorkspaceDialogService);
             OverwriteWorkspace = new OverwriteWorkspace(appData);
             SaveAsWorkspace = new SaveAsWorkspace(appData, saveFileDialogService);
-            OpenImage = new OpenImage(appData, imageData, imageDisplay, imageWindowService);
+            OpenImage = new OpenImage(appData, imageData, imageDisplay, imageWindowService, openImageFileDialogService);
 
             this.ZoomInCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 2.0; },

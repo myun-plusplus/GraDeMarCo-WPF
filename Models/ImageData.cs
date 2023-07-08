@@ -22,7 +22,7 @@ namespace GraDeMarCoWPF.Models
 
         public void OpenImageFile(string filePath)
         {
-            var bitmapSource = new BitmapImage(new Uri(@"D:\Projects\GrainDetector\sample1.jpg"));
+            var bitmapSource = new BitmapImage(new Uri(filePath));
             OriginalImage = new WriteableBitmap(bitmapSource);
         }
     }
