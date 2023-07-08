@@ -38,6 +38,7 @@ namespace GraDeMarCoWPF
                 appStateHandler);
             var imageAreaSelectingViewModel = new ImageAreaSelectingViewModel(
                 appData,
+                imageData,
                 imageArea,
                 imageAreaSelecting);
             var planimetricCircleDrawingViewModel = new PlanimetricCircleDrawingViewModel(

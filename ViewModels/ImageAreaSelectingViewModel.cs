@@ -1,4 +1,5 @@
-﻿using GraDeMarCoWPF.Models;
+﻿using GraDeMarCoWPF.Commands;
+using GraDeMarCoWPF.Models;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -70,16 +71,21 @@ namespace GraDeMarCoWPF.ViewModels
             }
         }
 
-        public ICommand SelectMaxAreaCommand { get; private set; }
+        public ICommand ToggleImageAreaSelecting { get; private set; }
+        public ICommand SelectMaxArea { get; private set; }
 
         public ImageAreaSelectingViewModel(
             AppData appData,
+            ImageData imageData,
             ImageArea imageArea,
             ImageAreaSelecting imageAreaSelecting)
         {
             this.appData = Workspace.Instance.AppData;
             this.imageArea = Workspace.Instance.ImageArea;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
+
+            ToggleImageAreaSelecting = new ToggleImageAreaSelecting(appData, imageAreaSelecting);
+            SelectMaxArea = new SelectMaxArea(appData, imageData, imageArea);
 
             imageArea.PropertyChanged += imageArea_PropertyChanged;
         }
