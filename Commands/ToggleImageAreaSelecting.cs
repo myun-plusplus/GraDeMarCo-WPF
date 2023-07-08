@@ -24,14 +24,8 @@ namespace GraDeMarCoWPF.Commands
 
         public bool CanExecute(object parameter)
         {
-            if ((parameter as bool?) ?? false)
-            {
-                return appData.CurrentState == AppState.ImageAreaSelecting;
-            }
-            else
-            {
-                return appData.CurrentState == AppState.ImageOpened;
-            }
+            return appData.CurrentState == AppState.ImageOpened ||
+                appData.CurrentState == AppState.ImageAreaSelecting;
         }
 
         public void Execute(object parameter)

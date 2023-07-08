@@ -21,15 +21,6 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 _circleDrawEnabled = value;
                 NotifyPropertyChanged(GetName.Of(() => CircleDrawEnabled));
-
-                if (value)
-                {
-                    appData.CurrentState = AppState.PlanimetricCircleDrawing;
-                }
-                else
-                {
-                    appData.CurrentState = AppState.ImageOpened;
-                }
             }
         }
 
