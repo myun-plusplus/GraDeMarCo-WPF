@@ -11,10 +11,10 @@
         Title="GraDeMarCo" Width="370" Height="550"
         d:DataContext="{d:DesignInstance vm:MainViewModel}">
     <Window.InputBindings>
-        <KeyBinding Key="N" Modifiers="Ctrl"/>
-        <KeyBinding Key="O" Modifiers="Ctrl"/>
-        <KeyBinding Key="S" Modifiers="Ctrl"/>
-        <KeyBinding Key="S" Modifiers="Ctrl+Shift"/>
+        <KeyBinding Key="N" Modifiers="Ctrl" Command="{Binding CreateWorkspace}"/>
+        <KeyBinding Key="O" Modifiers="Ctrl" Command="{Binding OpenWorkspace}"/>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding OverwriteWorkspace}"/>
+        <KeyBinding Key="S" Modifiers="Ctrl+Shift" Command="{Binding SaveAsWorkspace}"/>
     </Window.InputBindings>
     <StackPanel>
         <Menu>
