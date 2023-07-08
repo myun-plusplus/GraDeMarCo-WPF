@@ -30,12 +30,12 @@ namespace GraDeMarCoWPF.Commands
 
         public void Execute(object parameter)
         {
-            int centerX = (imageArea.LowerX + imageArea.UpperX) / 2;
-            int centerY = (imageArea.LowerY + imageArea.UpperY) / 2;
-            int radius = Math.Min(imageArea.UpperX - imageArea.LowerX, imageArea.UpperY - imageArea.LowerY) / 2;
-            planimetricCircle.LowerX = centerX - radius;
-            planimetricCircle.LowerY = centerY - radius;
-            planimetricCircle.Diameter = 2 * radius;
+            double centerX = (imageArea.LowerX + imageArea.UpperX) / 2.0;
+            double centerY = (imageArea.LowerY + imageArea.UpperY) / 2.0;
+            int diameter = Math.Min(imageArea.UpperX - imageArea.LowerX, imageArea.UpperY - imageArea.LowerY);
+            planimetricCircle.LowerX = (int)(centerX - diameter / 2.0);
+            planimetricCircle.LowerY = (int)(centerY - diameter / 2.0);
+            planimetricCircle.Diameter = (int)diameter;
         }
 
         private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
