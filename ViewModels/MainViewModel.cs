@@ -50,16 +50,21 @@ namespace GraDeMarCoWPF.ViewModels
                 },
                 _ => appData.CandCreateWorkspace()
             );
-            OpenWorkspaceCommand = CreateCommand(_ =>
-            {
-                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
-                Workspace.Instance.Load(filePath);
-            }, _ => this.appData.CanOpenWorkspace());
-            SaveWorkspace = CreateCommand(_ =>
-            {
-                string filePath = @"D:\Projects\GrainDetector\sample1.dat";
-                Workspace.Instance.Save(filePath);
-            }, _ => this.appData.CanSaveWorkspace());
+            OpenWorkspaceCommand = CreateCommand(
+                _ =>
+                {
+                    appData.CurrentState = AppState.WorkspacePrepared;
+                    string filePath = @"D:\Projects\GrainDetector\sample1.dat";
+                    Workspace.Instance.Load(filePath);
+                },
+                _ => this.appData.CanOpenWorkspace());
+            SaveWorkspace = CreateCommand(
+                _ =>
+                {
+                    string filePath = @"D:\Projects\GrainDetector\sample1.dat";
+                    Workspace.Instance.Save(filePath);
+                },
+                _ => this.appData.CanSaveWorkspace());
             this.OpenImageFileCommand = CreateCommand(_ => { this.imageData.OpenImageFile(null); });
             this.OpenImageWindowCommand = new OpenImageWindow(imageWindowService);
             this.OpenImage = CreateCommand(_ => {
