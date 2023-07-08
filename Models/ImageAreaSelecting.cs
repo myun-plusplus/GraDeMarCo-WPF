@@ -66,8 +66,6 @@ namespace GraDeMarCoWPF.Models
             this.imageDisplay = imageDisplay;
             this.imageArea = imageArea;
             this.drawingTool = drawingTool;
-
-            this.drawingTool.Color = Colors.Green;
         }
 
         public void StartFunction()

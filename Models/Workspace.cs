@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
 {
@@ -58,6 +59,30 @@ namespace GraDeMarCoWPF.Models
 
         [NonSerialized]
         public AppStateHandler AppStateHandler;
+
+        public void Initialize()
+        {
+            AppData.CurrentState = AppState.WorkspacePrepared;
+            AppData.WorkspacePath = "";
+            AppData.ImagePath = "";
+
+            ImageData.OriginalImage = null;
+
+            ImageDisplay.ZoomScale = 1.0;
+
+            ImageArea.LowerX = 0;
+            ImageArea.UpperX = 0;
+            ImageArea.LowerY = 0;
+            ImageArea.UpperY = 0;
+
+            ImageAreaDrawingTool.Color = Colors.Green;
+
+            PlanimetricCircle.LowerX = 0;
+            PlanimetricCircle.LowerY = 0;
+            PlanimetricCircle.Diameter = 0;
+
+            PlanimetricCircleDrawingTool.Color = Colors.Blue;
+        }
 
         public void Save(string filePath)
         {

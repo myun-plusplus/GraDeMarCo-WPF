@@ -92,8 +92,6 @@ namespace GraDeMarCoWPF.ViewModels
 
             planimetricCircle.PropertyChanged += imageArea_PropertyChanged;
             planimetricCircleDrawingTool.PropertyChanged += imageArea_PropertyChanged;
-
-            planimetricCircleDrawingTool.Color = Colors.Blue;
         }
 
         private void imageArea_PropertyChanged(object sender, PropertyChangedEventArgs e)
