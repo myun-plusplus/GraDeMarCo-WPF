@@ -1,7 +1,6 @@
 ﻿using GraDeMarCoWPF.Commands;
 using GraDeMarCoWPF.Models;
-using GraDeMarCoWPF.Views;
-using System.Net;
+using GraDeMarCoWPF.Services;
 using System.Windows.Input;
 
 namespace GraDeMarCoWPF.ViewModels

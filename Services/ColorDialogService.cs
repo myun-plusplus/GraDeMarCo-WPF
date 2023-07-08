@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GraDeMarCoWPF.Models
+namespace GraDeMarCoWPF.Services
 {
     public class ColorDialogService : IColorDialogService
     {

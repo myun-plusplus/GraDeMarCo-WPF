@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace GraDeMarCoWPF.Models
+namespace GraDeMarCoWPF.Services
 {
     class SubWindowService : IWindowService
     {

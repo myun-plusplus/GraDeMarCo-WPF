@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace GraDeMarCoWPF.Models
+namespace GraDeMarCoWPF.Services
 {
     public interface IWindowService
     {

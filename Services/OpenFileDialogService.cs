@@ -1,5 +1,4 @@
-﻿using GraDeMarCoWPF.Models;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 
 namespace GraDeMarCoWPF.Services
 {
