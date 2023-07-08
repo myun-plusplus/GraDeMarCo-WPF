@@ -41,6 +41,7 @@ namespace GraDeMarCoWPF.Models
         public void UpdateImage()
         {
             DisplayedImage = imageData.OriginalImage.Clone();
+            ZoomScale = 1.0;
         }
 
         public Point GetAbsoluteLocation(Point location)

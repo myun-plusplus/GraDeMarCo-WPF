@@ -18,8 +18,6 @@ namespace GraDeMarCoWPF.ViewModels
         public ICommand OpenWorkspace { get; private set; }
         public ICommand SaveWorkspace { get; private set; }
 
-        public ICommand OpenImageFileCommand { get; private set; }
-        public ICommand OpenImageWindowCommand { get; private set; }
         public ICommand OpenImage { get; private set; }
 
         public ICommand ZoomInCommand { get; private set; }
@@ -45,14 +43,8 @@ namespace GraDeMarCoWPF.ViewModels
             CreateWorkspace = new CreateWorkspace(appData);
             OpenWorkspace = new OpenWorkspace(appData);
             SaveWorkspace = new SaveWorkspace(appData);
-            this.OpenImageFileCommand = CreateCommand(_ => { this.imageData.OpenImageFile(null); });
-            this.OpenImageWindowCommand = new OpenImageWindow(imageWindowService);
-            this.OpenImage = CreateCommand(_ => {
-                OpenImageFileCommand.Execute(null);
-                this.imageDisplay.UpdateImage();
-                this.imageDisplay.ZoomScale = 1.0;
-                OpenImageWindowCommand.Execute(null);
-            }, _ => this.appData.CanOpenImage());
+            OpenImage = new OpenImage(appData, imageData, imageDisplay, imageWindowService);
+
             this.ZoomInCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 2.0; },
                 _ => this.appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);

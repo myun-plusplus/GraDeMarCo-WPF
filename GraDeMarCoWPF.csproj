@@ -62,7 +62,7 @@
     <Compile Include="Commands\CreateWorkspace.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DrawMaxCircle.cs" />
-    <Compile Include="Commands\OpenImageWindow.cs" />
+    <Compile Include="Commands\OpenImage.cs" />
     <Compile Include="Commands\OpenWorkspace.cs" />
     <Compile Include="Commands\SaveWorkspace.cs" />
     <Compile Include="Commands\SelectColor.cs" />
@@ -145,7 +145,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\OpenImageWindow.cs" />
     <Compile Include="Models\OpenWindowService.cs" />
     <Compile Include="Models\BindableBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

@@ -13,7 +13,7 @@ namespace GraDeMarCoWPF.Models
     }
 
     [Serializable]
-    public class AppData
+    public class AppData : BindableBase
     {
         public AppState CurrentState
         {
@@ -21,6 +21,7 @@ namespace GraDeMarCoWPF.Models
             set
             {
                 _currentState = value;
+                NotifyPropertyChanged(GetName.Of(() => CurrentState));
             }
         }
 
@@ -63,7 +64,7 @@ namespace GraDeMarCoWPF.Models
 
         public bool CanOpenImage()
         {
-            return CurrentState == AppState.None || CurrentState == AppState.WorkspacePrepared;
+            return CurrentState == AppState.WorkspacePrepared || CurrentState == AppState.ImageOpened;
         }
 
         public bool CanZoomInOut()

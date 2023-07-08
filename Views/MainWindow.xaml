@@ -27,8 +27,7 @@
                 <MenuItem Header="終了(_X)"/>
             </MenuItem>
             <MenuItem Header="画像(_I)">
-                <MenuItem Header="新しい画像を開く(_O)" Command="{Binding OpenImage}"/>
-                <MenuItem Header="画像ウィンドウを開く(_O)"/>
+                <MenuItem Header="画像を開く(_O)" Command="{Binding OpenImage}"/>
                 <MenuItem Header="画像を保存する(_S)"/>
             </MenuItem>
             <MenuItem Header="表示(_V)">
