@@ -31,7 +31,10 @@ namespace GraDeMarCoWPF
 
             var openWorkspaceDialogService = new OpenFileDialogService(
                 "開くワークスペースを選択してください",
-                 "DATファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*");
+                "DATファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*");
+            var saveWorkspaceDialogService = new SaveFileDialogService(
+                "ワークスペースの保存先を選択してください",
+                "DATファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*");
             var colorDialogService = new ColorDialogService();
 
             // ViewModels
@@ -67,7 +70,8 @@ namespace GraDeMarCoWPF
                 imageData,
                 imageDisplay,
                 imageWindowService,
-                openWorkspaceDialogService);
+                openWorkspaceDialogService,
+                saveWorkspaceDialogService);
 
             var mainWindow = new MainWindow()
             {

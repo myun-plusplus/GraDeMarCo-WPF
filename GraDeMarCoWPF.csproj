@@ -83,6 +83,7 @@
     <Compile Include="Models\PlanimetricCircle.cs" />
     <Compile Include="Models\PlanimetricCircleDrawing.cs" />
     <Compile Include="Services\OpenFileDialogService.cs" />
+    <Compile Include="Services\SaveFileDialogService.cs" />
     <Compile Include="Services\ServiceInterface.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\ImageAreaSelectingViewModel.cs" />
