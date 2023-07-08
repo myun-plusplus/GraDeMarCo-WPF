@@ -13,12 +13,12 @@
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton
                         IsChecked="{Binding CircleDrawEnabled}"
-                        Command="{Binding TogglePlanimetricCircleDrawingCommand}"
+                        Command="{Binding TogglePlanimetricCircleDrawing}"
                         CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
                         Content="円選択"
                         Style="{StaticResource NormalToggleButton}"/>
                     <Button
-                        Command="{Binding DrawMaxCircleCommand}"
+                        Command="{Binding DrawMaxCircle}"
                         Content="最大円"
                         Style="{StaticResource NormalButton}"/>
                 </StackPanel>

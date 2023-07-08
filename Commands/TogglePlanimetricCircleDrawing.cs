@@ -24,8 +24,14 @@ namespace GraDeMarCoWPF.Commands
 
         public bool CanExecute(object parameter)
         {
-            return appData.CurrentState != AppState.None &&
-                appData.CurrentState != AppState.WorkspacePrepared;
+            if ((parameter as bool?) ?? false)
+            {
+                return appData.CurrentState == AppState.PlanimetricCircleDrawing;
+            }
+            else
+            {
+                return appData.CurrentState == AppState.ImageOpened;
+            }
         }
 
         public void Execute(object parameter)
