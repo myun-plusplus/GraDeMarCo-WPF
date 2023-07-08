@@ -123,6 +123,9 @@ namespace GraDeMarCoWPF.Models
 
             Copy(workspace.AppData, this.AppData);
             Copy(workspace.ImageArea, this.ImageArea);
+
+            AppData.NotifyAllPropertyChanged();
+            ImageArea.NotifyAllPropertyChanged();
         }
 
         private static void Copy<T>(T source, T destination)

@@ -9,6 +9,14 @@ namespace GraDeMarCoWPF.Models
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public void NotifyAllPropertyChanged()
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(""));
+            }
+        }
+
         protected void NotifyPropertyChanged(String propertyName)
         {
             if (PropertyChanged != null)
