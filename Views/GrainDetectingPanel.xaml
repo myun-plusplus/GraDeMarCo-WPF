@@ -9,7 +9,7 @@
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
-                <Label Content="粒検出" Style="{DynamicResource HeadlineLabel}"/>
+                <Label Content="粒検出" Style="{StaticResource HeadlineLabel}"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -18,15 +18,15 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-                            <ToggleButton Content="解析" Style="{DynamicResource NormalToggleButton}"/>
+                            <ToggleButton Content="解析" Style="{StaticResource NormalToggleButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="最小ピクセル数:" Style="{DynamicResource NormalLabel}"/>
-                            <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                            <Label Content="最小ピクセル数:" Style="{StaticResource NormalLabel}"/>
+                            <TextBox Style="{StaticResource ImageSizeBox}"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                        <CheckBox Content="円内粒点" Style="{DynamicResource NormalCheckBox}"/>
+                        <CheckBox Content="円内粒点" Style="{StaticResource NormalCheckBox}"/>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -36,18 +36,18 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{DynamicResource NormalLabel}"/>
+                            <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
-                                <Rectangle Width="40" Style="{DynamicResource SelectColorButton}"/>
+                                <Rectangle Width="40" Style="{StaticResource SelectColorButton}"/>
                             </StackPanel>
-                            <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{DynamicResource NormalLabel}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
-                                <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                                <TextBox Style="{StaticResource ImageSizeBox}"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical">
-                        <CheckBox Content="円周上粒点" Style="{DynamicResource NormalCheckBox}"/>
+                        <CheckBox Content="円周上粒点" Style="{StaticResource NormalCheckBox}"/>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -57,13 +57,13 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{DynamicResource NormalLabel}"/>
+                            <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
-                                <Rectangle Width="40" Style="{DynamicResource SelectColorButton}"/>
+                                <Rectangle Width="40" Style="{StaticResource SelectColorButton}"/>
                             </StackPanel>
-                            <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{DynamicResource NormalLabel}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
-                                <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                                <TextBox Style="{StaticResource ImageSizeBox}"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>

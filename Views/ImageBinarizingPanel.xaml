@@ -9,18 +9,18 @@
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
-                <Label Content="白黒二値化" Style="{DynamicResource HeadlineLabel}"/>
+                <Label Content="白黒二値化" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Content="二値化" Style="{DynamicResource NormalToggleButton}" Width="84"/>
+                    <ToggleButton Content="二値化" Style="{StaticResource NormalToggleButton}" Width="84"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="閾値:" Style="{DynamicResource NormalLabel}"/>
+                        <Label Content="閾値:" Style="{StaticResource NormalLabel}"/>
                         <Slider Width="128" VerticalAlignment="Center"/>
-                        <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                        <TextBox Style="{StaticResource ImageSizeBox}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox Content="白黒反転" Style="{DynamicResource NormalCheckBox}"/>
+                        <CheckBox Content="白黒反転" Style="{StaticResource NormalCheckBox}"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

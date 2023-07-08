@@ -11,18 +11,18 @@
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
-                <Label Content="画像範囲選択" Style="{DynamicResource HeadlineLabel}"/>
+                <Label Content="画像範囲選択" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton
                         IsChecked="{Binding AreaReserveEnabled}"
                         Command="{Binding ToggleImageAreaSelecting}"
                         CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
                         Content="範囲選択"
-                        Style="{DynamicResource NormalToggleButton}"/>
+                        Style="{StaticResource NormalToggleButton}"/>
                     <Button
                         Command="{Binding SelectMaxArea}"
                         Content="最大範囲"
-                        Style="{DynamicResource NormalButton}"/>
+                        Style="{StaticResource NormalButton}"/>
                 </StackPanel>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -33,25 +33,25 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="X範囲:" Style="{DynamicResource NormalLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="X範囲:" Style="{StaticResource NormalLabel}"/>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                         <TextBox
                             Text="{Binding LowerX, UpdateSourceTrigger=PropertyChanged}"                            
-                            Style="{DynamicResource ImageSizeBox}"/>
-                        <Label Content="-" Style="{DynamicResource NormalLabel}"/>
+                            Style="{StaticResource ImageSizeBox}"/>
+                        <Label Content="-" Style="{StaticResource NormalLabel}"/>
                         <TextBox
                             Text="{Binding UpperX, UpdateSourceTrigger=PropertyChanged}"                            
-                            Style="{DynamicResource ImageSizeBox}"/>
+                            Style="{StaticResource ImageSizeBox}"/>
                     </StackPanel>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Y範囲:" Style="{DynamicResource NormalLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Y範囲:" Style="{StaticResource NormalLabel}"/>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                         <TextBox
                             Text="{Binding LowerY, UpdateSourceTrigger=PropertyChanged}"                            
-                            Style="{DynamicResource ImageSizeBox}"/>
-                        <Label Content="-" Style="{DynamicResource NormalLabel}"/>
+                            Style="{StaticResource ImageSizeBox}"/>
+                        <Label Content="-" Style="{StaticResource NormalLabel}"/>
                         <TextBox
                             Text="{Binding UpperY, UpdateSourceTrigger=PropertyChanged}"                            
-                            Style="{DynamicResource ImageSizeBox}"/>
+                            Style="{StaticResource ImageSizeBox}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

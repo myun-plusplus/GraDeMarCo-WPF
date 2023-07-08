@@ -60,7 +60,7 @@
                 <v:DotCountingPanel/>
             </TabItem>
         </TabControl>
-        <Label Content="表示" Style="{DynamicResource HeadlineLabel}"/>
+        <Label Content="表示" Style="{StaticResource HeadlineLabel}"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
@@ -68,10 +68,10 @@
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <ToggleButton Grid.Row="0" Grid.Column="0" Content="画像範囲" Style="{DynamicResource NormalToggleButton}"/>
-            <ToggleButton Grid.Row="0" Grid.Column="1" Content="円" Style="{DynamicResource NormalToggleButton}"/>
-            <ToggleButton Grid.Row="0" Grid.Column="2" Content="画像処理" Style="{DynamicResource NormalToggleButton}"/>
-            <ToggleButton Grid.Row="0" Grid.Column="3" Content="点打ち" Style="{DynamicResource NormalToggleButton}"/>
+            <ToggleButton Grid.Row="0" Grid.Column="0" Content="画像範囲" Style="{StaticResource NormalToggleButton}"/>
+            <ToggleButton Grid.Row="0" Grid.Column="1" Content="円" Style="{StaticResource NormalToggleButton}"/>
+            <ToggleButton Grid.Row="0" Grid.Column="2" Content="画像処理" Style="{StaticResource NormalToggleButton}"/>
+            <ToggleButton Grid.Row="0" Grid.Column="3" Content="点打ち" Style="{StaticResource NormalToggleButton}"/>
         </Grid>
     </StackPanel>
 </Window>

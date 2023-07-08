@@ -9,7 +9,7 @@
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
-                <Label Content="点カウント" Style="{DynamicResource HeadlineLabel}"/>
+                <Label Content="点カウント" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
                     <ListView>
                         <ListView.View>
@@ -18,14 +18,14 @@
                                     <GridViewColumn Header="点の色">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Rectangle Style="{DynamicResource SelectColorButton}"/>
+                                                <Rectangle Style="{StaticResource SelectColorButton}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Header="点の数">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                                                <TextBox Style="{StaticResource ImageSizeBox}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -38,10 +38,10 @@
                     </ListView>
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="色を追加" Style="{DynamicResource NormalButton}"/>
+                            <Button Content="色を追加" Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="色を削除" Style="{DynamicResource NormalButton}"/>
+                            <Button Content="色を削除" Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

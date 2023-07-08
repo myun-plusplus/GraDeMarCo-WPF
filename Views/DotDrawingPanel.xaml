@@ -9,9 +9,9 @@
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
-                <Label Content="点打ちツール" Style="{DynamicResource HeadlineLabel}"/>
+                <Label Content="点打ちツール" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Content="点打ち" Style="{DynamicResource NormalToggleButton}"/>
+                    <ToggleButton Content="点打ち" Style="{StaticResource NormalToggleButton}"/>
                 </StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -28,25 +28,25 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{DynamicResource NormalLabel}"/>
+                            <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
-                                <Rectangle Style="{DynamicResource SelectColorButton}"/>
+                                <Rectangle Style="{StaticResource SelectColorButton}"/>
                             </StackPanel>
-                            <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{DynamicResource NormalLabel}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
-                                <TextBox Style="{DynamicResource ImageSizeBox}"/>
+                                <TextBox Style="{StaticResource ImageSizeBox}"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="元に戻す" Style="{DynamicResource NormalButton}"/>
+                            <Button Content="元に戻す" Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="やり直す" Style="{DynamicResource NormalButton}"/>
+                            <Button Content="やり直す" Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="すべて削除" Style="{DynamicResource NormalButton}"/>
+                            <Button Content="すべて削除" Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

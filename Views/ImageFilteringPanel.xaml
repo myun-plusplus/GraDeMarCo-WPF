@@ -9,9 +9,9 @@
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
-                <Label Content="画像フィルター" Style="{DynamicResource HeadlineLabel}"/>
+                <Label Content="画像フィルター" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Content="フィルター適用" Style="{DynamicResource NormalToggleButton}" Width="84"/>
+                    <ToggleButton Content="フィルター適用" Style="{StaticResource NormalToggleButton}" Width="84"/>
                 </StackPanel>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -22,13 +22,13 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="ぼかし:" Style="{DynamicResource NormalLabel}"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="ぼかし:" Style="{StaticResource NormalLabel}"/>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                        <ComboBox Style="{DynamicResource NormalComboBox}"/>
+                        <ComboBox Style="{StaticResource NormalComboBox}"/>
                     </StackPanel>
-                    <Label Grid.Row="1" Grid.Column="0" Content="エッジ検出:" Style="{DynamicResource NormalLabel}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="エッジ検出:" Style="{StaticResource NormalLabel}"/>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                        <ComboBox Style="{DynamicResource NormalComboBox}"/>
+                        <ComboBox Style="{StaticResource NormalComboBox}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
