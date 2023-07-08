@@ -61,6 +61,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DrawMaxCircle.cs" />
+    <Compile Include="Commands\OpenImageWindow.cs" />
     <Compile Include="Commands\SelectColor.cs" />
     <Compile Include="Commands\TestClick.cs" />
     <Compile Include="Commands\TogglePlanimetricCircleDrawing.cs" />
