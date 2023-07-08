@@ -19,7 +19,12 @@ namespace GraDeMarCoWPF.Services
 
         public bool? ShowDialog()
         {
-            return openFileDialog.ShowDialog();
+            bool? dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult == true)
+            {
+                this.Filename = openFileDialog.FileName;
+            }
+            return dialogResult;
         }
     }
 }
