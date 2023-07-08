@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -127,19 +128,14 @@ namespace GraDeMarCoWPF.Models
         private static void Copy<T>(T source, T destination)
         {
             var type = typeof(T);
-            foreach (var sourceProperty in type.GetProperties())
+
+            foreach (var fieldInfo in type.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
             {
-                var targetProperty = type.GetProperty(sourceProperty.Name);
-                if (targetProperty.GetSetMethod() != null)
+                if (fieldInfo.GetCustomAttribute<NonSerializedAttribute>() == null)
                 {
-                    targetProperty.SetValue(destination, sourceProperty.GetValue(source));
+                    fieldInfo.SetValue(destination, fieldInfo.GetValue(source));
                 }
             }
-            //foreach (var sourceField in type.GetFields())
-            //{
-            //    var targetField = type.GetField(sourceField.Name);
-            //    targetField.SetValue(destination, sourceField.GetValue(source));
-            //}
         }
     }
 }
