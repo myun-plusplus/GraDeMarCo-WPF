@@ -38,6 +38,7 @@ namespace GraDeMarCoWPF
                 "DATファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*");
             var openImageFileDialogService = new OpenFileDialogService(
                 "開く画像ファイルを選択してください",
+                "画像ファイル(*.bmp,*.exif,*.gif,*.jpg,*.png,*.tiff)|*.bmp;*.exif;*.gif;*.jpg;*.png;*.tiff|" +
                 "BMPファイル(*.bmp)|*.bmp|" +
                 "EXIFファイル(*.exif)|*.exif|" +
                 "GIFファイル(*.gif)|*.gif|" +
