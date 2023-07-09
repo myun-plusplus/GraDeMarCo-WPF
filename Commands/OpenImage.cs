@@ -13,6 +13,7 @@ namespace GraDeMarCoWPF.Commands
         private AppData appData;
         private ImageData imageData;
         private ImageDisplay imageDisplay;
+        private ImageIO imageIO;
         private IWindowService imageWindowService;
         private IOpenFileDialogService openImageFileDialogService;
 
@@ -20,12 +21,14 @@ namespace GraDeMarCoWPF.Commands
             AppData appData,
             ImageData imageData,
             ImageDisplay imageDisplay,
+            ImageIO imageIO,
             IWindowService imageWindowService,
             IOpenFileDialogService openImageFileDialogService)
         {
             this.appData = appData;
             this.imageData = imageData;
             this.imageDisplay = imageDisplay;
+            this.imageIO = imageIO;
             this.imageWindowService = imageWindowService;
             this.openImageFileDialogService = openImageFileDialogService;
 
@@ -43,7 +46,7 @@ namespace GraDeMarCoWPF.Commands
             {
                 appData.CurrentState = AppState.ImageOpened;
                 appData.ImagePath = openImageFileDialogService.Filename;
-                imageData.OpenImageFile(appData.ImagePath);
+                imageIO.LoadImageFile(appData.ImagePath);
                 imageDisplay.UpdateImage();
                 imageWindowService.Open();
             }

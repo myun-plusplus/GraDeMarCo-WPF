@@ -74,6 +74,11 @@ namespace GraDeMarCoWPF.Models
             return CurrentState == AppState.WorkspacePrepared || CurrentState == AppState.ImageOpened;
         }
 
+        public bool CanSaveImage()
+        {
+            return CurrentState == AppState.ImageOpened;
+        }
+
         public bool CanZoomInOut()
         {
             return CurrentState != AppState.None && CurrentState != AppState.WorkspacePrepared;

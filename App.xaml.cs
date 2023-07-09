@@ -18,6 +18,7 @@ namespace GraDeMarCoWPF
 
             var imageData = Workspace.Instance.ImageData;
             var imageDisplay = Workspace.Instance.ImageDisplay;
+            var imageIO = Workspace.Instance.ImageIO;
 
             var imageArea = Workspace.Instance.ImageArea;
             var imageAreaDrawingTool = Workspace.Instance.ImageAreaDrawingTool;
@@ -37,6 +38,15 @@ namespace GraDeMarCoWPF
                 "DATファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*");
             var openImageFileDialogService = new OpenFileDialogService(
                 "開く画像ファイルを選択してください",
+                "BMPファイル(*.bmp)|*.bmp|" +
+                "EXIFファイル(*.exif)|*.exif|" +
+                "GIFファイル(*.gif)|*.gif|" +
+                "JPEGファイル(*.jpg)|*.jpg|" +
+                "PNGファイル(*.png)|*.png|" +
+                "TIFFファイル(*.tiff)|*.tiff|" +
+                "すべてのファイル(*.*)|*.*");
+            var saveImageDialogService = new SaveFileDialogService(
+                "画像の保存先を選択してください",
                 "BMPファイル(*.bmp)|*.bmp|" +
                 "EXIFファイル(*.exif)|*.exif|" +
                 "GIFファイル(*.gif)|*.gif|" +
@@ -78,10 +88,12 @@ namespace GraDeMarCoWPF
                 appData,
                 imageData,
                 imageDisplay,
+                imageIO,
                 imageWindowService,
                 openWorkspaceDialogService,
                 saveWorkspaceDialogService,
-                openImageFileDialogService);
+                openImageFileDialogService,
+                saveImageDialogService);
 
             var mainWindow = new MainWindow()
             {

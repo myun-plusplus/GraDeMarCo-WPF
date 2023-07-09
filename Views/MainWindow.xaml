@@ -28,7 +28,7 @@
             </MenuItem>
             <MenuItem Header="画像(_I)">
                 <MenuItem Header="画像を開く(_O)" Command="{Binding OpenImage}"/>
-                <MenuItem Header="画像を保存する(_S)"/>
+                <MenuItem Header="画像を保存する(_S)" Command="{Binding SaveImage}"/>
             </MenuItem>
             <MenuItem Header="表示(_V)">
                 <MenuItem Header="拡大(_I)" Command="{Binding ZoomInCommand}"/>

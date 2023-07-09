@@ -19,11 +19,5 @@ namespace GraDeMarCoWPF.Models
         }
 
         private WriteableBitmap _originalImage;
-
-        public void OpenImageFile(string filePath)
-        {
-            var bitmapSource = new BitmapImage(new Uri(filePath));
-            OriginalImage = new WriteableBitmap(bitmapSource);
-        }
     }
 }

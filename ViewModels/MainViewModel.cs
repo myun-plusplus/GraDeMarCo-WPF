@@ -19,6 +19,7 @@ namespace GraDeMarCoWPF.ViewModels
         public ICommand SaveAsWorkspace { get; private set; }
 
         public ICommand OpenImage { get; private set; }
+        public ICommand SaveImage { get; private set; }
 
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
@@ -31,10 +32,12 @@ namespace GraDeMarCoWPF.ViewModels
             AppData appData,
             ImageData imageData,
             ImageDisplay imageDisplay,
+            ImageIO imageIO,
             IWindowService imageWindowService,
             IOpenFileDialogService openWorkspaceDialogService,
-            ISaveFileDialogService saveFileDialogService,
-            IOpenFileDialogService openImageFileDialogService)
+            ISaveFileDialogService saveWorkspaceDialogService,
+            IOpenFileDialogService openImageFileDialogService,
+            ISaveFileDialogService saveImageDialogService)
         {
             this.imageAreaSelectingViewModel = imageAreaSelectingViewModel;
             this.PlanimetricCircleDrawingViewModel = planimetricCircleDrawingViewModel;
@@ -46,9 +49,9 @@ namespace GraDeMarCoWPF.ViewModels
             CreateWorkspace = new CreateWorkspace(appData);
             OpenWorkspace = new OpenWorkspace(appData, openWorkspaceDialogService);
             OverwriteWorkspace = new OverwriteWorkspace(appData);
-            SaveAsWorkspace = new SaveAsWorkspace(appData, saveFileDialogService);
-            OpenImage = new OpenImage(appData, imageData, imageDisplay, imageWindowService, openImageFileDialogService);
-
+            SaveAsWorkspace = new SaveAsWorkspace(appData, saveWorkspaceDialogService);
+            OpenImage = new OpenImage(appData, imageData, imageDisplay, imageIO, imageWindowService, openImageFileDialogService);
+            SaveImage = new SaveImage(appData, imageIO, saveImageDialogService);
             this.ZoomInCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 2.0; },
                 _ => this.appData.CanZoomInOut() && this.imageDisplay.ZoomScale < 8.0);

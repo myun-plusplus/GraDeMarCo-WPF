@@ -25,6 +25,7 @@ namespace GraDeMarCoWPF.Models
             AppData = new AppData();
             ImageData = new ImageData();
             ImageDisplay = new ImageDisplay(ImageData);
+            ImageIO = new ImageIO(ImageData, ImageDisplay);
             ImageArea = new ImageArea();
             ImageAreaDrawingTool = new OutlineDrawingTool();
             ImageAreaSelecting = new ImageAreaSelecting(ImageDisplay, ImageArea, ImageAreaDrawingTool);
@@ -41,6 +42,9 @@ namespace GraDeMarCoWPF.Models
 
         [NonSerialized]
         public ImageDisplay ImageDisplay;
+
+        [NonSerialized]
+        public ImageIO ImageIO;
 
         public ImageArea ImageArea;
 
