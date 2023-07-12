@@ -60,7 +60,10 @@ namespace GraDeMarCoWPF.Models
         private Point _firstLocation;
         private Point _secondLocation;
 
-        public PlanimetricCircleDrawing(ImageDisplay imageDisplay, PlanimetricCircle planimetricCircle, OutlineDrawingTool drawingTool)
+        public PlanimetricCircleDrawing(
+            ImageDisplay imageDisplay,
+            PlanimetricCircle planimetricCircle,
+            OutlineDrawingTool drawingTool)
         {
             this.imageDisplay = imageDisplay;
             this.planimetricCircle = planimetricCircle;
@@ -112,20 +115,21 @@ namespace GraDeMarCoWPF.Models
         {
             if (state == _State.FirstLocationSelected || state == _State.AreaSelected)
             {
-                Point c = new Point((firstLocation.X + secondLocation.X) / 2.0, (firstLocation.Y + secondLocation.Y) / 2.0);
-                double r = Math.Min(Area.Width, Area.Height) / 2.0;
-                drawingContext.DrawEllipse(null, drawingTool.Pen, c, r, r);
+                double diameter = Math.Min(secondLocation.X - firstLocation.X, secondLocation.Y - firstLocation.Y);
+                Point center = new Point(firstLocation.X + diameter / 2.0, firstLocation.Y + diameter / 2.0);
+                double radius = Math.Min(Area.Width, Area.Height) / 2.0;
+                drawingContext.DrawEllipse(null, drawingTool.Pen, center, radius, radius);
             }
         }
 
         public void DrawOnStaticRendering(DrawingContext drawingContext)
         {
-            Point c = imageDisplay.GetRelativeLocation(new Point(
+            Point center = imageDisplay.GetRelativeLocation(new Point(
                 planimetricCircle.LowerX + planimetricCircle.Diameter / 2.0,
                 planimetricCircle.LowerY + planimetricCircle.Diameter / 2.0));
             double coefficient = imageDisplay.DisplayedImage.Width / imageDisplay.DisplayedImage.PixelWidth;
-            double r = planimetricCircle.Diameter * coefficient / 2.0;
-            drawingContext.DrawEllipse(null, drawingTool.Pen, c, r, r);
+            double radius = planimetricCircle.Diameter * coefficient / 2.0;
+            drawingContext.DrawEllipse(null, drawingTool.Pen, center, radius, radius);
         }
     }
 }
