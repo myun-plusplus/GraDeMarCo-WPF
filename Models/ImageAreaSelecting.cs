@@ -87,13 +87,13 @@ namespace GraDeMarCoWPF.Models
             else if (state == _State.NoneSelected)
             {
                 state = _State.FirstLocationSelected;
-                firstLocation = imageDisplay.GetRelaiveLocation(location);
+                firstLocation = imageDisplay.GetUnzoomedLocation(location);
                 secondLocation = firstLocation;
             }
             else if (state == _State.FirstLocationSelected)
             {
                 state = _State.AreaSelected;
-                secondLocation = imageDisplay.GetRelaiveLocation(location);
+                secondLocation = imageDisplay.GetUnzoomedLocation(location);
             }
             else
             {
@@ -105,7 +105,7 @@ namespace GraDeMarCoWPF.Models
         {
             if (state == _State.FirstLocationSelected)
             {
-                secondLocation = imageDisplay.GetRelaiveLocation(location);
+                secondLocation = imageDisplay.GetUnzoomedLocation(location);
             }
         }
 
@@ -119,7 +119,10 @@ namespace GraDeMarCoWPF.Models
 
         public void DrawOnStaticRendering(DrawingContext drawingContext)
         {
-            drawingContext.DrawRectangle(null, drawingTool.Pen, imageArea.Area);
+            Point relativeLowerPoint = imageDisplay.GetRelativeLocation(new Point(imageArea.LowerX, imageArea.LowerY));
+            Point relativeUpperPoint = imageDisplay.GetRelativeLocation(new Point(imageArea.UpperX, imageArea.UpperY));
+
+            drawingContext.DrawRectangle(null, drawingTool.Pen, new Rect(relativeLowerPoint, relativeUpperPoint));
         }
     }
 }

@@ -86,13 +86,13 @@ namespace GraDeMarCoWPF.Models
             else if (state == _State.NoneSelected)
             {
                 state = _State.FirstLocationSelected;
-                firstLocation = imageDisplay.GetRelaiveLocation(location);
+                firstLocation = imageDisplay.GetUnzoomedLocation(location);
                 secondLocation = firstLocation;
             }
             else if (state == _State.FirstLocationSelected)
             {
                 state = _State.AreaSelected;
-                secondLocation = imageDisplay.GetRelaiveLocation(location);
+                secondLocation = imageDisplay.GetUnzoomedLocation(location);
             }
             else
             {
@@ -104,7 +104,7 @@ namespace GraDeMarCoWPF.Models
         {
             if (state == _State.FirstLocationSelected)
             {
-                secondLocation = imageDisplay.GetRelaiveLocation(location);
+                secondLocation = imageDisplay.GetUnzoomedLocation(location);
             }
         }
 
@@ -120,10 +120,11 @@ namespace GraDeMarCoWPF.Models
 
         public void DrawOnStaticRendering(DrawingContext drawingContext)
         {
-            Point c = new Point(
+            Point c = imageDisplay.GetRelativeLocation(new Point(
                 planimetricCircle.LowerX + planimetricCircle.Diameter / 2.0,
-                planimetricCircle.LowerY + planimetricCircle.Diameter / 2.0);
-            double r = planimetricCircle.Diameter / 2.0;
+                planimetricCircle.LowerY + planimetricCircle.Diameter / 2.0));
+            double coefficient = imageDisplay.DisplayedImage.Width / imageDisplay.DisplayedImage.PixelWidth;
+            double r = planimetricCircle.Diameter * coefficient / 2.0;
             drawingContext.DrawEllipse(null, drawingTool.Pen, c, r, r);
         }
     }
