@@ -10,8 +10,50 @@ namespace GraDeMarCoWPF.ViewModels
         private AppData appData;
         private ImageData imageData;
         private ImageDisplay imageDisplay;
+        AppStateHandler appStateHandler;
+
         public ImageAreaSelectingViewModel imageAreaSelectingViewModel { get; set; }
         public PlanimetricCircleDrawingViewModel PlanimetricCircleDrawingViewModel { get; set; }
+
+        public bool ImageAreaIsDisplayedOnImage
+        {
+            get
+            {
+                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.ImageArea);
+            }
+            set
+            {
+                if (value)
+                {
+                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.ImageArea;
+                }
+                else
+                {
+                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.ImageArea;
+                }
+                NotifyPropertyChanged(GetName.Of(() => ImageAreaIsDisplayedOnImage));
+            }
+        }
+
+        public bool PlanimetricCircleIsDisplayedOnImage
+        {
+            get
+            {
+                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.PlanimetricCircle);
+            }
+            set
+            {
+                if (value)
+                {
+                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.PlanimetricCircle;
+                }
+                else
+                {
+                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.PlanimetricCircle;
+                }
+                NotifyPropertyChanged(GetName.Of(() => PlanimetricCircleIsDisplayedOnImage));
+            }
+        }
 
         public ICommand CreateWorkspace { get; private set; }
         public ICommand OpenWorkspace { get; private set; }
@@ -33,6 +75,7 @@ namespace GraDeMarCoWPF.ViewModels
             ImageData imageData,
             ImageDisplay imageDisplay,
             ImageIO imageIO,
+            AppStateHandler appStateHandler,
             IWindowService imageWindowService,
             IOpenFileDialogService openWorkspaceDialogService,
             ISaveFileDialogService saveWorkspaceDialogService,
@@ -45,6 +88,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.appData = appData;
             this.imageData = imageData;
             this.imageDisplay = imageDisplay;
+            this.appStateHandler = appStateHandler;
 
             CreateWorkspace = new CreateWorkspace(appData);
             OpenWorkspace = new OpenWorkspace(appData, openWorkspaceDialogService);

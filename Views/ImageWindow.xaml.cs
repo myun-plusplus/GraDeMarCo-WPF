@@ -18,7 +18,10 @@ namespace GraDeMarCoWPF.Views
         public ImageWindow()
         {
             InitializeComponent();
-            //this.myRenderBox.DataContext = this.DataContext;
+            this.SourceInitialized += (s, e) =>
+            {
+                viewModel.PropertyChanged += viewModel_OnPropertyChanged;
+            };
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -58,6 +61,11 @@ namespace GraDeMarCoWPF.Views
         {
             viewModel.MouseMoveCommand.Execute(e.GetPosition(myPictureBox));
 
+            this.myRenderBox.InvalidateVisual();
+        }
+
+        private void viewModel_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
             this.myRenderBox.InvalidateVisual();
         }
     }

@@ -108,7 +108,7 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
-        public void DrawOnRender(DrawingContext drawingContext)
+        public void DrawOnDynamicRendering(DrawingContext drawingContext)
         {
             if (state == _State.FirstLocationSelected || state == _State.AreaSelected)
             {
@@ -118,9 +118,13 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
-        public void DrawOnImageSource(ImageSource imageSource)
+        public void DrawOnStaticRendering(DrawingContext drawingContext)
         {
-
+            Point c = new Point(
+                planimetricCircle.LowerX + planimetricCircle.Diameter / 2.0,
+                planimetricCircle.LowerY + planimetricCircle.Diameter / 2.0);
+            double r = planimetricCircle.Diameter / 2.0;
+            drawingContext.DrawEllipse(null, drawingTool.Pen, c, r, r);
         }
     }
 }

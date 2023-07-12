@@ -109,7 +109,7 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
-        public void DrawOnRender(DrawingContext drawingContext)
+        public void DrawOnDynamicRendering(DrawingContext drawingContext)
         {
             if (state == _State.FirstLocationSelected || state == _State.AreaSelected)
             {
@@ -117,9 +117,9 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
-        public void DrawOnImageSource(ImageSource imageSource)
+        public void DrawOnStaticRendering(DrawingContext drawingContext)
         {
-
+            drawingContext.DrawRectangle(null, drawingTool.Pen, imageArea.Area);
         }
     }
 }

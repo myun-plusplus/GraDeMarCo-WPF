@@ -9,22 +9,22 @@ namespace GraDeMarCoWPF.Models
         void StopFunction();
     }
 
-    public interface IDrawingOnRenderEvent
+    public interface IDrawingOnDynamicRendering
     {
-        void DrawOnRender(DrawingContext drawingContext);
+        void DrawOnDynamicRendering(DrawingContext drawingContext);
     }
 
-    public interface IDrawingOnImageSource
+    public interface IDrawingOnStaticRendering
     {
-        void DrawOnImageSource(ImageSource imageSource);
+        void DrawOnStaticRendering(DrawingContext drawingContext);
     }
 
-    public interface IImageAreaSelecting : IToggleFunction, IDrawingOnRenderEvent, IDrawingOnImageSource
+    public interface IImageAreaSelecting : IToggleFunction, IDrawingOnDynamicRendering, IDrawingOnStaticRendering
     {
         void Click(Point location);
         void MouseMove(Point location);
     }
-    public interface IPlanimetricCircleDrawing : IToggleFunction, IDrawingOnRenderEvent, IDrawingOnImageSource
+    public interface IPlanimetricCircleDrawing : IToggleFunction, IDrawingOnDynamicRendering, IDrawingOnStaticRendering
     {
         void Click(Point location);
         void MouseMove(Point location);

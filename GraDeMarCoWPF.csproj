@@ -152,7 +152,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Services\SubWindowService.cs" />
+    <Compile Include="Services\WindowService.cs" />
     <Compile Include="Models\BindableBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\ImageAreaSelectingPanel.xaml.cs">

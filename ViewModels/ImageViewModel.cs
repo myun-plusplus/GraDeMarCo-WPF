@@ -90,7 +90,9 @@ namespace GraDeMarCoWPF.ViewModels
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
             this.appStateHandler = Workspace.Instance.AppStateHandler;
 
+            appData.PropertyChanged += appData_PropertyChanged;
             this.imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
+            appStateHandler.PropertyChanged += appStateHandler_PropertyChanged;
 
             this.ZoomInCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 2.0; },
@@ -110,11 +112,21 @@ namespace GraDeMarCoWPF.ViewModels
             TestClickCommand = new TestClick(this);
         }
 
+        private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            NotifyPropertyChanged(e.PropertyName);
+        }
+
         private void imageDisplay_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             NotifyPropertyChanged(e.PropertyName);
             NotifyPropertyChanged(GetName.Of(() => ImageWidth));
             NotifyPropertyChanged(GetName.Of(() => ImageHeight));
+        }
+
+        private void appStateHandler_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            NotifyPropertyChanged(e.PropertyName);
         }
     }
 }

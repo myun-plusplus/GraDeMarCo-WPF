@@ -68,8 +68,16 @@
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <ToggleButton Grid.Row="0" Grid.Column="0" Content="画像範囲" Style="{StaticResource NormalToggleButton}"/>
-            <ToggleButton Grid.Row="0" Grid.Column="1" Content="円" Style="{StaticResource NormalToggleButton}"/>
+            <ToggleButton
+                Grid.Row="0" Grid.Column="0"
+                IsChecked="{Binding ImageAreaIsDisplayedOnImage}"
+                Content="画像範囲"
+                Style="{StaticResource NormalToggleButton}"/>
+            <ToggleButton
+                Grid.Row="0" Grid.Column="1"
+                IsChecked="{Binding PlanimetricCircleIsDisplayedOnImage}"
+                Content="円"
+                Style="{StaticResource NormalToggleButton}"/>
             <ToggleButton Grid.Row="0" Grid.Column="2" Content="画像処理" Style="{StaticResource NormalToggleButton}"/>
             <ToggleButton Grid.Row="0" Grid.Column="3" Content="点打ち" Style="{StaticResource NormalToggleButton}"/>
         </Grid>

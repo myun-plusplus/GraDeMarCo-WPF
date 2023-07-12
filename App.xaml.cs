@@ -81,7 +81,7 @@ namespace GraDeMarCoWPF
                 DataContext = imageViewModel
             };
 
-            var imageWindowService = new SubWindowService(imageWindow);
+            var imageWindowService = new WindowService(imageWindow);
 
             var mainViewModel = new MainViewModel(
                 imageAreaSelectingViewModel,
@@ -90,6 +90,7 @@ namespace GraDeMarCoWPF
                 imageData,
                 imageDisplay,
                 imageIO,
+                appStateHandler,
                 imageWindowService,
                 openWorkspaceDialogService,
                 saveWorkspaceDialogService,

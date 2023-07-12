@@ -1,13 +1,32 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
 {
-    public class AppStateHandler
+    [Flags]
+    public enum ImageProcessingFlags
+    {
+        None = 0,
+        ImageArea = 1 << 0,
+        PlanimetricCircle = 1 << 1
+    }
+
+    public class AppStateHandler : BindableBase
     {
         private AppData appData;
         private IImageAreaSelecting imageAreaSelecting;
         private IPlanimetricCircleDrawing planimetricCircleDrawing;
+
+        public ImageProcessingFlags ImageProcessingFlags
+        {
+            get { return _imageProcessingFlags; }
+            set
+            {
+                _imageProcessingFlags = value;
+                NotifyPropertyChanged(GetName.Of(() => ImageProcessingFlags));
+            }
+        }
 
 
         public AppStateHandler(AppData appData,
@@ -21,20 +40,22 @@ namespace GraDeMarCoWPF.Models
 
         public void DrawOnRender(DrawingContext drawingContext)
         {
-            switch (appData.CurrentState)
+            if (appData.CurrentState == AppState.ImageAreaSelecting)
             {
-                case AppState.None:
-                    break;
-                case AppState.WorkspacePrepared:
-                    break;
-                case AppState.ImageOpened:
-                    break;
-                case AppState.ImageAreaSelecting:
-                    imageAreaSelecting.DrawOnRender(drawingContext);
-                    break;
-                case AppState.PlanimetricCircleDrawing:
-                    planimetricCircleDrawing.DrawOnRender(drawingContext);
-                    break;
+                imageAreaSelecting.DrawOnDynamicRendering(drawingContext);
+            }
+            else if (ImageProcessingFlags.HasFlag(ImageProcessingFlags.ImageArea))
+            {
+                imageAreaSelecting.DrawOnStaticRendering(drawingContext);
+            }
+
+            if (appData.CurrentState == AppState.PlanimetricCircleDrawing)
+            {
+                planimetricCircleDrawing.DrawOnDynamicRendering(drawingContext);
+            }
+            else if (ImageProcessingFlags.HasFlag(ImageProcessingFlags.PlanimetricCircle))
+            {
+                planimetricCircleDrawing.DrawOnStaticRendering(drawingContext);
             }
         }
 
@@ -75,5 +96,7 @@ namespace GraDeMarCoWPF.Models
                     break;
             }
         }
+
+        private ImageProcessingFlags _imageProcessingFlags;
     }
 }

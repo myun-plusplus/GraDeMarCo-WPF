@@ -2,11 +2,11 @@
 
 namespace GraDeMarCoWPF.Services
 {
-    class SubWindowService : IWindowService
+    class WindowService : IWindowService
     {
         Window subWindow;
 
-        public SubWindowService(Window subWindow)
+        public WindowService(Window subWindow)
         {
             this.subWindow = subWindow;
         }
