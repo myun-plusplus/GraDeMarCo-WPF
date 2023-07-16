@@ -9,7 +9,8 @@ namespace GraDeMarCoWPF.Models
     {
         None = 0,
         ImageArea = 1 << 0,
-        PlanimetricCircle = 1 << 1
+        PlanimetricCircle = 1 << 1,
+        ImageModifying = 1 << 2
     }
 
     public class AppStateHandler : BindableBase
@@ -17,6 +18,8 @@ namespace GraDeMarCoWPF.Models
         private AppData appData;
         private IImageAreaSelecting imageAreaSelecting;
         private IPlanimetricCircleDrawing planimetricCircleDrawing;
+        private IImageFiltering imageFiltering;
+        private IImageBinarizing imageBinarizing;
 
         public ImageProcessingFlags ImageProcessingFlags
         {
@@ -31,11 +34,11 @@ namespace GraDeMarCoWPF.Models
 
         public AppStateHandler(AppData appData,
             IImageAreaSelecting imageAreaSelecting,
-            IPlanimetricCircleDrawing planetricCircleDrawing)
+            IPlanimetricCircleDrawing planimetricCircleDrawing)
         {
             this.appData = appData;
             this.imageAreaSelecting = imageAreaSelecting;
-            this.planimetricCircleDrawing = planetricCircleDrawing;
+            this.planimetricCircleDrawing = planimetricCircleDrawing;
         }
 
         public void DrawOnRender(DrawingContext drawingContext)

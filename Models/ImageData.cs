@@ -14,10 +14,21 @@ namespace GraDeMarCoWPF.Models
                 if (value != null)
                 {
                     _originalImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
+                    _filteredImage = new WriteableBitmap(_originalImage);
                 }
             }
         }
 
+        public WriteableBitmap FilteredImage
+        {
+            get { return _filteredImage; }
+            set
+            {
+                _filteredImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
+            }
+        }
+
         private WriteableBitmap _originalImage;
+        private WriteableBitmap _filteredImage;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace GraDeMarCoWPF.Models
+﻿namespace GraDeMarCoWPF.Models
 {
     public enum BlurOption
     {
@@ -26,6 +24,7 @@ namespace GraDeMarCoWPF.Models
             {
                 _blurOption = value;
                 NotifyPropertyChanged(GetName.Of(() => BlurOption));
+                System.Console.WriteLine(_blurOption.ToString());
             }
         }
 

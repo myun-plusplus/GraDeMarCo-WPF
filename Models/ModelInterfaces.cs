@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
@@ -28,5 +29,15 @@ namespace GraDeMarCoWPF.Models
     {
         void Click(Point location);
         void MouseMove(Point location);
+    }
+
+    public interface IImageFiltering : IToggleFunction
+    {
+        void FilterOriginalImage();
+    }
+
+    public interface IImageBinarizing : IToggleFunction
+    {
+        void BinarizeFilteredImage();
     }
 }

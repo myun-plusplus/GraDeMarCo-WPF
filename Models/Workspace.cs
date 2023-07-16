@@ -32,6 +32,10 @@ namespace GraDeMarCoWPF.Models
             PlanimetricCircle = new PlanimetricCircle();
             PlanimetricCircleDrawingTool = new OutlineDrawingTool();
             PlanimetricCircleDrawing = new PlanimetricCircleDrawing(ImageDisplay, PlanimetricCircle, PlanimetricCircleDrawingTool);
+            ImageFilterOptions = new ImageFilterOptions();
+            ImageFiltering = new ImageFiltering(ImageData, ImageArea, ImageFilterOptions);
+            ImageBinarizeOptions = new ImageBinarizeOptions();
+            ImageBinarizing = new ImageBinarizing(ImageData, ImageDisplay, ImageArea, ImageBinarizeOptions);
             AppStateHandler = new AppStateHandler(AppData, ImageAreaSelecting, PlanimetricCircleDrawing);
         }
 
@@ -62,6 +66,16 @@ namespace GraDeMarCoWPF.Models
         [NonSerialized]
         public PlanimetricCircleDrawing PlanimetricCircleDrawing;
 
+        public ImageFilterOptions ImageFilterOptions;
+
+        [NonSerialized]
+        public ImageFiltering ImageFiltering;
+
+        public ImageBinarizeOptions ImageBinarizeOptions;
+
+        [NonSerialized]
+        public ImageBinarizing ImageBinarizing;
+
         [NonSerialized]
         public AppStateHandler AppStateHandler;
 
@@ -87,6 +101,10 @@ namespace GraDeMarCoWPF.Models
             PlanimetricCircle.Diameter = 0;
 
             PlanimetricCircleDrawingTool.Color = Colors.Blue;
+
+            ImageFilterOptions.BlurOption = BlurOption.None;
+
+            ImageBinarizeOptions.Threshold = 0;
         }
 
         public void Save(string filePath)

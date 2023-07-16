@@ -14,6 +14,8 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ImageAreaSelectingViewModel imageAreaSelectingViewModel { get; set; }
         public PlanimetricCircleDrawingViewModel PlanimetricCircleDrawingViewModel { get; set; }
+        public ImageFilteringViewModel ImageFilteringViewModel { get; private set; }
+        public ImageBinarizingViewModel ImageBinarizingViewModel { get; private set; }
 
         public bool ImageAreaIsDisplayedOnImage
         {
@@ -55,6 +57,26 @@ namespace GraDeMarCoWPF.ViewModels
             }
         }
 
+        public bool ImageModifyingIsDisplayed
+        {
+            get
+            {
+                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.ImageModifying);
+            }
+            set
+            {
+                if (value)
+                {
+                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.ImageModifying;
+                }
+                else
+                {
+                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.ImageModifying;
+                }
+                NotifyPropertyChanged(GetName.Of(() => ImageModifyingIsDisplayed));
+            }
+        }
+
         public ICommand CreateWorkspace { get; private set; }
         public ICommand OpenWorkspace { get; private set; }
         public ICommand OverwriteWorkspace { get; private set; }
@@ -71,6 +93,8 @@ namespace GraDeMarCoWPF.ViewModels
         public MainViewModel(
             ImageAreaSelectingViewModel imageAreaSelectingViewModel,
             PlanimetricCircleDrawingViewModel planimetricCircleDrawingViewModel,
+            ImageFilteringViewModel imageFilteringViewModel,
+            ImageBinarizingViewModel imageBinarizingViewModel,
             AppData appData,
             ImageData imageData,
             ImageDisplay imageDisplay,
@@ -84,6 +108,8 @@ namespace GraDeMarCoWPF.ViewModels
         {
             this.imageAreaSelectingViewModel = imageAreaSelectingViewModel;
             this.PlanimetricCircleDrawingViewModel = planimetricCircleDrawingViewModel;
+            ImageFilteringViewModel = imageFilteringViewModel;
+            ImageBinarizingViewModel = imageBinarizingViewModel;
             this.imageWindowService = imageWindowService;
             this.appData = appData;
             this.imageData = imageData;

@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GraDeMarCoWPF.Views"
+             xmlns:vm="clr-namespace:GraDeMarCoWPF.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="0" d:DesignWidth="0">
+             d:DesignHeight="0" d:DesignWidth="0"
+             d:DataContext="{d:DesignInstance vm:ImageFilteringViewModel}">
     <Grid>
         <Border CornerRadius="6" BorderBrush="Gray" Background="Transparent" BorderThickness="2">
             <StackPanel Orientation="Vertical">
@@ -24,11 +26,21 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="ぼかし:" Style="{StaticResource NormalLabel}"/>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                        <ComboBox Style="{StaticResource NormalComboBox}"/>
+                        <ComboBox
+                            ItemsSource="{Binding BlurOptionDictionary}"
+                            DisplayMemberPath="Value"
+                            SelectedValuePath="Key"
+                            SelectedValue="{Binding BlurOption}"
+                            Style="{StaticResource NormalComboBox}"/>
                     </StackPanel>
                     <Label Grid.Row="1" Grid.Column="0" Content="エッジ検出:" Style="{StaticResource NormalLabel}"/>
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                        <ComboBox Style="{StaticResource NormalComboBox}"/>
+                        <ComboBox
+                            ItemsSource="{Binding EdgeDetectOptionDictionary}"
+                            DisplayMemberPath="Value"
+                            SelectedValuePath="Key"
+                            SelectedValue="{Binding EdgeDetectOption}"
+                            Style="{StaticResource NormalComboBox}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

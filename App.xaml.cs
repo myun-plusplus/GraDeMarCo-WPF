@@ -28,6 +28,12 @@ namespace GraDeMarCoWPF
             var planimetricCircleDrawingTool = Workspace.Instance.PlanimetricCircleDrawingTool;
             var planimetricCircleDrawing = Workspace.Instance.PlanimetricCircleDrawing;
 
+            var imageFilterOptions = Workspace.Instance.ImageFilterOptions;
+            var imageFiltering = Workspace.Instance.ImageFiltering;
+
+            var imageBinarizeOptions = Workspace.Instance.ImageBinarizeOptions;
+            var imageBinarizing = Workspace.Instance.ImageBinarizing;
+
             var appStateHandler = Workspace.Instance.AppStateHandler;
 
             var openWorkspaceDialogService = new OpenFileDialogService(
@@ -75,6 +81,12 @@ namespace GraDeMarCoWPF
                 planimetricCircle,
                 planimetricCircleDrawingTool,
                 planimetricCircleDrawing);
+            var imageFIlterViewModel = new ImageFilteringViewModel(
+                imageFilterOptions,
+                imageFiltering);
+            var imageBinarizingViewModel = new ImageBinarizingViewModel(
+                imageBinarizeOptions,
+                imageBinarizing);
 
             var imageWindow = new ImageWindow()
             {
@@ -86,6 +98,8 @@ namespace GraDeMarCoWPF
             var mainViewModel = new MainViewModel(
                 imageAreaSelectingViewModel,
                 planimetricCircleDrawingViewModel,
+                imageFIlterViewModel,
+                imageBinarizingViewModel,
                 appData,
                 imageData,
                 imageDisplay,

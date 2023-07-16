@@ -16,8 +16,13 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="閾値:" Style="{StaticResource NormalLabel}"/>
-                        <Slider Width="128" VerticalAlignment="Center"/>
-                        <TextBox Style="{StaticResource ImageSizeBox}"/>
+                        <Slider
+                            Value="{Binding Threshold}"
+                            Width="128"
+                            VerticalAlignment="Center"/>
+                        <TextBox
+                            Text="{Binding Threshold}"
+                            Style="{StaticResource ImageSizeBox}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <CheckBox Content="白黒反転" Style="{StaticResource NormalCheckBox}"/>
