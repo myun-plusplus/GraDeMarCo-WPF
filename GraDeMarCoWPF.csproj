@@ -71,8 +71,6 @@
     <Compile Include="Commands\SelectMaxArea.cs" />
     <Compile Include="Commands\TestClick.cs" />
     <Compile Include="Commands\ToggleImageAreaSelecting.cs" />
-    <Compile Include="Commands\ToggleImageBinarizing.cs" />
-    <Compile Include="Commands\ToggleImageFiltering.cs" />
     <Compile Include="Commands\TogglePlanimetricCircleDrawing.cs" />
     <Compile Include="GetName.cs" />
     <Compile Include="Models\AppData.cs" />

@@ -105,7 +105,8 @@ namespace GraDeMarCoWPF.Models
                     logic2.ImageFilter = ImageFilters.Sobel_vertical;
                     logic2.ApplyFilter();
 
-                    ImagePixels.ComposeTwoDirection(destinationPixels1, destinationPixels2);
+                    ImagePixels.ComposeTwoDirection(logic1.Destination, logic2.Destination);
+                    sourcePixels = logic1.Destination;
                     break;
                 case EdgeDetectOption.Laplacian:
                     var logic = new ImageFilteringLogic();
@@ -114,10 +115,11 @@ namespace GraDeMarCoWPF.Models
                     logic.ImageArea = imageArea;
                     logic.ImageFilter = ImageFilters.Laplacian;
                     logic.ApplyFilter();
+                    sourcePixels = logic.Destination;
                     break;
             }
 
-            destinationPixels1.CopyRange(originalPixels, lowerX, upperX, lowerY, upperY);
+            sourcePixels.CopyRange(originalPixels, lowerX, upperX, lowerY, upperY);
 
             {
                 byte[] tmp = ImagePixels.ConvertToOneDimArray(originalPixels, width, height, stride);
