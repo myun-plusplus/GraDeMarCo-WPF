@@ -9,6 +9,7 @@ namespace GraDeMarCoWPF.Models
     public class ImageFiltering : IImageFiltering
     {
         private ImageData imageData;
+        private ImageDisplay imageDisplay;
         private ImageArea imageArea;
         private ImageFilterOptions filterOptions;
 
@@ -16,10 +17,12 @@ namespace GraDeMarCoWPF.Models
 
         public ImageFiltering(
             ImageData imageData,
+            ImageDisplay imageDisplay,
             ImageArea imageArea,
             ImageFilterOptions filterOptions)
         {
             this.imageData = imageData;
+            this.imageDisplay = imageDisplay;
             this.imageArea = imageArea;
             this.filterOptions = filterOptions;
         }
@@ -86,6 +89,7 @@ namespace GraDeMarCoWPF.Models
                 }
 
                 sourcePixels = logic.Source;
+                destinationPixels1 = logic.Destination;
             }
 
             switch (filterOptions.EdgeDetectOption)

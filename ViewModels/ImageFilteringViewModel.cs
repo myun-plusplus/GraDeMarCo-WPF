@@ -1,5 +1,6 @@
 ﻿using GraDeMarCoWPF.Models;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace GraDeMarCoWPF.ViewModels
 {
@@ -17,7 +18,7 @@ namespace GraDeMarCoWPF.ViewModels
             set
             {
                 imageFilterOptions.BlurOption = value;
-                imageFiltering.FilterOriginalImage();
+                UpdateImageModificatation.Execute(null);
                 NotifyPropertyChanged(GetName.Of(() => BlurOption));
             }
         }
@@ -28,14 +29,17 @@ namespace GraDeMarCoWPF.ViewModels
             set
             {
                 imageFilterOptions.EdgeDetectOption = value;
-                imageFiltering.FilterOriginalImage();
+                UpdateImageModificatation.Execute(null);
                 NotifyPropertyChanged(GetName.Of(() => EdgeDetectOption));
             }
         }
 
+        public ICommand UpdateImageModificatation { get; private set; }
+
         public ImageFilteringViewModel(
             ImageFilterOptions options,
-            ImageFiltering imageFiltering)
+            ImageFiltering imageFiltering,
+            ImageBinarizing imageBinarizing)
         {
             this.imageFilterOptions = options;
             this.imageFiltering = imageFiltering;
@@ -49,6 +53,13 @@ namespace GraDeMarCoWPF.ViewModels
             EdgeDetectOptionDictionary.Add(EdgeDetectOption.None, "なし");
             EdgeDetectOptionDictionary.Add(EdgeDetectOption.Sobel, "ソーベル");
             EdgeDetectOptionDictionary.Add(EdgeDetectOption.Laplacian, "ラプラシアン");
+
+            UpdateImageModificatation = CreateCommand(
+                _ =>
+                {
+                    imageFiltering.FilterOriginalImage();
+                    imageBinarizing.BinarizeFilteredImage();
+                });
         }
     }
 }

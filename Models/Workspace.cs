@@ -33,7 +33,7 @@ namespace GraDeMarCoWPF.Models
             PlanimetricCircleDrawingTool = new OutlineDrawingTool();
             PlanimetricCircleDrawing = new PlanimetricCircleDrawing(ImageDisplay, PlanimetricCircle, PlanimetricCircleDrawingTool);
             ImageFilterOptions = new ImageFilterOptions();
-            ImageFiltering = new ImageFiltering(ImageData, ImageArea, ImageFilterOptions);
+            ImageFiltering = new ImageFiltering(ImageData, ImageDisplay, ImageArea, ImageFilterOptions);
             ImageBinarizeOptions = new ImageBinarizeOptions();
             ImageBinarizing = new ImageBinarizing(ImageData, ImageDisplay, ImageArea, ImageBinarizeOptions);
             AppStateHandler = new AppStateHandler(AppData, ImageAreaSelecting, PlanimetricCircleDrawing);
