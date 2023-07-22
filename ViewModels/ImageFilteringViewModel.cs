@@ -38,8 +38,8 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ImageFilteringViewModel(
             ImageFilterOptions options,
-            ImageFiltering imageFiltering,
-            ImageBinarizing imageBinarizing)
+            IImageFiltering imageFiltering,
+            IImageBinarizing imageBinarizing)
         {
             this.imageFilterOptions = options;
             this.imageFiltering = imageFiltering;

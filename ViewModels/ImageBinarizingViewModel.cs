@@ -21,7 +21,7 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ImageBinarizingViewModel(
             ImageBinarizeOptions imageBinarizeOptions,
-            ImageBinarizing imageBinarizing)
+            IImageBinarizing imageBinarizing)
         {
             this.imageBinarizeOptions = imageBinarizeOptions;
             this.imageBinarizing = imageBinarizing;
