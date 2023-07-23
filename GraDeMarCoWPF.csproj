@@ -92,6 +92,7 @@
     <Compile Include="GetName.cs" />
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\AppStateHandler.cs" />
+    <Compile Include="Models\GrainDetectingOptions.cs" />
     <Compile Include="Models\ImageBinarizeOptions.cs" />
     <Compile Include="Models\ImageBinarizing.cs" />
     <Compile Include="Models\ImageFiltering.cs" />

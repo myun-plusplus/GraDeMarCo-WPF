@@ -34,6 +34,8 @@ namespace GraDeMarCoWPF
             var imageBinarizeOptions = Workspace.Instance.ImageBinarizeOptions;
             var imageBinarizing = Workspace.Instance.ImageBinarizing;
 
+            var grainDetectingOptions = Workspace.Instance.GrainDetectingOptions;
+
             var appStateHandler = Workspace.Instance.AppStateHandler;
 
             var openWorkspaceDialogService = new OpenFileDialogService(
@@ -91,7 +93,8 @@ namespace GraDeMarCoWPF
                 imageBinarizeOptions,
                 imageBinarizing);
             var grainDetectingViewModel = new GrainDetectingViewModel(
-                appData);
+                appData,
+                grainDetectingOptions);
 
             var imageWindow = new ImageWindow()
             {
