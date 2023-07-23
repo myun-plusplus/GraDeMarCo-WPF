@@ -87,6 +87,7 @@ namespace GraDeMarCoWPF
                 imageFiltering,
                 imageBinarizing);
             var imageBinarizingViewModel = new ImageBinarizingViewModel(
+                appData,
                 imageBinarizeOptions,
                 imageBinarizing);
 

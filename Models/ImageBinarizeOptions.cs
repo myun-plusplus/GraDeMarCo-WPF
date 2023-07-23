@@ -16,6 +16,19 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
+        public bool InvertsMonochrome
+        {
+            get { return _invertsMonochrome; }
+            set
+            {
+                _invertsMonochrome = value;
+                NotifyPropertyChanged(GetName.Of(() => InvertsMonochrome));
+
+                System.Console.WriteLine(_invertsMonochrome.ToString());
+            }
+        }
+
         private int _threshold;
+        private bool _invertsMonochrome;
     }
 }

@@ -36,27 +36,52 @@ namespace GraDeMarCoWPF.Models
 
         public void BinarizeFilteredImage()
         {
+            if (!isActive)
+            {
+                imageDisplay.DisplayedImage = imageData.FilteredImage.Clone();
+                return;
+            }
+
             int width = imageData.OriginalImage.PixelWidth;
             int height = imageData.OriginalImage.PixelHeight;
             int lowerX = imageArea.LowerX, upperX = imageArea.UpperX;
             int lowerY = imageArea.LowerY, upperY = imageArea.UpperY;
             int stride = imageData.OriginalImage.BackBufferStride;
 
-            ImagePixels sourcePixels, destinationPixels, destinationPixels_vertical;
-            {
+            byte[] pixels = new byte[height * stride];
+            imageData.FilteredImage.CopyPixels(pixels, stride, 0);
 
-                byte[] tmp = new byte[height * stride];
-                imageData.FilteredImage.CopyPixels(tmp, stride, 0);
-                sourcePixels = ImagePixels.ConvertFromOneDimArray(tmp, width, height, stride);
-                destinationPixels = ImagePixels.ConvertFromOneDimArray(tmp, width, height, stride);
+            const int RedFactor = (int)(0.298912 * 1024);
+            const int GreenFactor = (int)(0.586611 * 1024);
+            const int BlueFactor = (int)(0.114478 * 1024);
+
+            for (int y = lowerY; y <= upperY; ++y)
+            {
+                for (int x = lowerX; x <= upperX; ++x)
+                {
+                    int position = y * stride + x * Constants.ColorCount;
+                    byte b = pixels[position + 0];
+                    byte g = pixels[position + 1];
+                    byte r = pixels[position + 2];
+                    int value = (r * RedFactor + g * GreenFactor + b * BlueFactor) >> 10;
+                    if ((value < imageBinarizeOptions.Threshold) ^ imageBinarizeOptions.InvertsMonochrome)
+                    {
+                        pixels[position + 0] = 0;
+                        pixels[position + 1] = 0;
+                        pixels[position + 2] = 0;
+                    }
+                    else
+                    {
+                        pixels[position + 0] = 255;
+                        pixels[position + 1] = 255;
+                        pixels[position + 2] = 255;
+                    }
+                }
             }
 
-            {
-                byte[] tmp = ImagePixels.ConvertToOneDimArray(sourcePixels, width, height, stride);
-                imageDisplay.DisplayedImage.Lock();
-                imageDisplay.DisplayedImage.WritePixels(new Int32Rect(0, 0, width, height), tmp, stride, 0);
-                imageDisplay.DisplayedImage.Unlock();
-            }
+            imageDisplay.DisplayedImage.Lock();
+            imageDisplay.DisplayedImage.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
+            imageDisplay.DisplayedImage.Unlock();
         }
     }
 }

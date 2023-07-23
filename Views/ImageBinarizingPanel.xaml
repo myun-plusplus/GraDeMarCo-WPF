@@ -11,21 +11,30 @@
             <StackPanel Orientation="Vertical">
                 <Label Content="白黒二値化" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Content="二値化" Style="{StaticResource NormalToggleButton}" Width="84"/>
+                    <ToggleButton
+                        Command="{Binding ToggleImageBinarizing}"
+                        CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                        Content="二値化"
+                        Style="{StaticResource NormalToggleButton}"
+                        Width="84"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="閾値:" Style="{StaticResource NormalLabel}"/>
                         <Slider
+                            Maximum="256"
                             Value="{Binding Threshold}"
                             Width="128"
                             VerticalAlignment="Center"/>
                         <TextBox
-                            Text="{Binding Threshold}"
+                            Text="{Binding Threshold, UpdateSourceTrigger=PropertyChanged}"
                             Style="{StaticResource ImageSizeBox}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox Content="白黒反転" Style="{StaticResource NormalCheckBox}"/>
+                        <CheckBox
+                            IsChecked="{Binding InvertsMonochrome}"
+                            Content="白黒反転"
+                            Style="{StaticResource NormalCheckBox}"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
