@@ -13,7 +13,16 @@ namespace GraDeMarCoWPF.Models
         private ImageArea imageArea;
         private ImageFilterOptions filterOptions;
 
-        private bool isActive;
+        private bool isActive
+        {
+            get { return _isActive; }
+            set
+            {
+                _isActive = value;
+                //FilterOriginalImage();
+                System.Console.WriteLine(value.ToString());
+            }
+        }
 
         public ImageFiltering(
             ImageData imageData,
@@ -30,7 +39,6 @@ namespace GraDeMarCoWPF.Models
         public void StartFunction()
         {
             isActive = true;
-            FilterOriginalImage();
         }
 
         public void StopFunction()
@@ -40,6 +48,12 @@ namespace GraDeMarCoWPF.Models
 
         public void FilterOriginalImage()
         {
+            if (!isActive)
+            {
+                imageData.FilteredImage = imageData.OriginalImage.Clone();
+                return;
+            }
+
             int width = imageData.OriginalImage.PixelWidth;
             int height = imageData.OriginalImage.PixelHeight;
             int lowerX = imageArea.LowerX, upperX = imageArea.UpperX;
@@ -139,5 +153,7 @@ namespace GraDeMarCoWPF.Models
             target1 = target2;
             target2 = tmp;
         }
+
+        private bool _isActive;
     }
 }

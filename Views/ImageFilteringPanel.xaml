@@ -13,7 +13,12 @@
             <StackPanel Orientation="Vertical">
                 <Label Content="画像フィルター" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Content="フィルター適用" Style="{StaticResource NormalToggleButton}" Width="84"/>
+                    <ToggleButton
+                        Command="{Binding ToggleImageFiltering}"
+                        CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                        Content="フィルター適用"
+                        Style="{StaticResource NormalToggleButton}"
+                        Width="84"/>
                 </StackPanel>
                 <Grid>
                     <Grid.RowDefinitions>

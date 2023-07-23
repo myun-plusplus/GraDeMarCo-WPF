@@ -27,7 +27,6 @@ namespace GraDeMarCoWPF.Models
         public void StartFunction()
         {
             isActive = true;
-            BinarizeFilteredImage();
         }
 
         public void StopFunction()

@@ -1,4 +1,5 @@
-﻿using GraDeMarCoWPF.Models;
+﻿using GraDeMarCoWPF.Commands;
+using GraDeMarCoWPF.Models;
 using System.Collections.Generic;
 using System.Windows.Input;
 
@@ -18,7 +19,7 @@ namespace GraDeMarCoWPF.ViewModels
             set
             {
                 imageFilterOptions.BlurOption = value;
-                UpdateImageModificatation.Execute(null);
+                UpdateImageFiltering.Execute(null);
                 NotifyPropertyChanged(GetName.Of(() => BlurOption));
             }
         }
@@ -29,14 +30,16 @@ namespace GraDeMarCoWPF.ViewModels
             set
             {
                 imageFilterOptions.EdgeDetectOption = value;
-                UpdateImageModificatation.Execute(null);
+                UpdateImageFiltering.Execute(null);
                 NotifyPropertyChanged(GetName.Of(() => EdgeDetectOption));
             }
         }
 
-        public ICommand UpdateImageModificatation { get; private set; }
+        public ICommand ToggleImageFiltering { get; private set; }
+        public ICommand UpdateImageFiltering { get; private set; }
 
         public ImageFilteringViewModel(
+            AppData appData,
             ImageFilterOptions options,
             IImageFiltering imageFiltering,
             IImageBinarizing imageBinarizing)
@@ -54,7 +57,8 @@ namespace GraDeMarCoWPF.ViewModels
             EdgeDetectOptionDictionary.Add(EdgeDetectOption.Sobel, "ソーベル");
             EdgeDetectOptionDictionary.Add(EdgeDetectOption.Laplacian, "ラプラシアン");
 
-            UpdateImageModificatation = CreateCommand(
+            ToggleImageFiltering = new ToggleImageFiltering(appData, imageFiltering, imageBinarizing);
+            UpdateImageFiltering = CreateCommand(
                 _ =>
                 {
                     imageFiltering.FilterOriginalImage();
