@@ -24,26 +24,6 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
-        public Color GrainInCircleDotColor
-        {
-            get { return _grainInCircleDotColor; }
-            set
-            {
-                _grainInCircleDotColor = value;
-                NotifyPropertyChanged(GetName.Of(() => GrainInCircleDotColor));
-            }
-        }
-
-        public double GrainInCircleDotSize
-        {
-            get { return _grainInCircleDotSize; }
-            set
-            {
-                _grainInCircleDotSize = value;
-                NotifyPropertyChanged(GetName.Of(() => GrainInCircleDotSize));
-            }
-        }
-
         public bool DetectsGrainsOnCircle
         {
             get { return _detectsGrainsOnCircle; }
@@ -54,32 +34,8 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
-        public Color GrainOnCircleDotColor
-        {
-            get { return _grainOnCircleDotColor; }
-            set
-            {
-                _grainOnCircleDotColor = value;
-                NotifyPropertyChanged(GetName.Of(() => GrainOnCircleDotColor));
-            }
-        }
-
-        public double GrainOnCircleDotSize
-        {
-            get { return _grainOnCircleDotSize; }
-            set
-            {
-                _grainOnCircleDotSize = value;
-                NotifyPropertyChanged(GetName.Of(() => GrainOnCircleDotSize));
-            }
-        }
-
         private int _minimumGrainPixels;
         private bool _detectsGrainsInCircle;
-        private Color _grainInCircleDotColor;
-        private double _grainInCircleDotSize;
         private bool _detectsGrainsOnCircle;
-        private Color _grainOnCircleDotColor;
-        private double _grainOnCircleDotSize;
     }
 }

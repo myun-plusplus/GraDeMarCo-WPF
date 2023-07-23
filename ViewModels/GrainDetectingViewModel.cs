@@ -1,5 +1,7 @@
-﻿using GraDeMarCoWPF.Models;
+﻿using GraDeMarCoWPF.Commands;
+using GraDeMarCoWPF.Models;
 using System.ComponentModel;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace GraDeMarCoWPF.ViewModels
@@ -8,6 +10,8 @@ namespace GraDeMarCoWPF.ViewModels
     {
         private AppData appData;
         private GrainDetectingOptions grainDetectingOptions;
+        private DotDrawingTool grainInCircleDotDrawingTool;
+        private DotDrawingTool grainOnCircleDotDrawingTool;
 
         public int MinimumGrainPixels
         {
@@ -31,15 +35,15 @@ namespace GraDeMarCoWPF.ViewModels
 
         public SolidColorBrush GrainInCircleDotColor
         {
-            get { return new SolidColorBrush(grainDetectingOptions.GrainInCircleDotColor); }
+            get { return grainInCircleDotDrawingTool.Brush; }
         }
 
         public double GrainInCircleDotSize
         {
-            get { return grainDetectingOptions.GrainInCircleDotSize; }
+            get { return grainInCircleDotDrawingTool.Size; }
             set
             {
-                grainDetectingOptions.GrainInCircleDotSize = value;
+                grainInCircleDotDrawingTool.Size = value;
                 NotifyPropertyChanged(GetName.Of(() => GrainInCircleDotSize));
             }
         }
@@ -56,32 +60,73 @@ namespace GraDeMarCoWPF.ViewModels
 
         public SolidColorBrush GrainOnCircleDotColor
         {
-            get { return new SolidColorBrush(grainDetectingOptions.GrainOnCircleDotColor); }
+            get { return grainOnCircleDotDrawingTool.Brush; }
         }
 
         public double GrainOnCircleDotSize
         {
-            get { return grainDetectingOptions.GrainOnCircleDotSize; }
+            get { return grainOnCircleDotDrawingTool.Size; }
             set
             {
-                grainDetectingOptions.GrainOnCircleDotSize = value;
+                grainOnCircleDotDrawingTool.Size = value;
                 NotifyPropertyChanged(GetName.Of(() => GrainOnCircleDotSize));
             }
         }
 
+        public ICommand SelectGrainInCircleDotColor { get; private set; }
+        public ICommand SelectGrainOnCircleDotColor { get; private set; }
+
         public GrainDetectingViewModel(
             AppData appData,
-            GrainDetectingOptions grainDetectingOptions)
+            GrainDetectingOptions grainDetectingOptions,
+            DotDrawingTool grainInCircleDotDrawingTool,
+            DotDrawingTool grainOnCircleDotDrawingTool)
         {
             this.appData = appData;
             this.grainDetectingOptions = grainDetectingOptions;
+            this.grainInCircleDotDrawingTool = grainInCircleDotDrawingTool;
+            this.grainOnCircleDotDrawingTool = grainOnCircleDotDrawingTool;
 
             grainDetectingOptions.PropertyChanged += grainDetectingOptions_PropertyChanged;
+            grainInCircleDotDrawingTool.PropertyChanged += grainInCircleDotDrawingTool_PropertyChanged;
+            grainOnCircleDotDrawingTool.PropertyChanged += grainOnCircleDotDrawingTool_PropertyChanged;
         }
 
         private void grainDetectingOptions_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             NotifyPropertyChanged(e.PropertyName);
+        }
+
+        private void grainInCircleDotDrawingTool_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Color")
+            {
+                NotifyPropertyChanged("GrainInCircleDotColor");
+            }
+            else if (e.PropertyName == "Size")
+            {
+                NotifyPropertyChanged("GrainInCircleDotSize");
+            }
+            else
+            {
+                NotifyPropertyChanged(e.PropertyName);
+            }
+        }
+
+        private void grainOnCircleDotDrawingTool_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Color")
+            {
+                NotifyPropertyChanged("GrainOnCircleDotColor");
+            }
+            else if (e.PropertyName == "Size")
+            {
+                NotifyPropertyChanged("GrainOnCircleDotSize");
+            }
+            else
+            {
+                NotifyPropertyChanged(e.PropertyName);
+            }
         }
     }
 }

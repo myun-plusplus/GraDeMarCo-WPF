@@ -37,6 +37,8 @@ namespace GraDeMarCoWPF.Models
             ImageBinarizeOptions = new ImageBinarizeOptions();
             ImageBinarizing = new ImageBinarizing(ImageData, ImageDisplay, ImageArea, ImageBinarizeOptions);
             GrainDetectingOptions = new GrainDetectingOptions();
+            GrainInCircleDotDrawingTool = new DotDrawingTool();
+            GrainOnCircleDotDrawingTool = new DotDrawingTool();
             AppStateHandler = new AppStateHandler(AppData, ImageAreaSelecting, PlanimetricCircleDrawing);
         }
 
@@ -79,6 +81,9 @@ namespace GraDeMarCoWPF.Models
 
         public GrainDetectingOptions GrainDetectingOptions;
 
+        public DotDrawingTool GrainInCircleDotDrawingTool;
+        public DotDrawingTool GrainOnCircleDotDrawingTool;
+
         [NonSerialized]
         public AppStateHandler AppStateHandler;
 
@@ -111,11 +116,12 @@ namespace GraDeMarCoWPF.Models
 
             GrainDetectingOptions.MinimumGrainPixels = 100;
             GrainDetectingOptions.DetectsGrainsInCircle = true;
-            GrainDetectingOptions.GrainInCircleDotColor = Colors.Red;
-            GrainDetectingOptions.GrainInCircleDotSize = 3.0;
             GrainDetectingOptions.DetectsGrainsOnCircle = true;
-            GrainDetectingOptions.GrainOnCircleDotColor = Colors.Yellow;
-            GrainDetectingOptions.GrainOnCircleDotSize = 3.0;
+
+            GrainInCircleDotDrawingTool.Color = Colors.Red;
+            GrainInCircleDotDrawingTool.Size = 5.0;
+            GrainOnCircleDotDrawingTool.Color = Colors.Yellow;
+            GrainOnCircleDotDrawingTool.Size = 5.0;
         }
 
         public void Save(string filePath)

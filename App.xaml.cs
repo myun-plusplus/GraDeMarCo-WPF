@@ -35,6 +35,8 @@ namespace GraDeMarCoWPF
             var imageBinarizing = Workspace.Instance.ImageBinarizing;
 
             var grainDetectingOptions = Workspace.Instance.GrainDetectingOptions;
+            var grainInCircleDotDrawingTool = Workspace.Instance.GrainInCircleDotDrawingTool;
+            var grainOnCircleDotDrawingTool = Workspace.Instance.GrainOnCircleDotDrawingTool;
 
             var appStateHandler = Workspace.Instance.AppStateHandler;
 
@@ -94,7 +96,9 @@ namespace GraDeMarCoWPF
                 imageBinarizing);
             var grainDetectingViewModel = new GrainDetectingViewModel(
                 appData,
-                grainDetectingOptions);
+                grainDetectingOptions,
+                grainInCircleDotDrawingTool,
+                grainOnCircleDotDrawingTool);
 
             var imageWindow = new ImageWindow()
             {
