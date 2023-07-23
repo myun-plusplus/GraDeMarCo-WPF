@@ -16,6 +16,7 @@ namespace GraDeMarCoWPF.ViewModels
         public PlanimetricCircleDrawingViewModel PlanimetricCircleDrawingViewModel { get; set; }
         public ImageFilteringViewModel ImageFilteringViewModel { get; private set; }
         public ImageBinarizingViewModel ImageBinarizingViewModel { get; private set; }
+        public GrainDetectingViewModel GrainDetectingViewModel { get; private set; }
 
         public bool ImageAreaIsDisplayedOnImage
         {
@@ -95,6 +96,7 @@ namespace GraDeMarCoWPF.ViewModels
             PlanimetricCircleDrawingViewModel planimetricCircleDrawingViewModel,
             ImageFilteringViewModel imageFilteringViewModel,
             ImageBinarizingViewModel imageBinarizingViewModel,
+            GrainDetectingViewModel grainDetectingViewModel,
             AppData appData,
             ImageData imageData,
             ImageDisplay imageDisplay,
@@ -110,6 +112,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.PlanimetricCircleDrawingViewModel = planimetricCircleDrawingViewModel;
             ImageFilteringViewModel = imageFilteringViewModel;
             ImageBinarizingViewModel = imageBinarizingViewModel;
+            GrainDetectingViewModel = grainDetectingViewModel;
             this.imageWindowService = imageWindowService;
             this.appData = appData;
             this.imageData = imageData;

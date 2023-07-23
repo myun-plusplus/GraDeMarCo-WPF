@@ -22,11 +22,16 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="最小ピクセル数:" Style="{StaticResource NormalLabel}"/>
-                            <TextBox Style="{StaticResource ImageSizeBox}"/>
+                            <TextBox
+                                Text="{Binding MinimumGrainPixels, UpdateSourceTrigger=PropertyChanged}"
+                                Style="{StaticResource ImageSizeBox}"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                        <CheckBox Content="円内粒点" Style="{StaticResource NormalCheckBox}"/>
+                        <CheckBox
+                            IsChecked="{Binding DetectsGrainsInCircle}"
+                            Content="円内粒点"
+                            Style="{StaticResource NormalCheckBox}"/>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -38,16 +43,23 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
-                                <Rectangle Width="40" Style="{StaticResource SelectColorButton}"/>
+                                <Button
+                                    Background="{Binding GrainInCircleDotColor}"
+                                    Style="{StaticResource SelectColorButton_tmp}"/>
                             </StackPanel>
                             <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
-                                <TextBox Style="{StaticResource ImageSizeBox}"/>
+                                <TextBox
+                                    Text="{Binding GrainInCircleDotSize, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource ImageSizeBox}"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical">
-                        <CheckBox Content="円周上粒点" Style="{StaticResource NormalCheckBox}"/>
+                        <CheckBox
+                            IsChecked="{Binding DetectsGrainsInCircle}"
+                            Content="円周上粒点"
+                            Style="{StaticResource NormalCheckBox}"/>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -59,11 +71,15 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
-                                <Rectangle Width="40" Style="{StaticResource SelectColorButton}"/>
+                                <Button
+                                    Background="{Binding GrainOnCircleDotColor}"
+                                    Style="{StaticResource SelectColorButton_tmp}"/>
                             </StackPanel>
                             <Label Grid.Row="1" Grid.Column="0" Content="点サイズ:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
-                                <TextBox Style="{StaticResource ImageSizeBox}"/>
+                                <TextBox
+                                    Text="{Binding GrainOnCircleDotSize, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource ImageSizeBox}"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>

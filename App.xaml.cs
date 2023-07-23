@@ -90,6 +90,8 @@ namespace GraDeMarCoWPF
                 appData,
                 imageBinarizeOptions,
                 imageBinarizing);
+            var grainDetectingViewModel = new GrainDetectingViewModel(
+                appData);
 
             var imageWindow = new ImageWindow()
             {
@@ -103,6 +105,7 @@ namespace GraDeMarCoWPF
                 planimetricCircleDrawingViewModel,
                 imageFIlterViewModel,
                 imageBinarizingViewModel,
+                grainDetectingViewModel,
                 appData,
                 imageData,
                 imageDisplay,

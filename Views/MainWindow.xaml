@@ -50,7 +50,8 @@
                         DataContext="{Binding ImageFilteringViewModel}"/>
                     <v:ImageBinarizingPanel
                         DataContext="{Binding ImageBinarizingViewModel}"/>
-                    <v:GrainDetectingPanel/>
+                    <v:GrainDetectingPanel
+                        DataContext="{Binding GrainDetectingViewModel}"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="点打ち">
