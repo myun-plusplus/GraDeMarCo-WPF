@@ -40,4 +40,9 @@ namespace GraDeMarCoWPF.Models
     {
         void BinarizeFilteredImage();
     }
+
+    public interface IGrainDetecting : IToggleFunction, IDrawingOnDynamicRendering
+    {
+        void DetectGrains();
+    }
 }
