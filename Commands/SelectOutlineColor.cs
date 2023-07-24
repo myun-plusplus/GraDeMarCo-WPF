@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace GraDeMarCoWPF.Commands
 {
-    public class SelectColor : ICommand
+    public class SelectOutlineColor : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -14,7 +14,7 @@ namespace GraDeMarCoWPF.Commands
         private OutlineDrawingTool drawingTool;
         private IColorDialogService colorDialogService;
 
-        public SelectColor(
+        public SelectOutlineColor(
             AppData appData,
             OutlineDrawingTool drawingTool,
             IColorDialogService colorDialogService)

@@ -10,7 +10,9 @@ namespace GraDeMarCoWPF.Models
         ImageOpened,
         ImageAreaSelecting,
         PlanimetricCircleDrawing,
-        ImageFiltering
+        ImageFiltering,
+        ImageBinarizing,
+        GrainDetecting
     }
 
     [Serializable]

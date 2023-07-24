@@ -82,7 +82,8 @@
     <Compile Include="Commands\OverwriteWorkspace.cs" />
     <Compile Include="Commands\SaveAsWorkspace.cs" />
     <Compile Include="Commands\SaveImage.cs" />
-    <Compile Include="Commands\SelectColor.cs" />
+    <Compile Include="Commands\SelectDetectedDotColor.cs" />
+    <Compile Include="Commands\SelectOutlineColor.cs" />
     <Compile Include="Commands\SelectMaxArea.cs" />
     <Compile Include="Commands\TestClick.cs" />
     <Compile Include="Commands\ToggleImageAreaSelecting.cs" />

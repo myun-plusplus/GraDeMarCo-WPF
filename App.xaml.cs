@@ -95,6 +95,7 @@ namespace GraDeMarCoWPF
                 imageBinarizeOptions,
                 imageBinarizing);
             var grainDetectingViewModel = new GrainDetectingViewModel(
+                colorDialogService,
                 appData,
                 grainDetectingOptions,
                 grainInCircleDotDrawingTool,

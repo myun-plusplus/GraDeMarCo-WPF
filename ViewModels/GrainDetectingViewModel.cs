@@ -1,5 +1,6 @@
 ﻿using GraDeMarCoWPF.Commands;
 using GraDeMarCoWPF.Models;
+using GraDeMarCoWPF.Services;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -77,6 +78,7 @@ namespace GraDeMarCoWPF.ViewModels
         public ICommand SelectGrainOnCircleDotColor { get; private set; }
 
         public GrainDetectingViewModel(
+            IColorDialogService colorDialogService,
             AppData appData,
             GrainDetectingOptions grainDetectingOptions,
             DotDrawingTool grainInCircleDotDrawingTool,
@@ -90,6 +92,9 @@ namespace GraDeMarCoWPF.ViewModels
             grainDetectingOptions.PropertyChanged += grainDetectingOptions_PropertyChanged;
             grainInCircleDotDrawingTool.PropertyChanged += grainInCircleDotDrawingTool_PropertyChanged;
             grainOnCircleDotDrawingTool.PropertyChanged += grainOnCircleDotDrawingTool_PropertyChanged;
+
+            SelectGrainInCircleDotColor = new SelectDetectedDotColor(appData, grainInCircleDotDrawingTool, colorDialogService);
+            SelectGrainOnCircleDotColor = new SelectDetectedDotColor(appData, grainOnCircleDotDrawingTool, colorDialogService);
         }
 
         private void grainDetectingOptions_PropertyChanged(object sender, PropertyChangedEventArgs e)

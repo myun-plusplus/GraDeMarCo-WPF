@@ -44,6 +44,7 @@
                             <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
                                 <Button
+                                    Command="{Binding SelectGrainInCircleDotColor}"
                                     Background="{Binding GrainInCircleDotColor}"
                                     Style="{StaticResource SelectColorButton_tmp}"/>
                             </StackPanel>
@@ -72,6 +73,7 @@
                             <Label Grid.Row="0" Grid.Column="0" Content="点の色:" Style="{StaticResource NormalLabel}"/>
                             <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
                                 <Button
+                                    Command="{Binding SelectGrainOnCircleDotColor}"
                                     Background="{Binding GrainOnCircleDotColor}"
                                     Style="{StaticResource SelectColorButton_tmp}"/>
                             </StackPanel>
