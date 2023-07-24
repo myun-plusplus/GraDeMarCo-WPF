@@ -7,17 +7,20 @@ namespace GraDeMarCoWPF.Models
         private GrainDetectingOptions grainDetectingOptions;
         private DotDrawingTool grainInCircleDotDrawingTool;
         private DotDrawingTool grainOnCircleDotDrawingTool;
+        private DotData detectedDotData;
 
         private bool isActive;
 
         public GrainDetecting(
             GrainDetectingOptions grainDetectingOptions,
             DotDrawingTool grainInCircleDotDrawingTool,
-            DotDrawingTool grainOnCircleDotDrawingTool)
+            DotDrawingTool grainOnCircleDotDrawingTool,
+            DotData detectedDotData)
         {
             this.grainDetectingOptions = grainDetectingOptions;
             this.grainInCircleDotDrawingTool = grainInCircleDotDrawingTool;
             this.grainOnCircleDotDrawingTool = grainOnCircleDotDrawingTool;
+            this.detectedDotData = detectedDotData;
         }
 
         public void StartFunction()
