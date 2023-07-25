@@ -1,9 +1,11 @@
-﻿using System.Windows.Media;
+﻿using System.Windows;
+using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
 {
     public class GrainDetecting : IGrainDetecting
     {
+        private ImageDisplay imageDisplay;
         private GrainDetectingOptions grainDetectingOptions;
         private DotDrawingTool grainInCircleDotDrawingTool;
         private DotDrawingTool grainOnCircleDotDrawingTool;
@@ -12,11 +14,13 @@ namespace GraDeMarCoWPF.Models
         private bool isActive;
 
         public GrainDetecting(
+            ImageDisplay imageDisplay,
             GrainDetectingOptions grainDetectingOptions,
             DotDrawingTool grainInCircleDotDrawingTool,
             DotDrawingTool grainOnCircleDotDrawingTool,
             DotData detectedDotData)
         {
+            this.imageDisplay = imageDisplay;
             this.grainDetectingOptions = grainDetectingOptions;
             this.grainInCircleDotDrawingTool = grainInCircleDotDrawingTool;
             this.grainOnCircleDotDrawingTool = grainOnCircleDotDrawingTool;
@@ -40,7 +44,17 @@ namespace GraDeMarCoWPF.Models
 
         public void DrawOnDynamicRendering(DrawingContext drawingContext)
         {
-            
+            var brush = new SolidColorBrush(Colors.Transparent);
+
+            foreach (Dot dot in detectedDotData.Dots)
+            {
+                Point location = imageDisplay.GetRelativeLocation(dot.Location);
+                location.X -= dot.Size / 2.0;
+                location.Y -= dot.Size / 2.0;
+                brush.Color = dot.Color;
+                Rect rect = new Rect(location.X, location.Y, dot.Size, dot.Size);
+                drawingContext.DrawRectangle(brush, null, rect);
+            }
         }
     }
 }
