@@ -101,6 +101,7 @@ namespace GraDeMarCoWPF
             var grainDetectingViewModel = new GrainDetectingViewModel(
                 colorDialogService,
                 appData,
+                imageDisplay,
                 grainDetectingOptions,
                 grainInCircleDotDrawingTool,
                 grainOnCircleDotDrawingTool,

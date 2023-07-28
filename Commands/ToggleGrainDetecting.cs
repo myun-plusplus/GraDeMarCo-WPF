@@ -10,13 +10,16 @@ namespace GraDeMarCoWPF.Commands
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
+        private ImageDisplay imageDisplay;
         private IGrainDetecting grainDetecting;
 
         public ToggleGrainDetecting(
             AppData appData,
+            ImageDisplay imageDisplay,
             IGrainDetecting grainDetecting)
         {
             this.appData = appData;
+            this.imageDisplay = imageDisplay;
             this.grainDetecting = grainDetecting;
 
             appData.PropertyChanged += this.appData_PropertyChanged;
@@ -35,12 +38,14 @@ namespace GraDeMarCoWPF.Commands
                 appData.CurrentState = AppState.GrainDetecting;
                 grainDetecting.StartFunction();
                 grainDetecting.DetectGrains();
+                imageDisplay.RefreshRendering();
             }
             else
             {
                 appData.CurrentState = AppState.ImageOpened;
                 grainDetecting.StopFunction();
                 grainDetecting.DetectGrains();
+                imageDisplay.RefreshRendering();
             }
         }
 

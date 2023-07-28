@@ -20,6 +20,7 @@ namespace GraDeMarCoWPF.Models
         private IPlanimetricCircleDrawing planimetricCircleDrawing;
         private IImageFiltering imageFiltering;
         private IImageBinarizing imageBinarizing;
+        private IGrainDetecting grainDetecting;
 
         public ImageProcessingFlags ImageProcessingFlags
         {
@@ -34,11 +35,13 @@ namespace GraDeMarCoWPF.Models
 
         public AppStateHandler(AppData appData,
             IImageAreaSelecting imageAreaSelecting,
-            IPlanimetricCircleDrawing planimetricCircleDrawing)
+            IPlanimetricCircleDrawing planimetricCircleDrawing,
+            IGrainDetecting grainDetecting)
         {
             this.appData = appData;
             this.imageAreaSelecting = imageAreaSelecting;
             this.planimetricCircleDrawing = planimetricCircleDrawing;
+            this.grainDetecting = grainDetecting;
         }
 
         public void DrawOnRender(DrawingContext drawingContext)
@@ -59,6 +62,11 @@ namespace GraDeMarCoWPF.Models
             else if (ImageProcessingFlags.HasFlag(ImageProcessingFlags.PlanimetricCircle))
             {
                 planimetricCircleDrawing.DrawOnStaticRendering(drawingContext);
+            }
+
+            if (appData.CurrentState == AppState.GrainDetecting)
+            {
+                grainDetecting.DrawOnDynamicRendering(drawingContext);
             }
         }
 

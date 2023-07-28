@@ -44,6 +44,11 @@ namespace GraDeMarCoWPF.Models
             ZoomScale = 1.0;
         }
 
+        public void RefreshRendering()
+        {
+            NotifyAllPropertyChanged();
+        }
+
         public Point GetAbsoluteLocation(Point location)
         {
             return new Point(

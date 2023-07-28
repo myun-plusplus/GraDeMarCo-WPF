@@ -43,6 +43,12 @@ namespace GraDeMarCoWPF.Models
         public void DetectGrains()
         {
             detectedDotData.Dots.Clear();
+
+            if (!isActive)
+            {
+                return;
+            }
+
             detectedDotData.Dots.Add(new Dot() { Location = new Point(50, 50), Color = Colors.Red, Size = 5.0 });
         }
 
