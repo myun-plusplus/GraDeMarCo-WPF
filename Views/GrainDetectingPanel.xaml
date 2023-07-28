@@ -18,7 +18,11 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-                            <ToggleButton Content="解析" Style="{StaticResource NormalToggleButton}"/>
+                            <ToggleButton
+                                Command="{Binding ToggleGrainDetecting}"
+                                CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                Content="解析"
+                                Style="{StaticResource NormalToggleButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="最小ピクセル数:" Style="{StaticResource NormalLabel}"/>

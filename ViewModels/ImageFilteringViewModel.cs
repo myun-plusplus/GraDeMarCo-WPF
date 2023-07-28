@@ -42,7 +42,8 @@ namespace GraDeMarCoWPF.ViewModels
             AppData appData,
             ImageFilterOptions options,
             IImageFiltering imageFiltering,
-            IImageBinarizing imageBinarizing)
+            IImageBinarizing imageBinarizing,
+            IGrainDetecting grainDetecting)
         {
             this.imageFilterOptions = options;
             this.imageFiltering = imageFiltering;
@@ -57,12 +58,13 @@ namespace GraDeMarCoWPF.ViewModels
             EdgeDetectOptionDictionary.Add(EdgeDetectOption.Sobel, "ソーベル");
             EdgeDetectOptionDictionary.Add(EdgeDetectOption.Laplacian, "ラプラシアン");
 
-            ToggleImageFiltering = new ToggleImageFiltering(appData, imageFiltering, imageBinarizing);
+            ToggleImageFiltering = new ToggleImageFiltering(appData, imageFiltering, imageBinarizing, grainDetecting);
             UpdateImageFiltering = CreateCommand(
                 _ =>
                 {
                     imageFiltering.FilterOriginalImage();
                     imageBinarizing.BinarizeFilteredImage();
+                    grainDetecting.DetectGrains();
                 });
         }
     }

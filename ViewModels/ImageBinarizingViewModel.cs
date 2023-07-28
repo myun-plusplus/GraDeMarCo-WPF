@@ -37,15 +37,17 @@ namespace GraDeMarCoWPF.ViewModels
         public ImageBinarizingViewModel(
             AppData appData,
             ImageBinarizeOptions imageBinarizeOptions,
-            IImageBinarizing imageBinarizing)
+            IImageBinarizing imageBinarizing,
+            IGrainDetecting grainDetecting)
         {
             this.imageBinarizeOptions = imageBinarizeOptions;
 
-            ToggleImageBinarizing = new ToggleImageBinarizing(appData, imageBinarizing);
+            ToggleImageBinarizing = new ToggleImageBinarizing(appData, imageBinarizing, grainDetecting);
             UpdateImageBinarizing = CreateCommand(
                 _ =>
                 {
                     imageBinarizing.BinarizeFilteredImage();
+                    grainDetecting.DetectGrains();
                 });
         }
     }

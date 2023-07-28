@@ -6,6 +6,7 @@ namespace GraDeMarCoWPF.Models
     public class GrainDetecting : IGrainDetecting
     {
         private ImageDisplay imageDisplay;
+        private PlanimetricCircle planimetricCircle;
         private GrainDetectingOptions grainDetectingOptions;
         private DotDrawingTool grainInCircleDotDrawingTool;
         private DotDrawingTool grainOnCircleDotDrawingTool;
@@ -15,12 +16,14 @@ namespace GraDeMarCoWPF.Models
 
         public GrainDetecting(
             ImageDisplay imageDisplay,
+            PlanimetricCircle planimetricCircle,
             GrainDetectingOptions grainDetectingOptions,
             DotDrawingTool grainInCircleDotDrawingTool,
             DotDrawingTool grainOnCircleDotDrawingTool,
             DotData detectedDotData)
         {
             this.imageDisplay = imageDisplay;
+            this.planimetricCircle = planimetricCircle;
             this.grainDetectingOptions = grainDetectingOptions;
             this.grainInCircleDotDrawingTool = grainInCircleDotDrawingTool;
             this.grainOnCircleDotDrawingTool = grainOnCircleDotDrawingTool;
@@ -39,7 +42,8 @@ namespace GraDeMarCoWPF.Models
 
         public void DetectGrains()
         {
-
+            detectedDotData.Dots.Clear();
+            detectedDotData.Dots.Add(new Dot() { Location = new Point(50, 50), Color = Colors.Red, Size = 5.0 });
         }
 
         public void DrawOnDynamicRendering(DrawingContext drawingContext)

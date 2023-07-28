@@ -5,24 +5,18 @@ using System.Windows.Input;
 
 namespace GraDeMarCoWPF.Commands
 {
-    public class ToggleImageFiltering : ICommand
+    public class ToggleGrainDetecting : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
-        private IImageFiltering imageFiltering;
-        private IImageBinarizing imageBinarizing;
         private IGrainDetecting grainDetecting;
 
-        public ToggleImageFiltering(
+        public ToggleGrainDetecting(
             AppData appData,
-            IImageFiltering imageFiltering,
-            IImageBinarizing imageBinarizing,
             IGrainDetecting grainDetecting)
         {
             this.appData = appData;
-            this.imageFiltering = imageFiltering;
-            this.imageBinarizing = imageBinarizing;
             this.grainDetecting = grainDetecting;
 
             appData.PropertyChanged += this.appData_PropertyChanged;
@@ -31,25 +25,21 @@ namespace GraDeMarCoWPF.Commands
         public bool CanExecute(object parameter)
         {
             return appData.CurrentState == AppState.ImageOpened ||
-                appData.CurrentState == AppState.ImageFiltering;
+                appData.CurrentState == AppState.GrainDetecting;
         }
 
         public void Execute(object parameter)
         {
             if ((parameter as bool?) ?? false)
             {
-                appData.CurrentState = AppState.ImageFiltering;
-                imageFiltering.StartFunction();
-                imageFiltering.FilterOriginalImage();
-                imageBinarizing.BinarizeFilteredImage();
+                appData.CurrentState = AppState.GrainDetecting;
+                grainDetecting.StartFunction();
                 grainDetecting.DetectGrains();
             }
             else
             {
                 appData.CurrentState = AppState.ImageOpened;
-                imageFiltering.StopFunction();
-                imageFiltering.FilterOriginalImage();
-                imageBinarizing.BinarizeFilteredImage();
+                grainDetecting.StopFunction();
                 grainDetecting.DetectGrains();
             }
         }

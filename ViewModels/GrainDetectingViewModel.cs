@@ -21,6 +21,7 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 grainDetectingOptions.MinimumGrainPixels = value;
                 NotifyPropertyChanged(GetName.Of(() => MinimumGrainPixels));
+                UpdateGrainDetecting.Execute(null);
             }
         }
 
@@ -31,6 +32,7 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 grainDetectingOptions.DetectsGrainsInCircle = value;
                 NotifyPropertyChanged(GetName.Of(() => DetectsGrainsInCircle));
+                UpdateGrainDetecting.Execute(null);
             }
         }
 
@@ -46,6 +48,7 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 grainInCircleDotDrawingTool.Size = value;
                 NotifyPropertyChanged(GetName.Of(() => GrainInCircleDotSize));
+                UpdateGrainDetecting.Execute(null);
             }
         }
 
@@ -56,6 +59,7 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 grainDetectingOptions.DetectsGrainsOnCircle = value;
                 NotifyPropertyChanged(GetName.Of(() => DetectsGrainsOnCircle));
+                UpdateGrainDetecting.Execute(null);
             }
         }
 
@@ -71,9 +75,12 @@ namespace GraDeMarCoWPF.ViewModels
             {
                 grainOnCircleDotDrawingTool.Size = value;
                 NotifyPropertyChanged(GetName.Of(() => GrainOnCircleDotSize));
+                UpdateGrainDetecting.Execute(null);
             }
         }
 
+        public ICommand ToggleGrainDetecting { get; private set; }
+        public ICommand UpdateGrainDetecting { get; private set; }
         public ICommand SelectGrainInCircleDotColor { get; private set; }
         public ICommand SelectGrainOnCircleDotColor { get; private set; }
 
@@ -82,7 +89,8 @@ namespace GraDeMarCoWPF.ViewModels
             AppData appData,
             GrainDetectingOptions grainDetectingOptions,
             DotDrawingTool grainInCircleDotDrawingTool,
-            DotDrawingTool grainOnCircleDotDrawingTool)
+            DotDrawingTool grainOnCircleDotDrawingTool,
+            IGrainDetecting grainDetecting)
         {
             this.appData = appData;
             this.grainDetectingOptions = grainDetectingOptions;
@@ -93,6 +101,12 @@ namespace GraDeMarCoWPF.ViewModels
             grainInCircleDotDrawingTool.PropertyChanged += grainInCircleDotDrawingTool_PropertyChanged;
             grainOnCircleDotDrawingTool.PropertyChanged += grainOnCircleDotDrawingTool_PropertyChanged;
 
+            ToggleGrainDetecting = new ToggleGrainDetecting(appData, grainDetecting);
+            UpdateGrainDetecting = CreateCommand(
+                _ =>
+                {
+                    grainDetecting.DetectGrains();
+                });
             SelectGrainInCircleDotColor = new SelectDetectedDotColor(appData, grainInCircleDotDrawingTool, colorDialogService);
             SelectGrainOnCircleDotColor = new SelectDetectedDotColor(appData, grainOnCircleDotDrawingTool, colorDialogService);
         }

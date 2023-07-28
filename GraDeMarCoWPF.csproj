@@ -86,6 +86,7 @@
     <Compile Include="Commands\SelectOutlineColor.cs" />
     <Compile Include="Commands\SelectMaxArea.cs" />
     <Compile Include="Commands\TestClick.cs" />
+    <Compile Include="Commands\ToggleGrainDetecting.cs" />
     <Compile Include="Commands\ToggleImageAreaSelecting.cs" />
     <Compile Include="Commands\ToggleImageBinarizing.cs" />
     <Compile Include="Commands\ToggleImageFiltering.cs" />
@@ -93,6 +94,8 @@
     <Compile Include="GetName.cs" />
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\AppStateHandler.cs" />
+    <Compile Include="Models\DotData.cs" />
+    <Compile Include="Models\GrainDetecting.cs" />
     <Compile Include="Models\GrainDetectingOptions.cs" />
     <Compile Include="Models\ImageBinarizeOptions.cs" />
     <Compile Include="Models\ImageBinarizing.cs" />

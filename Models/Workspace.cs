@@ -39,6 +39,8 @@ namespace GraDeMarCoWPF.Models
             GrainDetectingOptions = new GrainDetectingOptions();
             GrainInCircleDotDrawingTool = new DotDrawingTool();
             GrainOnCircleDotDrawingTool = new DotDrawingTool();
+            DetectedDotData = new DotData();
+            GrainDetecting = new GrainDetecting(ImageDisplay, PlanimetricCircle, GrainDetectingOptions, GrainInCircleDotDrawingTool, GrainOnCircleDotDrawingTool, DetectedDotData);
             AppStateHandler = new AppStateHandler(AppData, ImageAreaSelecting, PlanimetricCircleDrawing);
         }
 
@@ -81,8 +83,12 @@ namespace GraDeMarCoWPF.Models
 
         public GrainDetectingOptions GrainDetectingOptions;
 
+        public DotData DetectedDotData;
+
         public DotDrawingTool GrainInCircleDotDrawingTool;
         public DotDrawingTool GrainOnCircleDotDrawingTool;
+
+        public GrainDetecting GrainDetecting;
 
         [NonSerialized]
         public AppStateHandler AppStateHandler;
