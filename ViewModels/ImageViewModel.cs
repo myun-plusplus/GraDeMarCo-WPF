@@ -11,6 +11,7 @@ namespace GraDeMarCoWPF.ViewModels
     public class ImageViewModel : ViewModelBase
     {
         private AppData appData;
+        private ImageData imageData;
         private ImageDisplay imageDisplay;
         private ImageAreaSelecting imageAreaSelecting;
         private AppStateHandler appStateHandler;
@@ -19,11 +20,15 @@ namespace GraDeMarCoWPF.ViewModels
         {
             get
             {
-                return imageDisplay.DisplayedImage;
-            }
-            set
-            {
-                imageDisplay.DisplayedImage = value;
+                switch (appData.CurrentState)
+                {
+                    case AppState.ImageFiltering:
+                        return imageData.FilteredImage;
+                    case AppState.ImageBinarizing:
+                        return imageData.BinarizedImage;
+                    default:
+                        return imageData.OriginalImage;
+                }
             }
         }
 
@@ -81,11 +86,13 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ImageViewModel(
             AppData appData,
+            ImageData imageData,
             ImageDisplay imageDisplay,
             ImageAreaSelecting imageAreaSelecting,
             AppStateHandler appStateHandler)
         {
             this.appData = Workspace.Instance.AppData;
+            this.imageData = imageData;
             this.imageDisplay = Workspace.Instance.ImageDisplay;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
             this.appStateHandler = Workspace.Instance.AppStateHandler;
@@ -108,8 +115,6 @@ namespace GraDeMarCoWPF.ViewModels
             MouseMoveCommand = CreateCommand(
                 location => appStateHandler.MouseMove((Point)location),
                 _ => this.appData.IsMouseMoveEnabled());
-
-            TestClickCommand = new TestClick(this);
         }
 
         private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)

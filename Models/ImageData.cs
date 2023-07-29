@@ -48,6 +48,14 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
+        public void Initialize()
+        {
+            _originalImage = new WriteableBitmap(64, 64, 8, 8, PixelFormat, null);
+            _circledImage = _originalImage;
+            _filteredImage = _originalImage;
+            _binarizedImage = _originalImage;
+        }
+
         private WriteableBitmap _originalImage;
         private WriteableBitmap _circledImage;
         private WriteableBitmap _filteredImage;

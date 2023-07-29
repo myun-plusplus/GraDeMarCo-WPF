@@ -42,6 +42,8 @@ namespace GraDeMarCoWPF.Models
             DetectedDotData = new DotData();
             GrainDetecting = new GrainDetecting(ImageDisplay, PlanimetricCircle, GrainDetectingOptions, GrainInCircleDotDrawingTool, GrainOnCircleDotDrawingTool, DetectedDotData);
             AppStateHandler = new AppStateHandler(AppData, ImageAreaSelecting, PlanimetricCircleDrawing, GrainDetecting);
+
+            Initialize();
         }
 
         public AppData AppData;
@@ -99,7 +101,7 @@ namespace GraDeMarCoWPF.Models
             AppData.WorkspacePath = "";
             AppData.ImagePath = "";
 
-            ImageData.OriginalImage = null;
+            ImageData.Initialize();
 
             ImageDisplay.ZoomScale = 1.0;
 

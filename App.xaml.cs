@@ -72,6 +72,7 @@ namespace GraDeMarCoWPF
             // ViewModels
             var imageViewModel = new ImageViewModel(
                 appData,
+                imageData,
                 imageDisplay,
                 imageAreaSelecting,
                 appStateHandler);
