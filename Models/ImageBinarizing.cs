@@ -38,6 +38,7 @@ namespace GraDeMarCoWPF.Models
         {
             if (!isActive)
             {
+                imageData.BinarizedImage = imageData.FilteredImage.Clone();
                 imageDisplay.DisplayedImage = imageData.FilteredImage.Clone();
                 return;
             }

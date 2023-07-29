@@ -6,6 +6,8 @@ namespace GraDeMarCoWPF.Models
 {
     public class ImageData
     {
+        public readonly static PixelFormat PixelFormat = PixelFormats.Bgr32;
+
         public WriteableBitmap OriginalImage
         {
             get { return _originalImage; }
@@ -13,9 +15,18 @@ namespace GraDeMarCoWPF.Models
             {
                 if (value != null)
                 {
-                    _originalImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
+                    _originalImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormat, null, 0));
                     _filteredImage = new WriteableBitmap(_originalImage);
                 }
+            }
+        }
+
+        public WriteableBitmap CircledImage
+        {
+            get { return _circledImage; }
+            set
+            {
+                _circledImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormat, null, 0));
             }
         }
 
@@ -24,11 +35,22 @@ namespace GraDeMarCoWPF.Models
             get { return _filteredImage; }
             set
             {
-                _filteredImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
+                _filteredImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormat, null, 0));
+            }
+        }
+
+        public WriteableBitmap BinarizedImage
+        {
+            get { return _binarizedImage; }
+            set
+            {
+                _binarizedImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
             }
         }
 
         private WriteableBitmap _originalImage;
+        private WriteableBitmap _circledImage;
         private WriteableBitmap _filteredImage;
+        private WriteableBitmap _binarizedImage;
     }
 }
