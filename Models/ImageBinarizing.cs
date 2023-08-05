@@ -36,13 +36,6 @@ namespace GraDeMarCoWPF.Models
 
         public void BinarizeFilteredImage()
         {
-            if (!isActive)
-            {
-                imageData.BinarizedImage = imageData.FilteredImage.Clone();
-                imageDisplay.DisplayedImage = imageData.FilteredImage.Clone();
-                return;
-            }
-
             int width = imageData.OriginalImage.PixelWidth;
             int height = imageData.OriginalImage.PixelHeight;
             int lowerX = imageArea.LowerX, upperX = imageArea.UpperX;
@@ -80,9 +73,9 @@ namespace GraDeMarCoWPF.Models
                 }
             }
 
-            imageDisplay.DisplayedImage.Lock();
-            imageDisplay.DisplayedImage.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
-            imageDisplay.DisplayedImage.Unlock();
+            imageData.BinarizedImage.Lock();
+            imageData.BinarizedImage.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
+            imageData.BinarizedImage.Unlock();
         }
     }
 }

@@ -119,7 +119,7 @@ namespace GraDeMarCoWPF.ViewModels
 
         private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            NotifyPropertyChanged(e.PropertyName);
+            NotifyPropertyChanged("");
         }
 
         private void imageDisplay_PropertyChanged(object sender, PropertyChangedEventArgs e)

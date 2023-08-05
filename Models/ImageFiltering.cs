@@ -48,12 +48,6 @@ namespace GraDeMarCoWPF.Models
 
         public void FilterOriginalImage()
         {
-            if (!isActive)
-            {
-                imageData.FilteredImage = imageData.OriginalImage.Clone();
-                return;
-            }
-
             int width = imageData.OriginalImage.PixelWidth;
             int height = imageData.OriginalImage.PixelHeight;
             int lowerX = imageArea.LowerX, upperX = imageArea.UpperX;
