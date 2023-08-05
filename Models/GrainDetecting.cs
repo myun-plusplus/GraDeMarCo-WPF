@@ -5,8 +5,11 @@ namespace GraDeMarCoWPF.Models
 {
     public class GrainDetecting : IGrainDetecting
     {
+        private ImageData imageData;
         private ImageDisplay imageDisplay;
+        private ImageArea imageArea;
         private PlanimetricCircle planimetricCircle;
+        private OutlineDrawingTool planimetricCircleDrawingTool;
         private GrainDetectingOptions grainDetectingOptions;
         private DotDrawingTool grainInCircleDotDrawingTool;
         private DotDrawingTool grainOnCircleDotDrawingTool;
@@ -15,15 +18,21 @@ namespace GraDeMarCoWPF.Models
         private bool isActive;
 
         public GrainDetecting(
+            ImageData imageData,
             ImageDisplay imageDisplay,
+            ImageArea imageArea,
             PlanimetricCircle planimetricCircle,
+            OutlineDrawingTool planimetricCircleDrawingTool,
             GrainDetectingOptions grainDetectingOptions,
             DotDrawingTool grainInCircleDotDrawingTool,
             DotDrawingTool grainOnCircleDotDrawingTool,
             DotData detectedDotData)
         {
+            this.imageData = imageData;
             this.imageDisplay = imageDisplay;
+            this.imageArea = imageArea;
             this.planimetricCircle = planimetricCircle;
+            this.planimetricCircleDrawingTool = planimetricCircleDrawingTool;
             this.grainDetectingOptions = grainDetectingOptions;
             this.grainInCircleDotDrawingTool = grainInCircleDotDrawingTool;
             this.grainOnCircleDotDrawingTool = grainOnCircleDotDrawingTool;
