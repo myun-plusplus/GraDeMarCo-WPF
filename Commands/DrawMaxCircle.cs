@@ -10,14 +10,12 @@ namespace GraDeMarCoWPF.Commands
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
-        private ImageArea imageArea;
-        private PlanimetricCircle planimetricCircle;
+        private IPlanimetricCircleDrawing planimetricCircleDrawing;
 
-        public DrawMaxCircle(AppData appData, ImageArea imageArea, PlanimetricCircle planimetricCircle)
+        public DrawMaxCircle(AppData appData, IPlanimetricCircleDrawing planimetricCircleDrawing)
         {
             this.appData = appData;
-            this.imageArea = imageArea;
-            this.planimetricCircle = planimetricCircle;
+            this.planimetricCircleDrawing = planimetricCircleDrawing;
 
             appData.PropertyChanged += this.appData_PropertyChanged;
         }
@@ -30,12 +28,7 @@ namespace GraDeMarCoWPF.Commands
 
         public void Execute(object parameter)
         {
-            double centerX = (imageArea.LowerX + imageArea.UpperX) / 2.0;
-            double centerY = (imageArea.LowerY + imageArea.UpperY) / 2.0;
-            int diameter = Math.Min(imageArea.UpperX - imageArea.LowerX, imageArea.UpperY - imageArea.LowerY);
-            planimetricCircle.LowerX = (int)(centerX - diameter / 2.0);
-            planimetricCircle.LowerY = (int)(centerY - diameter / 2.0);
-            planimetricCircle.Diameter = (int)diameter;
+            planimetricCircleDrawing.DrawMaxCircle();
         }
 
         private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)

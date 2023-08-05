@@ -7,6 +7,7 @@ namespace GraDeMarCoWPF.Models
     public class PlanimetricCircleDrawing : IPlanimetricCircleDrawing
     {
         private ImageDisplay imageDisplay;
+        private ImageArea imageArea;
         private PlanimetricCircle planimetricCircle;
         private OutlineDrawingTool drawingTool;
 
@@ -62,10 +63,12 @@ namespace GraDeMarCoWPF.Models
 
         public PlanimetricCircleDrawing(
             ImageDisplay imageDisplay,
+            ImageArea imageArea,
             PlanimetricCircle planimetricCircle,
             OutlineDrawingTool drawingTool)
         {
             this.imageDisplay = imageDisplay;
+            this.imageArea = imageArea;
             this.planimetricCircle = planimetricCircle;
             this.drawingTool = drawingTool;
         }
@@ -130,6 +133,16 @@ namespace GraDeMarCoWPF.Models
             double coefficient = imageDisplay.DisplayedImage.Width / imageDisplay.DisplayedImage.PixelWidth;
             double radius = planimetricCircle.Diameter * coefficient / 2.0;
             drawingContext.DrawEllipse(null, drawingTool.Pen, center, radius, radius);
+        }
+
+        public void DrawMaxCircle()
+        {
+            double centerX = (imageArea.LowerX + imageArea.UpperX) / 2.0;
+            double centerY = (imageArea.LowerY + imageArea.UpperY) / 2.0;
+            int diameter = Math.Min(imageArea.UpperX - imageArea.LowerX, imageArea.UpperY - imageArea.LowerY);
+            planimetricCircle.LowerX = (int)(centerX - diameter / 2.0);
+            planimetricCircle.LowerY = (int)(centerY - diameter / 2.0);
+            planimetricCircle.Diameter = (int)diameter;
         }
     }
 }

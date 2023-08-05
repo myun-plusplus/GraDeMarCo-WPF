@@ -29,6 +29,7 @@ namespace GraDeMarCoWPF.Models
     {
         void Click(Point location);
         void MouseMove(Point location);
+        void DrawMaxCircle();
     }
 
     public interface IImageFiltering : IToggleFunction
