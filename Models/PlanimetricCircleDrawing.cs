@@ -1,11 +1,14 @@
-﻿using System;
+﻿using GraDeMarCoWPF.Models.ImageProcessing;
+using System;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace GraDeMarCoWPF.Models
 {
     public class PlanimetricCircleDrawing : IPlanimetricCircleDrawing
     {
+        private ImageData imageData;
         private ImageDisplay imageDisplay;
         private ImageArea imageArea;
         private PlanimetricCircle planimetricCircle;
@@ -62,11 +65,13 @@ namespace GraDeMarCoWPF.Models
         private Point _secondLocation;
 
         public PlanimetricCircleDrawing(
+            ImageData imageData,
             ImageDisplay imageDisplay,
             ImageArea imageArea,
             PlanimetricCircle planimetricCircle,
             OutlineDrawingTool drawingTool)
         {
+            this.imageData = imageData;
             this.imageDisplay = imageDisplay;
             this.imageArea = imageArea;
             this.planimetricCircle = planimetricCircle;
@@ -81,6 +86,7 @@ namespace GraDeMarCoWPF.Models
         public void StopFunction()
         {
             state = _State.NotActive;
+            renderCircleOnImage();
         }
 
         public void Click(Point location)
@@ -143,6 +149,34 @@ namespace GraDeMarCoWPF.Models
             planimetricCircle.LowerX = (int)(centerX - diameter / 2.0);
             planimetricCircle.LowerY = (int)(centerY - diameter / 2.0);
             planimetricCircle.Diameter = (int)diameter;
+
+            renderCircleOnImage();
+        }
+
+        private void renderCircleOnImage()
+        {
+            int width = imageData.OriginalImage.PixelWidth;
+            int height = imageData.OriginalImage.PixelHeight;
+            int stride = imageData.OriginalImage.BackBufferStride;
+
+            var drawingVisual = new DrawingVisual();
+            using (var drawingContext = drawingVisual.RenderOpen())
+            {
+                drawingContext.DrawImage(imageData.OriginalImage, new Rect(0, 0, width, height));
+                DrawOnStaticRendering(drawingContext);
+            }
+
+            var renderTargetBitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
+            renderTargetBitmap.Clear();
+            renderTargetBitmap.Render(drawingVisual);
+
+            {
+                byte[] tmp = new byte[height * stride];
+                renderTargetBitmap.CopyPixels(tmp, stride, 0);
+                imageData.CircledImage.Lock();
+                imageData.CircledImage.WritePixels(new Int32Rect(0, 0, width, height), tmp, stride, 0);
+                imageData.CircledImage.Lock();
+            }
         }
     }
 }
