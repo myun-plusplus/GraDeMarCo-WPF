@@ -175,7 +175,7 @@ namespace GraDeMarCoWPF.Models
                 renderTargetBitmap.CopyPixels(tmp, stride, 0);
                 imageData.CircledImage.Lock();
                 imageData.CircledImage.WritePixels(new Int32Rect(0, 0, width, height), tmp, stride, 0);
-                imageData.CircledImage.Lock();
+                imageData.CircledImage.Unlock();
             }
         }
     }
