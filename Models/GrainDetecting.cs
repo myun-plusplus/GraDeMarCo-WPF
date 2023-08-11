@@ -131,22 +131,22 @@ namespace GraDeMarCoWPF.Models
             List<Point> dotLocationsInCircle = new List<Point>();
             List<Point> dotLocationsOnCircle = new List<Point>();
             {
-                bool[,] visited = new bool[height, width];
+                bool[,] isVisited = new bool[height, width];
                 var stack = new Stack<Tuple<int, int>>();
 
                 for (int y = lowerY; y <= upperY; ++y)
                 {
                     for (int x = lowerX; x <= upperX; ++x)
                     {
-                        if (!inCircle[y, x] || !isWhite[y, x])
+                        if (!inCircle[y, x] || !isWhite[y, x] || isVisited[y, x])
                         {
                             continue;
                         }
 
                         int pixelCount = 1;
-                        bool onCircle = false;
+                        bool onCircle = !inCircle[y, x];
                         long sumX = x, sumY = y;
-                        visited[y, x] = true;
+                        isVisited[y, x] = true;
                         stack.Push(Tuple.Create(x, y));
 
                         while (stack.Count != 0)
@@ -156,7 +156,7 @@ namespace GraDeMarCoWPF.Models
                             for (int d = 0; d < 4; ++d)
                             {
                                 int nx = t.Item1 + dx[d], ny = t.Item2 + dy[d];
-                                if (nx < lowerX || upperX < nx || ny < lowerY || upperY < ny || visited[ny, nx])
+                                if (nx < lowerX || upperX < nx || ny < lowerY || upperY < ny || isVisited[ny, nx])
                                 {
                                     continue;
                                 }
@@ -171,7 +171,7 @@ namespace GraDeMarCoWPF.Models
                                 }
                                 sumX += nx;
                                 sumY += ny;
-                                visited[ny, nx] = true;
+                                isVisited[ny, nx] = true;
                                 stack.Push(Tuple.Create(nx, ny));
                             }
                         }
@@ -221,7 +221,7 @@ namespace GraDeMarCoWPF.Models
                 });
             }
 
-            detectedDotData.Dots.Add(new Dot() { Location = new Point(50, 50), Color = Colors.Red, Size = 5.0 });
+            //detectedDotData.Dots.Add(new Dot() { Location = new Point(50, 50), Color = Colors.Red, Size = 5.0 });
         }
 
         public void DrawOnDynamicRendering(DrawingContext drawingContext)

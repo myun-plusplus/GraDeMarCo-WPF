@@ -52,20 +52,20 @@ namespace GraDeMarCoWPF.Models
         public Point GetAbsoluteLocation(Point location)
         {
             return new Point(
-                (int)(location.X * DisplayedImage.PixelWidth / DisplayedImage.Width),
-                (int)(location.Y * DisplayedImage.PixelHeight / DisplayedImage.Height));
+                location.X * DisplayedImage.PixelWidth / DisplayedImage.Width,
+                location.Y * DisplayedImage.PixelHeight / DisplayedImage.Height);
         }
 
         public Point GetRelativeLocation(Point location)
         {
             return new Point(
-                (int)(location.X * DisplayedImage.Width / DisplayedImage.PixelWidth),
-                (int)(location.Y * DisplayedImage.Height / DisplayedImage.PixelHeight));
+                location.X * DisplayedImage.Width / DisplayedImage.PixelWidth,
+                location.Y * DisplayedImage.Height / DisplayedImage.PixelHeight);
         }
 
         public Point GetUnzoomedLocation(Point location)
         {
-            return new Point((int)(location.X / ZoomScale), (int)(location.Y / ZoomScale));
+            return new Point(location.X / ZoomScale, location.Y / ZoomScale);
         }
     }
 }
