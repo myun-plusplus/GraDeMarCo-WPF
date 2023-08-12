@@ -226,14 +226,12 @@ namespace GraDeMarCoWPF.Models
 
         public void DrawOnDynamicRendering(DrawingContext drawingContext)
         {
-            var brush = new SolidColorBrush(Colors.Transparent);
-
             foreach (Dot dot in detectedDotData.Dots)
             {
                 Point location = imageDisplay.GetRelativeLocation(dot.Location);
                 location.X -= dot.Size / 2.0;
                 location.Y -= dot.Size / 2.0;
-                brush.Color = dot.Color;
+                var brush = new SolidColorBrush(dot.Color);
                 Rect rect = new Rect(location.X, location.Y, dot.Size, dot.Size);
                 drawingContext.DrawRectangle(brush, null, rect);
             }
