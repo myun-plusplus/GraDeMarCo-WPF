@@ -90,12 +90,14 @@ namespace GraDeMarCoWPF
                 planimetricCircleDrawing);
             var imageFIlterViewModel = new ImageFilteringViewModel(
                 appData,
+                imageDisplay,
                 imageFilterOptions,
                 imageFiltering,
                 imageBinarizing,
                 grainDetecting);
             var imageBinarizingViewModel = new ImageBinarizingViewModel(
                 appData,
+                imageDisplay,
                 imageBinarizeOptions,
                 imageBinarizing,
                 grainDetecting);

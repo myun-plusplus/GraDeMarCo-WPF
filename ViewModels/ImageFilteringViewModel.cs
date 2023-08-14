@@ -40,6 +40,7 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ImageFilteringViewModel(
             AppData appData,
+            ImageDisplay imageDisplay,
             ImageFilterOptions options,
             IImageFiltering imageFiltering,
             IImageBinarizing imageBinarizing,
@@ -65,6 +66,7 @@ namespace GraDeMarCoWPF.ViewModels
                     imageFiltering.FilterOriginalImage();
                     imageBinarizing.BinarizeFilteredImage();
                     grainDetecting.DetectGrains();
+                    imageDisplay.RefreshRendering();
                 });
         }
     }
