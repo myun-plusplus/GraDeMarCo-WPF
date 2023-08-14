@@ -62,7 +62,7 @@
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical">
                         <CheckBox
-                            IsChecked="{Binding DetectsGrainsInCircle}"
+                            IsChecked="{Binding DetectsGrainsOnCircle}"
                             Content="円周上粒点"
                             Style="{StaticResource NormalCheckBox}"/>
                         <Grid>
