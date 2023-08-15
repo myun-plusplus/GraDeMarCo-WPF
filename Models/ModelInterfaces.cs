@@ -46,4 +46,14 @@ namespace GraDeMarCoWPF.Models
     {
         void DetectGrains();
     }
+
+    public interface IDotDrawing : IToggleFunction, IDrawingOnStaticRendering, IDrawingOnDynamicRendering
+    {
+        void Click();
+        void RightClick();
+        void MouseMove();
+        void Undo();
+        void Redo();
+        void CLear();
+    }
 }
