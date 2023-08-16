@@ -47,6 +47,8 @@ namespace GraDeMarCoWPF.Models
 
         public void LeftClick(Point location)
         {
+            location = imageDisplay.GetAbsoluteLocation(location);
+
             Dot dot = new Dot
             {
                 Location = location,
@@ -62,6 +64,8 @@ namespace GraDeMarCoWPF.Models
 
         public void RightClick(Point location)
         {
+            location = imageDisplay.GetAbsoluteLocation(location);
+
             var di_min = drawnDotData.Dots
                 .Select(dot => getDistance(dot.Location, location))
                 .Zip(Enumerable.Range(0, drawnDotData.Dots.Count), (distance, index) => Tuple.Create(distance, index))
