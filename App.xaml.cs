@@ -42,6 +42,7 @@ namespace GraDeMarCoWPF
 
             var drawnDotData = Workspace.Instance.DrawnDotData;
             var drawnDotDrawingTool = Workspace.Instance.DrawnDotDrawingTool;
+            var dotDrawing = Workspace.Instance.DotDrawing;
 
             var appStateHandler = Workspace.Instance.AppStateHandler;
 

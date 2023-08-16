@@ -49,11 +49,11 @@ namespace GraDeMarCoWPF.Models
 
     public interface IDotDrawing : IToggleFunction, IDrawingOnStaticRendering, IDrawingOnDynamicRendering
     {
-        void Click();
-        void RightClick();
-        void MouseMove();
+        void Click(Point location);
+        void RightClick(Point location);
+        void MouseMove(Point location);
         void Undo();
         void Redo();
-        void CLear();
+        void Clear();
     }
 }
