@@ -18,7 +18,7 @@ namespace GraDeMarCoWPF.Models
         private Point mouseLocation
         {
             get { return _mouseLocation; }
-            set { _mouseLocation = value; }
+            set { _mouseLocation = imageDisplay.GetAbsoluteLocation(value); }
         }
 
         public DotDrawing(
@@ -47,6 +47,7 @@ namespace GraDeMarCoWPF.Models
 
         public void LeftClick(Point location)
         {
+            location = imageDisplay.GetUnzoomedLocation(location);
             location = imageDisplay.GetAbsoluteLocation(location);
 
             Dot dot = new Dot
@@ -64,11 +65,12 @@ namespace GraDeMarCoWPF.Models
 
         public void RightClick(Point location)
         {
-            if (drawnDotData.DoneList.Count == 0)
+            if (drawnDotData.Dots.Count == 0)
             {
                 return;
             }
 
+            location = imageDisplay.GetUnzoomedLocation(location);
             location = imageDisplay.GetAbsoluteLocation(location);
 
             var di_min = drawnDotData.Dots
@@ -92,7 +94,7 @@ namespace GraDeMarCoWPF.Models
         {
             if (isActive)
             {
-                mouseLocation = location;
+                mouseLocation = imageDisplay.GetUnzoomedLocation(location);
             }
         }
 
@@ -173,7 +175,7 @@ namespace GraDeMarCoWPF.Models
             }
 
             {
-                var location = mouseLocation;
+                var location = imageDisplay.GetRelativeLocation(mouseLocation);
                 location.X -= drawnDotDrawingTool.Size / 2.0;
                 location.Y -= drawnDotDrawingTool.Size / 2.0;
                 var brush = new SolidColorBrush(drawnDotDrawingTool.Color);
