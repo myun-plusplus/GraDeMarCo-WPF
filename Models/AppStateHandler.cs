@@ -21,6 +21,7 @@ namespace GraDeMarCoWPF.Models
         private IImageFiltering imageFiltering;
         private IImageBinarizing imageBinarizing;
         private IGrainDetecting grainDetecting;
+        private IDotDrawing dotDrawing;
 
         public ImageProcessingFlags ImageProcessingFlags
         {
@@ -36,12 +37,14 @@ namespace GraDeMarCoWPF.Models
         public AppStateHandler(AppData appData,
             IImageAreaSelecting imageAreaSelecting,
             IPlanimetricCircleDrawing planimetricCircleDrawing,
-            IGrainDetecting grainDetecting)
+            IGrainDetecting grainDetecting,
+            IDotDrawing dotDrawing)
         {
             this.appData = appData;
             this.imageAreaSelecting = imageAreaSelecting;
             this.planimetricCircleDrawing = planimetricCircleDrawing;
             this.grainDetecting = grainDetecting;
+            this.dotDrawing = dotDrawing;
         }
 
         public void DrawOnRender(DrawingContext drawingContext)
@@ -68,6 +71,11 @@ namespace GraDeMarCoWPF.Models
             {
                 grainDetecting.DrawOnDynamicRendering(drawingContext);
             }
+
+            if (appData.CurrentState == AppState.DotDrawing)
+            {
+                dotDrawing.DrawOnDynamicRendering(drawingContext);
+            }
         }
 
         public void MouseMove(Point location)
@@ -85,6 +93,9 @@ namespace GraDeMarCoWPF.Models
                     break;
                 case AppState.PlanimetricCircleDrawing:
                     planimetricCircleDrawing.MouseMove(location);
+                    break;
+                case AppState.DotDrawing:
+                    dotDrawing.MouseMove(location);
                     break;
             }
         }
@@ -104,6 +115,19 @@ namespace GraDeMarCoWPF.Models
                     break;
                 case AppState.PlanimetricCircleDrawing:
                     planimetricCircleDrawing.Click(location);
+                    break;
+                case AppState.DotDrawing:
+                    dotDrawing.LeftClick(location);
+                    break;
+            }
+        }
+
+        public void RightClick(Point location)
+        {
+            switch(appData.CurrentState)
+            {
+                case AppState.DotDrawing:
+                    dotDrawing.RightClick(location);
                     break;
             }
         }

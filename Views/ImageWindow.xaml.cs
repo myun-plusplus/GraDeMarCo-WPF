@@ -55,6 +55,12 @@ namespace GraDeMarCoWPF.Views
 
                 this.myRenderBox.InvalidateVisual();
             }
+            else if (e.RightButton == MouseButtonState.Pressed)
+            {
+                viewModel.RightClickCommand.Execute(e.GetPosition(myPictureBox));
+
+                this.myRenderBox.InvalidateVisual();
+            }
         }
 
         private void MyPictureBox_MouseMove(object sender, MouseEventArgs e)

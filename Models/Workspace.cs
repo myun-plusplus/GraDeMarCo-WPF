@@ -44,7 +44,7 @@ namespace GraDeMarCoWPF.Models
             DrawnDotData = new DotData();
             DrawnDotDrawingTool = new DotDrawingTool();
             DotDrawing = new DotDrawing(ImageData, ImageDisplay, DrawnDotDrawingTool, DetectedDotData, DrawnDotData);
-            AppStateHandler = new AppStateHandler(AppData, ImageAreaSelecting, PlanimetricCircleDrawing, GrainDetecting);
+            AppStateHandler = new AppStateHandler(AppData, ImageAreaSelecting, PlanimetricCircleDrawing, GrainDetecting, DotDrawing);
 
             Initialize();
         }

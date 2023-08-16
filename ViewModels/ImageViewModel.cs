@@ -112,6 +112,9 @@ namespace GraDeMarCoWPF.ViewModels
             LeftClickCommand = CreateCommand(
                 location => appStateHandler.LeftClick((Point)location),
                 _ => this.appData.IsClickEnabled());
+            RightClickCommand = CreateCommand(
+                location => appStateHandler.RightClick((Point)location),
+                _ => this.appData.IsClickEnabled());
             MouseMoveCommand = CreateCommand(
                 location => appStateHandler.MouseMove((Point)location),
                 _ => this.appData.IsMouseMoveEnabled());

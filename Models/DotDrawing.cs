@@ -13,6 +13,12 @@ namespace GraDeMarCoWPF.Models
 
         private bool isActive;
 
+        private Point mouseLocation
+        {
+            get { return _mouseLocation; }
+            set { _mouseLocation = value; }
+        }
+
         public DotDrawing(
             ImageData imageData,
             ImageDisplay imageDisplay,
@@ -37,7 +43,7 @@ namespace GraDeMarCoWPF.Models
             isActive = false;
         }
 
-        public void Click(Point location)
+        public void LeftClick(Point location)
         {
 
         }
@@ -49,7 +55,10 @@ namespace GraDeMarCoWPF.Models
 
         public void MouseMove(Point location)
         {
-
+            if (isActive)
+            {
+                mouseLocation = location;
+            }
         }
 
         public void Undo()
@@ -76,5 +85,7 @@ namespace GraDeMarCoWPF.Models
         {
 
         }
+
+        private Point _mouseLocation;
     }
 }
