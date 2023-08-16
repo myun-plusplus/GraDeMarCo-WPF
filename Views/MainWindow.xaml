@@ -56,7 +56,8 @@
             </TabItem>
             <TabItem Header="点打ち">
                 <StackPanel Orientation="Vertical">
-                    <v:DotDrawingPanel/>
+                    <v:DotDrawingPanel
+                        DataContext="{Binding DotDrawingViewModel}"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="点カウント" Height="20" VerticalAlignment="Top">

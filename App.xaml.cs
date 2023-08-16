@@ -40,6 +40,9 @@ namespace GraDeMarCoWPF
             var detectedDotData = Workspace.Instance.DetectedDotData;
             var grainDetecting = Workspace.Instance.GrainDetecting;
 
+            var drawnDotData = Workspace.Instance.DrawnDotData;
+            var drawnDotDrawingTool = Workspace.Instance.DrawnDotDrawingTool;
+
             var appStateHandler = Workspace.Instance.AppStateHandler;
 
             var openWorkspaceDialogService = new OpenFileDialogService(
@@ -109,6 +112,13 @@ namespace GraDeMarCoWPF
                 grainInCircleDotDrawingTool,
                 grainOnCircleDotDrawingTool,
                 grainDetecting);
+            var dotDrawingViewModel = new DotDrawingViewModel(
+                colorDialogService,
+                appData,
+                imageDisplay,
+                drawnDotDrawingTool,
+                detectedDotData,
+                drawnDotData);
 
             var imageWindow = new ImageWindow()
             {
@@ -123,6 +133,7 @@ namespace GraDeMarCoWPF
                 imageFIlterViewModel,
                 imageBinarizingViewModel,
                 grainDetectingViewModel,
+                dotDrawingViewModel,
                 appData,
                 imageData,
                 imageDisplay,

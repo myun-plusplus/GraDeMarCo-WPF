@@ -1,6 +1,8 @@
-﻿using GraDeMarCoWPF.Models;
+﻿using GraDeMarCoWPF.Commands;
+using GraDeMarCoWPF.Models;
 using GraDeMarCoWPF.Services;
 using System.ComponentModel;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace GraDeMarCoWPF.ViewModels
@@ -35,15 +37,22 @@ namespace GraDeMarCoWPF.ViewModels
             }
         }
 
+        public ICommand ToggleDotDrawing { get; private set; }
+        public ICommand SelectDrawnDotColor { get; private set; }
+
         public DotDrawingViewModel(
             IColorDialogService colorDialogService,
             AppData appData,
+            ImageDisplay imageDisplay,
             DotDrawingTool dotDrawingTool,
             DotData detectedDotData,
             DotData drawnDotData)
         {
             this.appData = Workspace.Instance.AppData;
             this.dotDrawingTool = dotDrawingTool;
+
+            ToggleDotDrawing = new ToggleDotDrawing(appData, imageDisplay);
+            SelectDrawnDotColor = new SelectDrawnDotColor(appData, dotDrawingTool, colorDialogService);
 
             dotDrawingTool.PropertyChanged += dotDrawingTool_PropertyChanged;
         }

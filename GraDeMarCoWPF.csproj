@@ -83,8 +83,10 @@
     <Compile Include="Commands\SaveAsWorkspace.cs" />
     <Compile Include="Commands\SaveImage.cs" />
     <Compile Include="Commands\SelectDetectedDotColor.cs" />
+    <Compile Include="Commands\SelectDrawnDotColor.cs" />
     <Compile Include="Commands\SelectOutlineColor.cs" />
     <Compile Include="Commands\SelectMaxArea.cs" />
+    <Compile Include="Commands\ToggleDotDrawing.cs" />
     <Compile Include="Commands\ToggleGrainDetecting.cs" />
     <Compile Include="Commands\ToggleImageAreaSelecting.cs" />
     <Compile Include="Commands\ToggleImageBinarizing.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="Services\SaveFileDialogService.cs" />
     <Compile Include="Services\ServiceInterface.cs" />
     <Compile Include="Models\Workspace.cs" />
+    <Compile Include="ViewModels\DotDrawingViewModel.cs" />
     <Compile Include="ViewModels\GrainDetectingViewModel.cs" />
     <Compile Include="ViewModels\ImageAreaSelectingViewModel.cs" />
     <Compile Include="ViewModels\ImageBinarizingViewModel.cs" />

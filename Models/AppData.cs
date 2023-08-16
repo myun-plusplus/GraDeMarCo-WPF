@@ -12,7 +12,8 @@ namespace GraDeMarCoWPF.Models
         PlanimetricCircleDrawing,
         ImageFiltering,
         ImageBinarizing,
-        GrainDetecting
+        GrainDetecting,
+        DotDrawing
     }
 
     [Serializable]
