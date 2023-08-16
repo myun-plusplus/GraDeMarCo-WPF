@@ -57,9 +57,9 @@ namespace GraDeMarCoWPF.ViewModels
 
             ToggleDotDrawing = new ToggleDotDrawing(appData, imageDisplay, dotDrawing);
             SelectDrawnDotColor = new SelectDrawnDotColor(appData, dotDrawingTool, colorDialogService);
-            UndoDotDrawing = new UndoDotDrawing(appData, dotDrawing);
-            RedoDotDrawing = new RedoDotDrawing(appData, dotDrawing);
-            ClearDots = new ClearDots(appData, dotDrawing);
+            UndoDotDrawing = new UndoDotDrawing(appData, imageDisplay, dotDrawing);
+            RedoDotDrawing = new RedoDotDrawing(appData, imageDisplay, dotDrawing);
+            ClearDots = new ClearDots(appData, imageDisplay, dotDrawing);
 
             dotDrawingTool.PropertyChanged += dotDrawingTool_PropertyChanged;
         }

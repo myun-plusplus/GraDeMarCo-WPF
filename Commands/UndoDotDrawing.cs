@@ -10,13 +10,16 @@ namespace GraDeMarCoWPF.Commands
         public event EventHandler CanExecuteChanged;
 
         private AppData appData;
+        private ImageDisplay imageDisplay;
         private IDotDrawing dotDrawing;
 
         public UndoDotDrawing(
             AppData appData,
+            ImageDisplay imageDisplay,
             IDotDrawing dotDrawing)
         {
             this.appData = appData;
+            this.imageDisplay = imageDisplay;
             this.dotDrawing = dotDrawing;
 
             appData.PropertyChanged += this.appData_PropertyChanged;
@@ -31,6 +34,7 @@ namespace GraDeMarCoWPF.Commands
         public void Execute(object parameter)
         {
             dotDrawing.Undo();
+            imageDisplay.RefreshRendering();
         }
 
         private void appData_PropertyChanged(object sender, PropertyChangedEventArgs e)
