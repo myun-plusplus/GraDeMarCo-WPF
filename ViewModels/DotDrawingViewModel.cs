@@ -50,12 +50,12 @@ namespace GraDeMarCoWPF.ViewModels
             DotDrawingTool dotDrawingTool,
             DotData detectedDotData,
             DotData drawnDotData,
-            DotDrawing dotDrawing)
+            IDotDrawing dotDrawing)
         {
             this.appData = Workspace.Instance.AppData;
             this.dotDrawingTool = dotDrawingTool;
 
-            ToggleDotDrawing = new ToggleDotDrawing(appData, imageDisplay);
+            ToggleDotDrawing = new ToggleDotDrawing(appData, imageDisplay, dotDrawing);
             SelectDrawnDotColor = new SelectDrawnDotColor(appData, dotDrawingTool, colorDialogService);
             UndoDotDrawing = new UndoDotDrawing(appData, dotDrawing);
             RedoDotDrawing = new RedoDotDrawing(appData, dotDrawing);

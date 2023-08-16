@@ -11,13 +11,16 @@ namespace GraDeMarCoWPF.Commands
 
         private AppData appData;
         private ImageDisplay imageDisplay;
+        private IDotDrawing dotDrawing;
 
         public ToggleDotDrawing(
             AppData appData,
-            ImageDisplay imageDisplay)
+            ImageDisplay imageDisplay,
+            IDotDrawing dotDrawing)
         {
             this.appData = appData;
             this.imageDisplay = imageDisplay;
+            this.dotDrawing = dotDrawing;
 
             appData.PropertyChanged += this.appData_PropertyChanged;
         }
@@ -33,11 +36,13 @@ namespace GraDeMarCoWPF.Commands
             if ((parameter as bool?) ?? false)
             {
                 appData.CurrentState = AppState.DotDrawing;
+                dotDrawing.StartFunction();
                 imageDisplay.RefreshRendering();
             }
             else
             {
                 appData.CurrentState = AppState.ImageOpened;
+                dotDrawing.StopFunction();
                 imageDisplay.RefreshRendering();
             }
         }

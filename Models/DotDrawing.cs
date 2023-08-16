@@ -78,12 +78,57 @@ namespace GraDeMarCoWPF.Models
 
         public void DrawOnDynamicRendering(DrawingContext drawingContext)
         {
+            foreach (Dot dot in detectedDotData.Dots)
+            {
+                Point location = imageDisplay.GetRelativeLocation(dot.Location);
+                location.X -= dot.Size / 2.0;
+                location.Y -= dot.Size / 2.0;
+                var brush = new SolidColorBrush(dot.Color);
+                Rect rect = new Rect(location.X, location.Y, dot.Size, dot.Size);
+                drawingContext.DrawRectangle(brush, null, rect);
+            }
 
+            foreach (Dot dot in drawnDotData.Dots)
+            {
+                Point location = imageDisplay.GetRelativeLocation(dot.Location);
+                location.X -= dot.Size / 2.0;
+                location.Y -= dot.Size / 2.0;
+                var brush = new SolidColorBrush(dot.Color);
+                Rect rect = new Rect(location.X, location.Y, dot.Size, dot.Size);
+                drawingContext.DrawRectangle(brush, null, rect);
+            }
+
+            {
+                var location = mouseLocation;
+                location.X -= drawnDotDrawingTool.Size / 2.0;
+                location.Y -= drawnDotDrawingTool.Size / 2.0;
+                var brush = new SolidColorBrush(drawnDotDrawingTool.Color);
+                Rect rect = new Rect(location.X, location.Y, drawnDotDrawingTool.Size, drawnDotDrawingTool.Size);
+                drawingContext.DrawRectangle(brush, null, rect);
+            }
         }
 
         public void DrawOnStaticRendering(DrawingContext drawingContext)
         {
+            foreach (Dot dot in detectedDotData.Dots)
+            {
+                Point location = imageDisplay.GetRelativeLocation(dot.Location);
+                location.X -= dot.Size / 2.0;
+                location.Y -= dot.Size / 2.0;
+                var brush = new SolidColorBrush(dot.Color);
+                Rect rect = new Rect(location.X, location.Y, dot.Size, dot.Size);
+                drawingContext.DrawRectangle(brush, null, rect);
+            }
 
+            foreach (Dot dot in drawnDotData.Dots)
+            {
+                Point location = imageDisplay.GetRelativeLocation(dot.Location);
+                location.X -= dot.Size / 2.0;
+                location.Y -= dot.Size / 2.0;
+                var brush = new SolidColorBrush(dot.Color);
+                Rect rect = new Rect(location.X, location.Y, dot.Size, dot.Size);
+                drawingContext.DrawRectangle(brush, null, rect);
+            }
         }
 
         private Point _mouseLocation;
