@@ -79,6 +79,26 @@ namespace GraDeMarCoWPF.ViewModels
             }
         }
 
+        public bool DrawnDotsAreDisplayed
+        {
+            get
+            {
+                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.DrawnDots);
+            }
+            set
+            {
+                if (value)
+                {
+                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.DrawnDots;
+                }
+                else
+                {
+                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.DrawnDots;
+                }
+                NotifyPropertyChanged(GetName.Of(() => DrawnDotsAreDisplayed));
+            }
+        }
+
         public ICommand CreateWorkspace { get; private set; }
         public ICommand OpenWorkspace { get; private set; }
         public ICommand OverwriteWorkspace { get; private set; }

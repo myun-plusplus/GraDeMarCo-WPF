@@ -10,7 +10,8 @@ namespace GraDeMarCoWPF.Models
         None = 0,
         ImageArea = 1 << 0,
         PlanimetricCircle = 1 << 1,
-        ImageModifying = 1 << 2
+        ImageModifying = 1 << 2,
+        DrawnDots = 1 << 3
     }
 
     public class AppStateHandler : BindableBase
@@ -75,6 +76,10 @@ namespace GraDeMarCoWPF.Models
             if (appData.CurrentState == AppState.DotDrawing)
             {
                 dotDrawing.DrawOnDynamicRendering(drawingContext);
+            }
+            else if (ImageProcessingFlags.HasFlag(ImageProcessingFlags.DrawnDots))
+            {
+                dotDrawing.DrawOnStaticRendering(drawingContext);
             }
         }
 

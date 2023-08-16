@@ -64,6 +64,11 @@ namespace GraDeMarCoWPF.Models
 
         public void RightClick(Point location)
         {
+            if (drawnDotData.DoneList.Count == 0)
+            {
+                return;
+            }
+
             location = imageDisplay.GetAbsoluteLocation(location);
 
             var di_min = drawnDotData.Dots

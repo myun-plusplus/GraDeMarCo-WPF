@@ -89,6 +89,7 @@
                 Style="{StaticResource NormalToggleButton}"/>
             <ToggleButton
                 Grid.Row="0" Grid.Column="3"
+                IsChecked="{Binding DrawnDotsAreDisplayed}"
                 Content="点打ち"
                 Style="{StaticResource NormalToggleButton}"/>
         </Grid>
