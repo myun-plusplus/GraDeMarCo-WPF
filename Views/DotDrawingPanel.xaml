@@ -51,13 +51,22 @@
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="元に戻す" Style="{StaticResource NormalButton}"/>
+                            <Button
+                                Command="{Binding UndoDotDrawing}"
+                                Content="元に戻す"
+                                Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="やり直す" Style="{StaticResource NormalButton}"/>
+                            <Button
+                                Command="{Binding RedoDotDrawing}"
+                                Content="やり直す"
+                                Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="すべて削除" Style="{StaticResource NormalButton}"/>
+                            <Button
+                                Command="{Binding ClearDots}"
+                                Content="すべて削除"
+                                Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

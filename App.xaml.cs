@@ -119,7 +119,8 @@ namespace GraDeMarCoWPF
                 imageDisplay,
                 drawnDotDrawingTool,
                 detectedDotData,
-                drawnDotData);
+                drawnDotData,
+                dotDrawing);
 
             var imageWindow = new ImageWindow()
             {

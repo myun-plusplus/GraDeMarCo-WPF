@@ -39,6 +39,9 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand ToggleDotDrawing { get; private set; }
         public ICommand SelectDrawnDotColor { get; private set; }
+        public ICommand UndoDotDrawing { get; private set; }
+        public ICommand RedoDotDrawing { get; private set; }
+        public ICommand ClearDots { get; private set; }
 
         public DotDrawingViewModel(
             IColorDialogService colorDialogService,
@@ -46,13 +49,17 @@ namespace GraDeMarCoWPF.ViewModels
             ImageDisplay imageDisplay,
             DotDrawingTool dotDrawingTool,
             DotData detectedDotData,
-            DotData drawnDotData)
+            DotData drawnDotData,
+            DotDrawing dotDrawing)
         {
             this.appData = Workspace.Instance.AppData;
             this.dotDrawingTool = dotDrawingTool;
 
             ToggleDotDrawing = new ToggleDotDrawing(appData, imageDisplay);
             SelectDrawnDotColor = new SelectDrawnDotColor(appData, dotDrawingTool, colorDialogService);
+            UndoDotDrawing = new UndoDotDrawing(appData, dotDrawing);
+            RedoDotDrawing = new RedoDotDrawing(appData, dotDrawing);
+            ClearDots = new ClearDots(appData, dotDrawing);
 
             dotDrawingTool.PropertyChanged += dotDrawingTool_PropertyChanged;
         }

@@ -74,12 +74,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ClearDots.cs" />
     <Compile Include="Commands\CreateWorkspace.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DrawMaxCircle.cs" />
     <Compile Include="Commands\OpenImage.cs" />
     <Compile Include="Commands\OpenWorkspace.cs" />
     <Compile Include="Commands\OverwriteWorkspace.cs" />
+    <Compile Include="Commands\RedoDotDrawing.cs" />
     <Compile Include="Commands\SaveAsWorkspace.cs" />
     <Compile Include="Commands\SaveImage.cs" />
     <Compile Include="Commands\SelectDetectedDotColor.cs" />
@@ -92,10 +94,12 @@
     <Compile Include="Commands\ToggleImageBinarizing.cs" />
     <Compile Include="Commands\ToggleImageFiltering.cs" />
     <Compile Include="Commands\TogglePlanimetricCircleDrawing.cs" />
+    <Compile Include="Commands\UndoDotDrawing.cs" />
     <Compile Include="GetName.cs" />
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\AppStateHandler.cs" />
     <Compile Include="Models\DotData.cs" />
+    <Compile Include="Models\DotDrawing.cs" />
     <Compile Include="Models\GrainDetecting.cs" />
     <Compile Include="Models\GrainDetectingOptions.cs" />
     <Compile Include="Models\ImageBinarizeOptions.cs" />
