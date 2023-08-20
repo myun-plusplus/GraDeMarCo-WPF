@@ -45,6 +45,7 @@ namespace GraDeMarCoWPF
             var dotDrawing = Workspace.Instance.DotDrawing;
 
             var appStateHandler = Workspace.Instance.AppStateHandler;
+            var imageModification = Workspace.Instance.ImageModification;
 
             var openWorkspaceDialogService = new OpenFileDialogService(
                 "開くワークスペースを選択してください",
@@ -80,6 +81,7 @@ namespace GraDeMarCoWPF
                 imageDisplay,
                 imageAreaSelecting,
                 appStateHandler);
+                imageModification);
             var imageAreaSelectingViewModel = new ImageAreaSelectingViewModel(
                 appData,
                 imageData,
@@ -140,7 +142,7 @@ namespace GraDeMarCoWPF
                 imageData,
                 imageDisplay,
                 imageIO,
-                appStateHandler,
+                imageModification,
                 imageWindowService,
                 openWorkspaceDialogService,
                 saveWorkspaceDialogService,

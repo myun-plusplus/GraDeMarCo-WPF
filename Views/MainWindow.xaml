@@ -74,21 +74,25 @@
             </Grid.ColumnDefinitions>
             <ToggleButton
                 Grid.Row="0" Grid.Column="0"
+                Command="{Binding ApplyImageModification}"
                 IsChecked="{Binding ImageAreaIsDisplayedOnImage}"
                 Content="画像範囲"
                 Style="{StaticResource NormalToggleButton}"/>
             <ToggleButton
                 Grid.Row="0" Grid.Column="1"
+                Command="{Binding ApplyImageModification}"
                 IsChecked="{Binding PlanimetricCircleIsDisplayedOnImage}"
                 Content="円"
                 Style="{StaticResource NormalToggleButton}"/>
             <ToggleButton
                 Grid.Row="0" Grid.Column="2"
+                Command="{Binding ApplyImageModification}"
                 IsChecked="{Binding ImageModifyingIsDisplayed}"
                 Content="画像処理"
                 Style="{StaticResource NormalToggleButton}"/>
             <ToggleButton
                 Grid.Row="0" Grid.Column="3"
+                Command="{Binding ApplyImageModification}"
                 IsChecked="{Binding DrawnDotsAreDisplayed}"
                 Content="点打ち"
                 Style="{StaticResource NormalToggleButton}"/>

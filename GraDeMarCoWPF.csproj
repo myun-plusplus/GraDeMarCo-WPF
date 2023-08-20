@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ApplyImageProcessing.cs" />
     <Compile Include="Commands\ClearDots.cs" />
     <Compile Include="Commands\CreateWorkspace.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Models\ImageIO.cs" />
     <Compile Include="Models\ImageProcessing\BasicProcessing.cs" />
     <Compile Include="Models\ImageProcessing\ImageFilteringLogic.cs" />
+    <Compile Include="Models\ImageModification.cs" />
     <Compile Include="Services\ColorDialogService.cs" />
     <Compile Include="Models\DrawingTool.cs" />
     <Compile Include="Models\ImageArea.cs" />
@@ -256,5 +258,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

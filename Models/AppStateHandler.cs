@@ -1,38 +1,15 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace GraDeMarCoWPF.Models
 {
-    [Flags]
-    public enum ImageProcessingFlags
-    {
-        None = 0,
-        ImageArea = 1 << 0,
-        PlanimetricCircle = 1 << 1,
-        ImageModifying = 1 << 2,
-        DrawnDots = 1 << 3
-    }
-
-    public class AppStateHandler : BindableBase
+    public class AppStateHandler
     {
         private AppData appData;
         private IImageAreaSelecting imageAreaSelecting;
         private IPlanimetricCircleDrawing planimetricCircleDrawing;
-        private IImageFiltering imageFiltering;
-        private IImageBinarizing imageBinarizing;
         private IGrainDetecting grainDetecting;
         private IDotDrawing dotDrawing;
-
-        public ImageProcessingFlags ImageProcessingFlags
-        {
-            get { return _imageProcessingFlags; }
-            set
-            {
-                _imageProcessingFlags = value;
-                NotifyPropertyChanged(GetName.Of(() => ImageProcessingFlags));
-            }
-        }
 
 
         public AppStateHandler(AppData appData,
@@ -50,36 +27,20 @@ namespace GraDeMarCoWPF.Models
 
         public void DrawOnRender(DrawingContext drawingContext)
         {
-            if (appData.CurrentState == AppState.ImageAreaSelecting)
+            switch (appData.CurrentState)
             {
-                imageAreaSelecting.DrawOnDynamicRendering(drawingContext);
-            }
-            else if (ImageProcessingFlags.HasFlag(ImageProcessingFlags.ImageArea))
-            {
-                imageAreaSelecting.DrawOnStaticRendering(drawingContext);
-            }
-
-            if (appData.CurrentState == AppState.PlanimetricCircleDrawing)
-            {
-                planimetricCircleDrawing.DrawOnDynamicRendering(drawingContext);
-            }
-            else if (ImageProcessingFlags.HasFlag(ImageProcessingFlags.PlanimetricCircle))
-            {
-                planimetricCircleDrawing.DrawOnStaticRendering(drawingContext);
-            }
-
-            if (appData.CurrentState == AppState.GrainDetecting)
-            {
-                grainDetecting.DrawOnDynamicRendering(drawingContext);
-            }
-
-            if (appData.CurrentState == AppState.DotDrawing)
-            {
-                dotDrawing.DrawOnDynamicRendering(drawingContext);
-            }
-            else if (ImageProcessingFlags.HasFlag(ImageProcessingFlags.DrawnDots))
-            {
-                dotDrawing.DrawOnStaticRendering(drawingContext);
+                case AppState.ImageAreaSelecting:
+                    imageAreaSelecting.DrawOnDynamicRendering(drawingContext);
+                    break;
+                case AppState.PlanimetricCircleDrawing:
+                    planimetricCircleDrawing.DrawOnDynamicRendering(drawingContext);
+                    break;
+                case AppState.GrainDetecting:
+                    grainDetecting.DrawOnDynamicRendering(drawingContext);
+                    break;
+                case AppState.DotDrawing:
+                    dotDrawing.DrawOnDynamicRendering(drawingContext);
+                    break;
             }
         }
 
@@ -136,7 +97,5 @@ namespace GraDeMarCoWPF.Models
                     break;
             }
         }
-
-        private ImageProcessingFlags _imageProcessingFlags;
     }
 }

@@ -145,6 +145,31 @@ namespace GraDeMarCoWPF.Models
             drawingContext.DrawEllipse(null, drawingTool.Pen, center, radius, radius);
         }
 
+        public void DrawOnStaticRendering(System.Drawing.Graphics graphics)
+        {
+            Point relativeLowerPoint = imageDisplay.GetRelativeLocation(new Point(
+                planimetricCircle.LowerX + planimetricCircle.Diameter / 2.0 + 0.5,
+                planimetricCircle.LowerY + planimetricCircle.Diameter / 2.0 + 0.5));
+            double coefficient = imageDisplay.DisplayedImage.Width / imageDisplay.DisplayedImage.PixelWidth;
+            double radius = (planimetricCircle.Diameter - 1) * coefficient / 2.0;
+
+            var drawingColor = System.Drawing.Color.FromArgb(
+                drawingTool.Color.A,
+                drawingTool.Color.R,
+                drawingTool.Color.G,
+                drawingTool.Color.B);
+
+            using (var pen = new System.Drawing.Pen(drawingColor, (float)drawingTool.Pen.Thickness))
+            {
+                graphics.DrawEllipse(
+                    pen,
+                    (int)relativeLowerPoint.X,
+                    (int)relativeLowerPoint.Y,
+                    (int)radius,
+                    (int)radius);
+            }
+        }
+
         public void DrawMaxCircle()
         {
             double centerX = (imageArea.LowerX + imageArea.UpperX) / 2.0;

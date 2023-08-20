@@ -124,5 +124,26 @@ namespace GraDeMarCoWPF.Models
 
             drawingContext.DrawRectangle(null, drawingTool.Pen, new Rect(relativeLowerPoint, relativeUpperPoint));
         }
+
+        public void DrawOnStaticRendering(System.Drawing.Graphics graphics)
+        {
+            Point relativeLowerPoint = imageDisplay.GetRelativeLocation(new Point(imageArea.LowerX, imageArea.LowerY));
+            Point relativeUpperPoint = imageDisplay.GetRelativeLocation(new Point(imageArea.UpperX, imageArea.UpperY));
+
+            var drawingColor = System.Drawing.Color.FromArgb(
+                drawingTool.Color.A,
+                drawingTool.Color.R,
+                drawingTool.Color.G,
+                drawingTool.Color.B);
+
+            using (var pen = new System.Drawing.Pen(drawingColor, (float)drawingTool.Pen.Thickness))
+            {
+                graphics.DrawRectangle(pen, new System.Drawing.Rectangle(
+                    (int)relativeLowerPoint.X,
+                    (int)relativeLowerPoint.Y,
+                    (int)(relativeUpperPoint.X - relativeLowerPoint.X),
+                    (int)(relativeUpperPoint.Y - relativeLowerPoint.Y)));
+            }
+        }
     }
 }

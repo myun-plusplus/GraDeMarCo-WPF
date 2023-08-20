@@ -98,6 +98,11 @@ namespace GraDeMarCoWPF.Models
             return CurrentState == AppState.ImageAreaSelecting;
         }
 
+        public bool IsImageProcessingEnabled()
+        {
+            return CurrentState != AppState.None && CurrentState != AppState.WorkspacePrepared;
+        }
+
         [NonSerialized]
         private AppState _currentState;
         [NonSerialized]

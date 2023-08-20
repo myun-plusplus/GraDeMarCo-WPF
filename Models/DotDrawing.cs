@@ -207,6 +207,42 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
+        public void DrawOnStaticRendering(System.Drawing.Graphics graphics)
+        {
+            using (var brush = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent))
+            {
+                foreach (Dot dot in detectedDotData.Dots)
+                {
+                    brush.Color = System.Drawing.Color.FromArgb(
+                        dot.Color.A,
+                        dot.Color.R,
+                        dot.Color.G,
+                        dot.Color.B);
+                    graphics.FillRectangle(
+                        brush,
+                        (float)(dot.Location.X - dot.Size / 2.0),
+                        (float)(dot.Location.Y - dot.Size / 2.0),
+                        (float)dot.Size,
+                        (float)dot.Size);
+                }
+
+                foreach (Dot dot in drawnDotData.Dots)
+                {
+                    brush.Color = System.Drawing.Color.FromArgb(
+                        dot.Color.A,
+                        dot.Color.R,
+                        dot.Color.G,
+                        dot.Color.B);
+                    graphics.FillRectangle(
+                        brush,
+                        (float)(dot.Location.X - dot.Size / 2.0),
+                        (float)(dot.Location.Y - dot.Size / 2.0),
+                        (float)dot.Size,
+                        (float)dot.Size);
+                }
+            }
+        }
+
         private static double getDistance(Point p1, Point p2)
         {
             return Math.Sqrt((p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y));

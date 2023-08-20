@@ -18,6 +18,7 @@ namespace GraDeMarCoWPF.Models
     public interface IDrawingOnStaticRendering
     {
         void DrawOnStaticRendering(DrawingContext drawingContext);
+        void DrawOnStaticRendering(System.Drawing.Graphics graphics);
     }
 
     public interface IImageAreaSelecting : IToggleFunction, IDrawingOnDynamicRendering, IDrawingOnStaticRendering

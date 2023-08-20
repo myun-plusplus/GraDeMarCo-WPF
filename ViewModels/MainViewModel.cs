@@ -10,7 +10,7 @@ namespace GraDeMarCoWPF.ViewModels
         private AppData appData;
         private ImageData imageData;
         private ImageDisplay imageDisplay;
-        AppStateHandler appStateHandler;
+        ImageModification imageModification;
 
         public ImageAreaSelectingViewModel imageAreaSelectingViewModel { get; set; }
         public PlanimetricCircleDrawingViewModel PlanimetricCircleDrawingViewModel { get; set; }
@@ -23,17 +23,17 @@ namespace GraDeMarCoWPF.ViewModels
         {
             get
             {
-                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.ImageArea);
+                return imageModification.ImageModificationlags.HasFlag(ImageModificationFlags.ImageArea);
             }
             set
             {
                 if (value)
                 {
-                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.ImageArea;
+                    imageModification.ImageModificationlags |= ImageModificationFlags.ImageArea;
                 }
                 else
                 {
-                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.ImageArea;
+                    imageModification.ImageModificationlags &= ~ImageModificationFlags.ImageArea;
                 }
                 NotifyPropertyChanged(GetName.Of(() => ImageAreaIsDisplayedOnImage));
             }
@@ -43,17 +43,17 @@ namespace GraDeMarCoWPF.ViewModels
         {
             get
             {
-                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.PlanimetricCircle);
+                return imageModification.ImageModificationlags.HasFlag(ImageModificationFlags.PlanimetricCircle);
             }
             set
             {
                 if (value)
                 {
-                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.PlanimetricCircle;
+                    imageModification.ImageModificationlags |= ImageModificationFlags.PlanimetricCircle;
                 }
                 else
                 {
-                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.PlanimetricCircle;
+                    imageModification.ImageModificationlags &= ~ImageModificationFlags.PlanimetricCircle;
                 }
                 NotifyPropertyChanged(GetName.Of(() => PlanimetricCircleIsDisplayedOnImage));
             }
@@ -63,17 +63,17 @@ namespace GraDeMarCoWPF.ViewModels
         {
             get
             {
-                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.ImageModifying);
+                return imageModification.ImageModificationlags.HasFlag(ImageModificationFlags.ImageModifying);
             }
             set
             {
                 if (value)
                 {
-                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.ImageModifying;
+                    imageModification.ImageModificationlags |= ImageModificationFlags.ImageModifying;
                 }
                 else
                 {
-                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.ImageModifying;
+                    imageModification.ImageModificationlags &= ~ImageModificationFlags.ImageModifying;
                 }
                 NotifyPropertyChanged(GetName.Of(() => ImageModifyingIsDisplayed));
             }
@@ -83,17 +83,17 @@ namespace GraDeMarCoWPF.ViewModels
         {
             get
             {
-                return appStateHandler.ImageProcessingFlags.HasFlag(ImageProcessingFlags.DrawnDots);
+                return imageModification.ImageModificationlags.HasFlag(ImageModificationFlags.DrawnDots);
             }
             set
             {
                 if (value)
                 {
-                    appStateHandler.ImageProcessingFlags |= ImageProcessingFlags.DrawnDots;
+                    imageModification.ImageModificationlags |= ImageModificationFlags.DrawnDots;
                 }
                 else
                 {
-                    appStateHandler.ImageProcessingFlags &= ~ImageProcessingFlags.DrawnDots;
+                    imageModification.ImageModificationlags &= ~ImageModificationFlags.DrawnDots;
                 }
                 NotifyPropertyChanged(GetName.Of(() => DrawnDotsAreDisplayed));
             }
@@ -109,6 +109,7 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ICommand ZoomInCommand { get; private set; }
         public ICommand ZoomOutCommand { get; private set; }
+        public ICommand ApplyImageModification { get; private set; }
 
         private IWindowService imageWindowService;
 
@@ -123,7 +124,7 @@ namespace GraDeMarCoWPF.ViewModels
             ImageData imageData,
             ImageDisplay imageDisplay,
             ImageIO imageIO,
-            AppStateHandler appStateHandler,
+            ImageModification appStateHandler,
             IWindowService imageWindowService,
             IOpenFileDialogService openWorkspaceDialogService,
             ISaveFileDialogService saveWorkspaceDialogService,
@@ -140,7 +141,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.appData = appData;
             this.imageData = imageData;
             this.imageDisplay = imageDisplay;
-            this.appStateHandler = appStateHandler;
+            this.imageModification = appStateHandler;
 
             CreateWorkspace = new CreateWorkspace(appData);
             OpenWorkspace = new OpenWorkspace(appData, openWorkspaceDialogService);
@@ -154,6 +155,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.ZoomOutCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 0.5; },
                 _ => this.appData.CanZoomInOut() && this.imageDisplay.ZoomScale > 0.125);
+            ApplyImageModification = new ApplyImageProcessing(appData, imageDisplay, imageModification);
         }
     }
 }

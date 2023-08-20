@@ -89,7 +89,8 @@ namespace GraDeMarCoWPF.ViewModels
             ImageData imageData,
             ImageDisplay imageDisplay,
             ImageAreaSelecting imageAreaSelecting,
-            AppStateHandler appStateHandler)
+            AppStateHandler appStateHandler,
+            ImageModification imageModification)
         {
             this.appData = Workspace.Instance.AppData;
             this.imageData = imageData;
@@ -99,7 +100,7 @@ namespace GraDeMarCoWPF.ViewModels
 
             appData.PropertyChanged += appData_PropertyChanged;
             this.imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
-            appStateHandler.PropertyChanged += appStateHandler_PropertyChanged;
+            imageModification.PropertyChanged += imageModification_PropertyChanged;
 
             this.ZoomInCommand = CreateCommand(
                 _ => { this.imageDisplay.ZoomScale *= 2.0; },
@@ -132,7 +133,7 @@ namespace GraDeMarCoWPF.ViewModels
             NotifyPropertyChanged(GetName.Of(() => ImageHeight));
         }
 
-        private void appStateHandler_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void imageModification_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             NotifyPropertyChanged(e.PropertyName);
         }
