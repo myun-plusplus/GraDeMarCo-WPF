@@ -26,6 +26,7 @@ namespace GraDeMarCoWPF.Models
         {
             var bitmapSource = new BitmapImage(new Uri(filePath));
             imageData.OriginalImage = new WriteableBitmap(bitmapSource);
+            imageData.NormalImage = new WriteableBitmap(bitmapSource);
             imageData.CircledImage = new WriteableBitmap(bitmapSource);
             imageData.FilteredImage = new WriteableBitmap(bitmapSource);
             imageData.BinarizedImage = new WriteableBitmap(bitmapSource);

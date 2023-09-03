@@ -21,6 +21,15 @@ namespace GraDeMarCoWPF.Models
             }
         }
 
+        public WriteableBitmap NormalImage
+        {
+            get { return _normalImage; }
+            set
+            {
+                _normalImage = new WriteableBitmap(new FormatConvertedBitmap(value, PixelFormats.Bgr32, null, 0));
+            }
+        }
+
         public WriteableBitmap CircledImage
         {
             get { return _circledImage; }
@@ -57,6 +66,7 @@ namespace GraDeMarCoWPF.Models
         }
 
         private WriteableBitmap _originalImage;
+        private WriteableBitmap _normalImage;
         private WriteableBitmap _circledImage;
         private WriteableBitmap _filteredImage;
         private WriteableBitmap _binarizedImage;

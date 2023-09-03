@@ -15,6 +15,7 @@ namespace GraDeMarCoWPF.ViewModels
         private ImageDisplay imageDisplay;
         private ImageAreaSelecting imageAreaSelecting;
         private AppStateHandler appStateHandler;
+        private ImageModification imageModification;
 
         public WriteableBitmap DisplayedImage
         {
@@ -27,7 +28,7 @@ namespace GraDeMarCoWPF.ViewModels
                     case AppState.ImageBinarizing:
                         return imageData.BinarizedImage;
                     default:
-                        return imageData.OriginalImage;
+                        return imageData.NormalImage;
                 }
             }
         }
@@ -97,6 +98,7 @@ namespace GraDeMarCoWPF.ViewModels
             this.imageDisplay = Workspace.Instance.ImageDisplay;
             this.imageAreaSelecting = Workspace.Instance.ImageAreaSelecting;
             this.appStateHandler = Workspace.Instance.AppStateHandler;
+            this.imageModification = imageModification;
 
             appData.PropertyChanged += appData_PropertyChanged;
             this.imageDisplay.PropertyChanged += imageDisplay_PropertyChanged;
@@ -136,6 +138,7 @@ namespace GraDeMarCoWPF.ViewModels
         private void imageModification_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             NotifyPropertyChanged(e.PropertyName);
+            NotifyPropertyChanged(GetName.Of(() => DisplayedImage));
         }
     }
 }

@@ -80,7 +80,7 @@ namespace GraDeMarCoWPF
                 imageData,
                 imageDisplay,
                 imageAreaSelecting,
-                appStateHandler);
+                appStateHandler,
                 imageModification);
             var imageAreaSelectingViewModel = new ImageAreaSelectingViewModel(
                 appData,

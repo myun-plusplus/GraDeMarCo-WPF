@@ -104,9 +104,9 @@ namespace GraDeMarCoWPF.Models
                 canvas.UnlockBits(bitmapData);
             }
 
-            imageDisplay.DisplayedImage.Lock();
-            imageDisplay.DisplayedImage.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
-            imageDisplay.DisplayedImage.Unlock();
+            imageData.NormalImage.Lock();
+            imageData.NormalImage.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
+            imageData.NormalImage.Unlock();
         }
 
         private ImageModificationFlags _imageProcessingFlags;
