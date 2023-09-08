@@ -13,7 +13,10 @@
             <StackPanel Orientation="Vertical">
                 <Label Content="点カウント" Style="{StaticResource HeadlineLabel}"/>
                 <StackPanel Orientation="Horizontal">
-                    <ListView ItemsSource="{Binding DotCountingItems}">
+                    <ListView
+                        ItemsSource="{Binding DotCountingItems}"
+                        SelectedItem="{Binding SelectedItem}"
+                        SelectionMode="Single">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -48,7 +51,10 @@
                                 Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="色を削除" Style="{StaticResource NormalButton}"/>
+                            <Button
+                                Command="{Binding EraseDotCountingItem}"
+                                Content="色を削除"
+                                Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

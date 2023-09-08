@@ -12,7 +12,6 @@ namespace GraDeMarCoWPF.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool IsSelected { get; set; }
         public SolidColorBrush Color { get; set; }
         public string Count { get; set; }
         public ICommand SelectColor { get; set; }
@@ -32,6 +31,16 @@ namespace GraDeMarCoWPF.ViewModels
 
         public ObservableCollection<DotCountingItem> DotCountingItems { get; set; }
 
+        public DotCountingItem SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                NotifyPropertyChanged(GetName.Of(() => SelectedItem));
+            }
+        }
+
         public ICommand AddDotCountingItem { get; private set; }
         public ICommand EraseDotCountingItem { get; private set; }
 
@@ -48,9 +57,8 @@ namespace GraDeMarCoWPF.ViewModels
                 {
                     var item = new DotCountingItem()
                     {
-                        IsSelected = false,
                         Color = new SolidColorBrush(Colors.Transparent),
-                        Count = "aa"
+                        Count = System.DateTime.Now.ToString()
                     };
                     item.SelectColor = CreateCommand(
                         __ =>
@@ -69,8 +77,15 @@ namespace GraDeMarCoWPF.ViewModels
             EraseDotCountingItem = CreateCommand(
                 _ =>
                 {
+                    if (SelectedItem == null)
+                    {
+                        return;
+                    }
 
+                    DotCountingItems.Remove(SelectedItem);
                 });
         }
+
+        private DotCountingItem _selectedItem;
     }
 }
