@@ -124,6 +124,7 @@
     <Compile Include="Services\SaveFileDialogService.cs" />
     <Compile Include="Services\ServiceInterface.cs" />
     <Compile Include="Models\Workspace.cs" />
+    <Compile Include="ViewModels\DotCountingViewModel.cs" />
     <Compile Include="ViewModels\DotDrawingViewModel.cs" />
     <Compile Include="ViewModels\GrainDetectingViewModel.cs" />
     <Compile Include="ViewModels\ImageAreaSelectingViewModel.cs" />

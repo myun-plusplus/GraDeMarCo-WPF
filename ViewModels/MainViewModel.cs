@@ -18,6 +18,7 @@ namespace GraDeMarCoWPF.ViewModels
         public ImageBinarizingViewModel ImageBinarizingViewModel { get; private set; }
         public GrainDetectingViewModel GrainDetectingViewModel { get; private set; }
         public DotDrawingViewModel DotDrawingViewModel { get; private set; }
+        public DotCountingViewModel DotCountingViewModel { get; private set; }
 
         public bool ImageAreaIsDisplayedOnImage
         {
@@ -120,6 +121,7 @@ namespace GraDeMarCoWPF.ViewModels
             ImageBinarizingViewModel imageBinarizingViewModel,
             GrainDetectingViewModel grainDetectingViewModel,
             DotDrawingViewModel dotDrawingViewModel,
+            DotCountingViewModel dotCountingViewModel,
             AppData appData,
             ImageData imageData,
             ImageDisplay imageDisplay,
@@ -137,6 +139,7 @@ namespace GraDeMarCoWPF.ViewModels
             ImageBinarizingViewModel = imageBinarizingViewModel;
             GrainDetectingViewModel = grainDetectingViewModel;
             DotDrawingViewModel = dotDrawingViewModel;
+            DotCountingViewModel = dotCountingViewModel;
             this.imageWindowService = imageWindowService;
             this.appData = appData;
             this.imageData = imageData;

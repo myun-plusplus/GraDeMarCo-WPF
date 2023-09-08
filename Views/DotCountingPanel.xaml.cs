@@ -25,4 +25,12 @@ namespace GraDeMarCoWPF.Views
             InitializeComponent();
         }
     }
+
+    //private void lvw_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    //{
+    //    foreach (var item in e.RemovedItems.Cast<Item>())
+    //        item.IsSelected = false;
+    //    foreach (var item in e.AddedItems.Cast<Item>())
+    //        item.IsSelected = true;
+    //}
 }

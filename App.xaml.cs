@@ -123,6 +123,9 @@ namespace GraDeMarCoWPF
                 detectedDotData,
                 drawnDotData,
                 dotDrawing);
+            var dotCountingViewModel = new DotCountingViewModel(
+                colorDialogService,
+                appData);
 
             var imageWindow = new ImageWindow()
             {
@@ -138,6 +141,7 @@ namespace GraDeMarCoWPF
                 imageBinarizingViewModel,
                 grainDetectingViewModel,
                 dotDrawingViewModel,
+                dotCountingViewModel,
                 appData,
                 imageData,
                 imageDisplay,

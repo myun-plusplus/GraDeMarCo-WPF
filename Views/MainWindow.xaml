@@ -61,7 +61,8 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="点カウント" Height="20" VerticalAlignment="Top">
-                <v:DotCountingPanel/>
+                <v:DotCountingPanel
+                    DataContext="{Binding DotCountingViewModel}"/>
             </TabItem>
         </TabControl>
         <Label Content="表示" Style="{StaticResource HeadlineLabel}"/>
