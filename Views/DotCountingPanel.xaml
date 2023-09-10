@@ -57,6 +57,12 @@
                                 Style="{StaticResource NormalButton}"/>
                         </StackPanel>
                     </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Button
+                            Content="カウント"
+                            Command="{Binding CountDots}"
+                            Style="{StaticResource NormalButton}"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </Border>
